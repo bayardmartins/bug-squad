@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 06bbd2a80567cd2468dcbec3e83d18af
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/Characters/Player_Male.prefab
+  uploadId: 926736

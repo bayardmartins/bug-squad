@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d771645f9ac10d241b18277409d02a55
+timeCreated: 1473942081
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Art/Vfx/Materials/BulletFleshDecal.mat
+  uploadId: 926736

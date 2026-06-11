@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 48904d8cd79778f4e9fa84436aaf6c93
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Lobby/Integrations/Steam/steam_appid.txt
+  uploadId: 926736

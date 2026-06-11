@@ -1,0 +1,28 @@
+ASSET LICENSE INFORMATION: UNIVERSAL ANIMATION LIBRARY (1 & 2)
+
+The animations included in this directory were created by Quaternius.
+Website: https://quaternius.com
+Itch.io: https://quaternius.itch.io/
+
+License: Creative Commons Zero (CC0) 1.0 Universal
+License URL: https://creativecommons.org/publicdomain/zero/1.0/
+
+----------------------------------------------------------------------
+COMMUNITY APPRECIATION:
+While these assets are provided under CC0 and do not require attribution, 
+I’ve included them here to help streamline your workflow. 
+
+Quaternius is a fantastic creator who contributes a lot to the game 
+dev community. If these animations help your project, consider 
+dropping by his site (quaternius.com) or Itch.io page to:
+- Leave a review or a rating to help others find his work.
+- Download his latest libraries directly to see his full collection.
+- Support his journey of providing high-quality assets for developers.
+
+Helping out great creators is what keeps our community thriving!
+----------------------------------------------------------------------
+
+Summary of Rights:
+- You may copy, modify, distribute, and perform the work, even for 
+  commercial purposes, without asking permission.
+- The creator has dedicated the work to the public domain.

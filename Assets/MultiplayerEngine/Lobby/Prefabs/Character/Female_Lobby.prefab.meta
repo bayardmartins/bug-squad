@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2221afc64cd6f6c4e9417d4c0a7d395e
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Lobby/Prefabs/Character/Female_Lobby.prefab
+  uploadId: 926736

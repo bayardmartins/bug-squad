@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5bfe0dab05efc6741b0acc497e72f40a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/UI/Items/Crafting/IngridientsItem.prefab
+  uploadId: 926736

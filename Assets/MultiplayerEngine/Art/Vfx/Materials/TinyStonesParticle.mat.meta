@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 45f58a8b78c1a12438067b8f965b1170
+timeCreated: 1473673924
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Art/Vfx/Materials/TinyStonesParticle.mat
+  uploadId: 926736

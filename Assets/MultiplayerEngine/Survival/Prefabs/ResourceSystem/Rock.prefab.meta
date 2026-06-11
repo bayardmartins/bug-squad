@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5de26eea08ea67d4fbbe1787501feec2
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/ResourceSystem/Rock.prefab
+  uploadId: 926736

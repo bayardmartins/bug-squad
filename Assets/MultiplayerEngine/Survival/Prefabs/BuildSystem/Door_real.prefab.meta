@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7eb1d6fa2e6c3484bad773cfdf0af32b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/BuildSystem/Door_real.prefab
+  uploadId: 926736

@@ -1,0 +1,1676 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9092459880423007869
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e800bd81ec3dd4984e62a846bcc286, type: 3}
+  m_Name: New Item_WeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.WeaponData
+  category: 0
+  damage: 10
+  attackCooldown: 0.5
+  range: 2
+  damageType: 0
+  tier: 1
+  staminaCost: 10
+  hitRadius: 0.5
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 20
+  projectileSpawnOffset: {x: 0, y: 0, z: 0.5}
+  animatorOverride: {fileID: 0}
+  useAnimationEvents: 1
+  drawTrigger: Draw
+  holsterTrigger: Holster
+  idleTrigger: Idle
+  attackTrigger: Attack
+  comboChain: []
+  fullBodyLayerIndex: 2
+  comboResetTime: 2
+  blockBoolParam: IsBlocking
+  aimBoolParam: IsAiming
+  shootTrigger: Shoot
+  reloadTrigger: Reload
+  hitEffectPrefab: {fileID: 0}
+  attackSound: {fileID: 0}
+  hitSound: {fileID: 0}
+--- !u!114 &-8813320484636830357
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-8678840559863212745
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0.026, y: -0.09, z: -0.029}
+  rotationOffset: {x: 69.57173, y: 169.2358, z: 358.4033}
+--- !u!114 &-7968830990775724475
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd38f25f46708074c85d50f609123324, type: 3}
+  m_Name: Bow_ShooterWeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.ShooterWeaponData
+  ammoItemId: -1
+  magazineSize: 30
+  reloadTime: 2
+  alignArmToAim: 1
+  alignHandToAim: 1
+  fireRate: 5
+  baseDamage: 15
+--- !u!114 &-6795322658445198932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 10, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-6427464705815483094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-6404997513540898899
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b50a94ee36f592e41b2bf14e36b0aae4, type: 3}
+  m_Name: New Item_ConsumableData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.ConsumableData
+  healthRestore: 0
+  staminaRestore: 0
+  foodRestore: 0
+  waterRestore: 50
+  consumeSound: {fileID: 0}
+  consumeEffect: {fileID: 0}
+--- !u!114 &-6260358203800989976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0.018531272, y: -0.082313575, z: -0.034904793}
+  rotationOffset: {x: 283.35602, y: 218.14006, z: 56.00126}
+--- !u!114 &-6254817877726783675
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0.061707534, y: 0.13319118, z: 0.4554657}
+  rotationOffset: {x: 356.05957, y: 279.67328, z: 112.21783}
+--- !u!114 &-5975200699210158938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9879920b1a1de5469bf58227aab577f, type: 3}
+  m_Name: New Item_MeleeWeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.MeleeWeaponData
+  comboLayerIndex: 1
+  useRootMotion: 0
+  maxComboCount: 3
+  baseDamage: 10
+  comboDamageMultipliers: []
+  staminaCostPerAttack: 10
+--- !u!114 &-5799801562876127336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea50ed2eebf1ee46ace2c4165dc5bef, type: 3}
+  m_Name: New Item
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.InventoryItemData
+  itemId: 10
+  itemName: Hammer
+  description: Use to build Houses
+  itemIcon: {fileID: 868531832, guid: 6da79607e5825ce4eafc68e8f6eb32ca, type: 3}
+  objectType: 3
+  maxStack: 1
+  dropAsStack: 1
+  maxDurability: 100
+  localPrefab: {fileID: 9185380030972933813, guid: cec8d2d451306c14db3675aa1d983111, type: 3}
+  networkPrefab: {fileID: 4428308606101146333, guid: f2cb71bbb1965b44e8fdb816b362e17d, type: 3}
+  handOffsetData: {fileID: -1884803188919862612}
+  equipSettings:
+    canEquipToHand: 1
+    changeID: 0
+    actionID: -1
+    animationLayerIndex: 1
+    actionLayerIndex: -1
+    holdLayerIndex: -1
+    animatorOverride: {fileID: 0}
+  toolData: {fileID: 5275421505553213117}
+  consumableData: {fileID: 0}
+  meleeWeaponData: {fileID: 0}
+  shooterWeaponData: {fileID: 0}
+  chargedWeaponData: {fileID: 0}
+--- !u!114 &-5724824817541739933
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea50ed2eebf1ee46ace2c4165dc5bef, type: 3}
+  m_Name: New Item
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.InventoryItemData
+  itemId: 8
+  itemName: Stone
+  description: Used for building and making better tools
+  itemIcon: {fileID: -2044009916, guid: 5ae7956f64647e94888090c98d43c537, type: 3}
+  objectType: 0
+  maxStack: 30
+  dropAsStack: 1
+  maxDurability: 100
+  localPrefab: {fileID: 0}
+  networkPrefab: {fileID: 2059627064342420071, guid: 5de26eea08ea67d4fbbe1787501feec2, type: 3}
+  handOffsetData: {fileID: 0}
+  equipSettings:
+    canEquipToHand: 0
+    changeID: 0
+    actionID: 0
+    animationLayerIndex: 1
+    actionLayerIndex: -1
+    holdLayerIndex: -1
+    animatorOverride: {fileID: 0}
+  toolData: {fileID: 0}
+  consumableData: {fileID: 0}
+  meleeWeaponData: {fileID: 0}
+  shooterWeaponData: {fileID: 0}
+  chargedWeaponData: {fileID: 0}
+--- !u!114 &-5687870324902860196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e800bd81ec3dd4984e62a846bcc286, type: 3}
+  m_Name: New Item_WeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.WeaponData
+  category: 0
+  damage: 10
+  attackCooldown: 0.5
+  range: 2
+  damageType: 0
+  tier: 1
+  staminaCost: 10
+  hitRadius: 0.5
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 20
+  projectileSpawnOffset: {x: 0, y: 0, z: 0.5}
+  animatorOverride: {fileID: 0}
+  useAnimationEvents: 1
+  drawTrigger: Draw
+  holsterTrigger: Holster
+  idleTrigger: Idle
+  attackTrigger: Attack
+  comboChain: []
+  fullBodyLayerIndex: 2
+  comboResetTime: 2
+  blockBoolParam: IsBlocking
+  aimBoolParam: IsAiming
+  shootTrigger: Shoot
+  reloadTrigger: Reload
+  hitEffectPrefab: {fileID: 0}
+  attackSound: {fileID: 0}
+  hitSound: {fileID: 0}
+--- !u!114 &-5492639736485212693
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9879920b1a1de5469bf58227aab577f, type: 3}
+  m_Name: Sword_MeleeWeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.MeleeWeaponData
+  comboLayerIndex: 3
+  useRootMotion: 1
+  maxComboCount: 3
+  baseDamage: 10
+  comboDamageMultipliers: []
+  staminaCostPerAttack: 10
+--- !u!114 &-5124193951588732508
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0.027911313, y: -0.098616555, z: -0.1534491}
+  rotationOffset: {x: 62.17039, y: 77.31721, z: 258.0347}
+--- !u!114 &-4938398314570787074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea50ed2eebf1ee46ace2c4165dc5bef, type: 3}
+  m_Name: New Item
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.InventoryItemData
+  itemId: 1
+  itemName: Sword
+  description: Used to hit enemies at close range
+  itemIcon: {fileID: 887245059, guid: 6da79607e5825ce4eafc68e8f6eb32ca, type: 3}
+  objectType: 1
+  maxStack: 1
+  dropAsStack: 1
+  maxDurability: 100
+  localPrefab: {fileID: 5285486493239164147, guid: 80d1e9f9182222546a48f7c8e247ade6, type: 3}
+  networkPrefab: {fileID: 8181469553872072935, guid: e20d060069a2195499220180d2cdf65d, type: 3}
+  handOffsetData: {fileID: 3773582984788157750}
+  equipSettings:
+    canEquipToHand: 1
+    changeID: 1
+    actionID: -1
+    animationLayerIndex: 1
+    actionLayerIndex: 3
+    holdLayerIndex: -1
+    animatorOverride: {fileID: 0}
+  toolData: {fileID: 0}
+  consumableData: {fileID: 0}
+  meleeWeaponData: {fileID: -5492639736485212693}
+  shooterWeaponData: {fileID: 0}
+  chargedWeaponData: {fileID: 0}
+--- !u!114 &-4735071252826637793
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-3702177049938655971
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea50ed2eebf1ee46ace2c4165dc5bef, type: 3}
+  m_Name: New Item
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.InventoryItemData
+  itemId: 2
+  itemName: New Item
+  description: 
+  itemIcon: {fileID: 0}
+  objectType: 0
+  maxStack: 1
+  dropAsStack: 1
+  maxDurability: 100
+  localPrefab: {fileID: 0}
+  networkPrefab: {fileID: 0}
+  handOffsetData: {fileID: 0}
+  equipSettings:
+    canEquipToHand: 0
+    changeID: 0
+    actionID: 0
+    animationLayerIndex: 1
+    actionLayerIndex: -1
+    holdLayerIndex: -1
+    animatorOverride: {fileID: 0}
+  toolData: {fileID: 0}
+  consumableData: {fileID: 0}
+  meleeWeaponData: {fileID: 0}
+  shooterWeaponData: {fileID: 0}
+  chargedWeaponData: {fileID: 0}
+--- !u!114 &-2890056265597313318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e800bd81ec3dd4984e62a846bcc286, type: 3}
+  m_Name: New Item_WeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.WeaponData
+  category: 1
+  damage: 10
+  attackCooldown: 0.5
+  range: 2
+  damageType: 0
+  tier: 1
+  staminaCost: 10
+  hitRadius: 0.5
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 20
+  projectileSpawnOffset: {x: 0, y: 0, z: 0.5}
+  animatorOverride: {fileID: 0}
+  useAnimationEvents: 1
+  drawTrigger: Draw
+  holsterTrigger: Holster
+  idleTrigger: Idle
+  attackTrigger: Attack
+  comboChain: []
+  fullBodyLayerIndex: 2
+  comboResetTime: 2
+  blockBoolParam: IsBlocking
+  aimBoolParam: IsAiming
+  shootTrigger: Shoot
+  reloadTrigger: Reload
+  hitEffectPrefab: {fileID: 0}
+  attackSound: {fileID: 0}
+  hitSound: {fileID: 0}
+--- !u!114 &-2612737212890022190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e800bd81ec3dd4984e62a846bcc286, type: 3}
+  m_Name: New Item_WeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.WeaponData
+  category: 0
+  damage: 10
+  attackCooldown: 0.5
+  range: 2
+  damageType: 0
+  tier: 1
+  staminaCost: 10
+  hitRadius: 0.5
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 20
+  projectileSpawnOffset: {x: 0, y: 0, z: 0.5}
+  animatorOverride: {fileID: 0}
+  useAnimationEvents: 1
+  drawTrigger: Draw
+  holsterTrigger: Holster
+  idleTrigger: Idle
+  attackTrigger: Attack
+  comboChain: []
+  fullBodyLayerIndex: 2
+  comboResetTime: 2
+  blockBoolParam: IsBlocking
+  aimBoolParam: IsAiming
+  shootTrigger: Shoot
+  reloadTrigger: Reload
+  hitEffectPrefab: {fileID: 0}
+  attackSound: {fileID: 0}
+  hitSound: {fileID: 0}
+--- !u!114 &-2520763248257620770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9879920b1a1de5469bf58227aab577f, type: 3}
+  m_Name: New Item_MeleeWeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.MeleeWeaponData
+  comboLayerIndex: 1
+  useRootMotion: 0
+  maxComboCount: 3
+  baseDamage: 10
+  comboDamageMultipliers: []
+  staminaCostPerAttack: 10
+--- !u!114 &-2470346058607824998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea50ed2eebf1ee46ace2c4165dc5bef, type: 3}
+  m_Name: New Item
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.InventoryItemData
+  itemId: 11
+  itemName: Arrow
+  description: 
+  itemIcon: {fileID: -1207055939, guid: 6da79607e5825ce4eafc68e8f6eb32ca, type: 3}
+  objectType: 0
+  maxStack: 30
+  dropAsStack: 1
+  maxDurability: 100
+  localPrefab: {fileID: 0}
+  networkPrefab: {fileID: 5095351366091801283, guid: 2a74fe99b5bd9504698b3260b314681d, type: 3}
+  handOffsetData: {fileID: 0}
+  equipSettings:
+    canEquipToHand: 0
+    changeID: 0
+    actionID: 0
+    animationLayerIndex: 1
+    actionLayerIndex: -1
+    holdLayerIndex: -1
+    animatorOverride: {fileID: 0}
+  toolData: {fileID: 0}
+  consumableData: {fileID: 0}
+  meleeWeaponData: {fileID: 0}
+  shooterWeaponData: {fileID: 0}
+  chargedWeaponData: {fileID: 0}
+--- !u!114 &-2297149169527760912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-2130870711531785440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea50ed2eebf1ee46ace2c4165dc5bef, type: 3}
+  m_Name: New Item
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.InventoryItemData
+  itemId: 6
+  itemName: Water
+  description: Used to restore thirst
+  itemIcon: {fileID: -1112932466, guid: 6da79607e5825ce4eafc68e8f6eb32ca, type: 3}
+  objectType: 2
+  maxStack: 30
+  dropAsStack: 1
+  maxDurability: 100
+  localPrefab: {fileID: 6361637240067780371, guid: c2e70f1a622e2d84eafb54ba4023ecf9, type: 3}
+  networkPrefab: {fileID: 4826071633888312512, guid: 8a36faa408e3dd14ca502da60210a885, type: 3}
+  handOffsetData: {fileID: -6260358203800989976}
+  equipSettings:
+    canEquipToHand: 1
+    changeID: 0
+    actionID: 2
+    animationLayerIndex: 1
+    actionLayerIndex: 2
+    holdLayerIndex: -1
+    animatorOverride: {fileID: 0}
+  toolData: {fileID: 0}
+  consumableData: {fileID: -6404997513540898899}
+  meleeWeaponData: {fileID: 0}
+  shooterWeaponData: {fileID: 0}
+  chargedWeaponData: {fileID: 0}
+--- !u!114 &-2082545604682601246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd38f25f46708074c85d50f609123324, type: 3}
+  m_Name: Bow_ShooterWeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.ShooterWeaponData
+  ammoItemId: -1
+  magazineSize: 30
+  reloadTime: 2
+  alignArmToAim: 1
+  alignHandToAim: 1
+  fireRate: 5
+  baseDamage: 15
+--- !u!114 &-1884803188919862612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0.052023217, y: -0.08682473, z: -0.11959953}
+  rotationOffset: {x: 353.19797, y: 277.07648, z: 177.09882}
+--- !u!114 &-1455341823001677972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea50ed2eebf1ee46ace2c4165dc5bef, type: 3}
+  m_Name: New Item
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.InventoryItemData
+  itemId: 4
+  itemName: Pickaxe
+  description: Used to mine stone and ores
+  itemIcon: {fileID: 109480680, guid: 6da79607e5825ce4eafc68e8f6eb32ca, type: 3}
+  objectType: 3
+  maxStack: 1
+  dropAsStack: 1
+  maxDurability: 100
+  localPrefab: {fileID: 3770286512412545079, guid: 9f5fa4c36a7e0c0418419738eadfb284, type: 3}
+  networkPrefab: {fileID: 3770286512412545079, guid: 53fdd9f1645676d4b92237cdf8930c1a, type: 3}
+  handOffsetData: {fileID: 1955624813109988151}
+  equipSettings:
+    canEquipToHand: 1
+    changeID: 0
+    actionID: -1
+    animationLayerIndex: 1
+    actionLayerIndex: 2
+    holdLayerIndex: -1
+    animatorOverride: {fileID: 0}
+  toolData: {fileID: 5017229812929809088}
+  consumableData: {fileID: 0}
+  meleeWeaponData: {fileID: 0}
+  shooterWeaponData: {fileID: 0}
+  chargedWeaponData: {fileID: 0}
+--- !u!114 &-1087646454236999206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e800bd81ec3dd4984e62a846bcc286, type: 3}
+  m_Name: New Item_WeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.WeaponData
+  category: 0
+  damage: 10
+  attackCooldown: 0.5
+  range: 2
+  damageType: 0
+  tier: 1
+  staminaCost: 10
+  hitRadius: 0.5
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 20
+  projectileSpawnOffset: {x: 0, y: 0, z: 0.5}
+  animatorOverride: {fileID: 0}
+  useAnimationEvents: 1
+  drawTrigger: Draw
+  holsterTrigger: Holster
+  idleTrigger: Idle
+  attackTrigger: Attack
+  comboChain:
+  - animName: 
+    damageMultiplier: 0
+    staminaCost: 0
+    exitAnim: 
+  fullBodyLayerIndex: 2
+  comboResetTime: 2
+  blockBoolParam: IsBlocking
+  aimBoolParam: IsAiming
+  shootTrigger: Shoot
+  reloadTrigger: Reload
+  hitEffectPrefab: {fileID: 0}
+  attackSound: {fileID: 0}
+  hitSound: {fileID: 0}
+--- !u!114 &-711001713581206670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-306952465304962537
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e077a5f39469d1e49be5ae1f23a98fa8, type: 3}
+  m_Name: Bow_ChargedWeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.ChargedWeaponData
+  ammoItemId: 11
+  chargeTime: 1.2
+  drawDistance: 0.2
+  minDamage: 5
+  maxDamage: 40
+  minProjectileSpeed: 10
+  maxProjectileSpeed: 40
+  alignArmToAim: 1
+  alignHandToAim: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ba4776fdfc6114383d6d2e68b03f57, type: 3}
+  m_Name: ItemDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.ItemDatabase
+  items:
+  - {fileID: -4938398314570787074}
+  - {fileID: 5287367927060126413}
+  - {fileID: 7264901683918994238}
+  - {fileID: -1455341823001677972}
+  - {fileID: 8872650835448355916}
+  - {fileID: -2130870711531785440}
+  - {fileID: 6065414625920214173}
+  - {fileID: -5724824817541739933}
+  - {fileID: 7879376528598442186}
+  - {fileID: -5799801562876127336}
+  - {fileID: -2470346058607824998}
+  - {fileID: 4029888435128670339}
+--- !u!114 &140120905839154357
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e800bd81ec3dd4984e62a846bcc286, type: 3}
+  m_Name: New Item_WeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.WeaponData
+  category: 0
+  damage: 10
+  attackCooldown: 0.5
+  range: 2
+  damageType: 0
+  tier: 1
+  staminaCost: 10
+  hitRadius: 0.5
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 20
+  projectileSpawnOffset: {x: 0, y: 0, z: 0.5}
+  animatorOverride: {fileID: 0}
+  useAnimationEvents: 1
+  drawTrigger: Draw
+  holsterTrigger: Holster
+  idleTrigger: Idle
+  attackTrigger: Attack
+  comboChain: []
+  fullBodyLayerIndex: 2
+  comboResetTime: 2
+  blockBoolParam: IsBlocking
+  aimBoolParam: IsAiming
+  shootTrigger: Shoot
+  reloadTrigger: Reload
+  hitEffectPrefab: {fileID: 0}
+  attackSound: {fileID: 0}
+  hitSound: {fileID: 0}
+--- !u!114 &408988815708437671
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &599779304939350942
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &661527750124840970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &689518830291799982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b50a94ee36f592e41b2bf14e36b0aae4, type: 3}
+  m_Name: New Item_ConsumableData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.ConsumableData
+  healthRestore: 0
+  staminaRestore: 0
+  foodRestore: 25
+  waterRestore: 0
+  consumeSound: {fileID: 0}
+  consumeEffect: {fileID: 0}
+--- !u!114 &831982822773122384
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39bfc9e77d5c0024f9963409f4dd9f31, type: 3}
+  m_Name: New Item_ToolData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.ToolData
+  tier: 1
+  harvestDamage: 10
+  canHarvest: 00000000
+  useCooldown: 0.5
+  staminaCost: 8
+--- !u!114 &1272960528624254910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &1549253835642560642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9879920b1a1de5469bf58227aab577f, type: 3}
+  m_Name: New Item_MeleeWeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.MeleeWeaponData
+  comboLayerIndex: 1
+  useRootMotion: 0
+  maxComboCount: 3
+  baseDamage: 10
+  comboDamageMultipliers: []
+  staminaCostPerAttack: 10
+--- !u!114 &1955624813109988151
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0.0167, y: -0.0695, z: -0.0948}
+  rotationOffset: {x: 348, y: 90, z: 270}
+--- !u!114 &2008286265985183306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0.0539, y: -0.0607, z: -0.002}
+  rotationOffset: {x: 1.040925, y: 344.6744, z: 322.4882}
+--- !u!114 &2095263141476410655
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &2213636793980240533
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9879920b1a1de5469bf58227aab577f, type: 3}
+  m_Name: Rifle_MeleeWeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.MeleeWeaponData
+  comboLayerIndex: 1
+  useRootMotion: 0
+  maxComboCount: 3
+  baseDamage: 10
+  comboDamageMultipliers: []
+  staminaCostPerAttack: 10
+--- !u!114 &2269452331022200737
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39bfc9e77d5c0024f9963409f4dd9f31, type: 3}
+  m_Name: New Item_ToolData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.ToolData
+  tier: 1
+  harvestDamage: 10
+  canHarvest: 00000000
+  useCooldown: 0.5
+  staminaCost: 8
+--- !u!114 &2271512997280595418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &2801297486751051355
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea50ed2eebf1ee46ace2c4165dc5bef, type: 3}
+  m_Name: New Item
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.InventoryItemData
+  itemId: 9
+  itemName: New Item
+  description: 
+  itemIcon: {fileID: 0}
+  objectType: 2
+  maxStack: 1
+  dropAsStack: 1
+  maxDurability: 100
+  localPrefab: {fileID: 0}
+  networkPrefab: {fileID: 0}
+  handOffsetData: {fileID: -6427464705815483094}
+  equipSettings:
+    canEquipToHand: 0
+    changeID: 0
+    actionID: 0
+    animationLayerIndex: 1
+    actionLayerIndex: -1
+    holdLayerIndex: -1
+    animatorOverride: {fileID: 0}
+  toolData: {fileID: 0}
+  consumableData: {fileID: 7156454157445398921}
+  meleeWeaponData: {fileID: 0}
+  shooterWeaponData: {fileID: 0}
+  chargedWeaponData: {fileID: 0}
+--- !u!114 &3102776679467162127
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &3204159827245973148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &3433882525122805742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac166dc761e9474592696dcce691d38, type: 3}
+  m_Name: New Item_MeleeData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.MeleeWeaponData
+  category: 0
+  damage: 10
+  range: 2
+  damageType: 0
+  tier: 1
+  staminaCost: 10
+  animatorOverride: {fileID: 0}
+  useAnimationEvents: 1
+  drawTrigger: Draw
+  holsterTrigger: Holster
+  idleTrigger: Idle
+  hitEffectPrefab: {fileID: 0}
+  attackSound: {fileID: 0}
+  hitSound: {fileID: 0}
+  hitRadius: 0.5
+  hitLayers:
+    m_Bits: 4294967295
+  comboChain: []
+  fullBodyLayerIndex: 2
+  comboResetTime: 2
+  blockBoolParam: IsBlocking
+--- !u!114 &3773582984788157750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0.028, y: -0.117, z: -0.332}
+  rotationOffset: {x: 301.7706, y: 280.97476, z: 172.17303}
+--- !u!114 &3845557820327520255
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &4026469223701238476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd38f25f46708074c85d50f609123324, type: 3}
+  m_Name: New Item_ShooterWeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.ShooterWeaponData
+  ammoItemId: -1
+  magazineSize: 30
+  reloadTime: 2
+  alignArmToAim: 1
+  alignHandToAim: 1
+  fireRate: 5
+  baseDamage: 15
+--- !u!114 &4029888435128670339
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea50ed2eebf1ee46ace2c4165dc5bef, type: 3}
+  m_Name: New Item
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.InventoryItemData
+  itemId: 12
+  itemName: Ammo
+  description: 
+  itemIcon: {fileID: -1364336820, guid: 6da79607e5825ce4eafc68e8f6eb32ca, type: 3}
+  objectType: 0
+  maxStack: 30
+  dropAsStack: 1
+  maxDurability: 100
+  localPrefab: {fileID: 0}
+  networkPrefab: {fileID: 0}
+  handOffsetData: {fileID: 0}
+  equipSettings:
+    canEquipToHand: 0
+    changeID: 0
+    actionID: 0
+    animationLayerIndex: 1
+    actionLayerIndex: -1
+    holdLayerIndex: -1
+    animatorOverride: {fileID: 0}
+  toolData: {fileID: 0}
+  consumableData: {fileID: 0}
+  meleeWeaponData: {fileID: 0}
+  shooterWeaponData: {fileID: 0}
+  chargedWeaponData: {fileID: 0}
+--- !u!114 &4184246339838844177
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9879920b1a1de5469bf58227aab577f, type: 3}
+  m_Name: Rifle_MeleeWeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.MeleeWeaponData
+  comboLayerIndex: 1
+  useRootMotion: 0
+  maxComboCount: 3
+  baseDamage: 10
+  comboDamageMultipliers: []
+  staminaCostPerAttack: 10
+--- !u!114 &5017229812929809088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39bfc9e77d5c0024f9963409f4dd9f31, type: 3}
+  m_Name: New Item_ToolData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.ToolData
+  tier: 1
+  harvestDamage: 10
+  canHarvest: 01000000
+  useCooldown: 0.5
+  staminaCost: 8
+--- !u!114 &5207450399513013068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &5275421505553213117
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39bfc9e77d5c0024f9963409f4dd9f31, type: 3}
+  m_Name: New Item_ToolData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.ToolData
+  tier: 1
+  harvestDamage: 10
+  canHarvest: 00000000
+  useCooldown: 0.5
+  staminaCost: 8
+--- !u!114 &5287367927060126413
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea50ed2eebf1ee46ace2c4165dc5bef, type: 3}
+  m_Name: New Item
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.InventoryItemData
+  itemId: 2
+  itemName: Rifle
+  description: Used to shoot enemies from long range
+  itemIcon: {fileID: -1267509651, guid: 6da79607e5825ce4eafc68e8f6eb32ca, type: 3}
+  objectType: 1
+  maxStack: 1
+  dropAsStack: 1
+  maxDurability: 100
+  localPrefab: {fileID: 1908334897171246856, guid: 53ffdc1c59bfcc549b34c7148cd1af20, type: 3}
+  networkPrefab: {fileID: 1658398532325682799, guid: 29429169b5de444428373917cdaf2480, type: 3}
+  handOffsetData: {fileID: -8678840559863212745}
+  equipSettings:
+    canEquipToHand: 1
+    changeID: 0
+    actionID: -1
+    animationLayerIndex: 1
+    actionLayerIndex: 2
+    holdLayerIndex: 1
+    animatorOverride: {fileID: 0}
+  toolData: {fileID: 0}
+  consumableData: {fileID: 0}
+  meleeWeaponData: {fileID: 0}
+  shooterWeaponData: {fileID: 8129597253820076407}
+  chargedWeaponData: {fileID: 0}
+--- !u!114 &6065414625920214173
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea50ed2eebf1ee46ace2c4165dc5bef, type: 3}
+  m_Name: New Item
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.InventoryItemData
+  itemId: 7
+  itemName: Wood
+  description: Used for building and crafting tools.
+  itemIcon: {fileID: -101160547, guid: 5ae7956f64647e94888090c98d43c537, type: 3}
+  objectType: 0
+  maxStack: 30
+  dropAsStack: 1
+  maxDurability: 100
+  localPrefab: {fileID: 0}
+  networkPrefab: {fileID: 774153918588276675, guid: 19200bcc29cfe914eab1a1bc86a7c055, type: 3}
+  handOffsetData: {fileID: 0}
+  equipSettings:
+    canEquipToHand: 0
+    changeID: 0
+    actionID: 0
+    animationLayerIndex: 1
+    actionLayerIndex: -1
+    holdLayerIndex: -1
+    animatorOverride: {fileID: 0}
+  toolData: {fileID: 0}
+  consumableData: {fileID: 0}
+  meleeWeaponData: {fileID: 0}
+  shooterWeaponData: {fileID: 0}
+  chargedWeaponData: {fileID: 0}
+--- !u!114 &6799076178385606014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2623a791b7d3c204fb78ecf95ea60148, type: 3}
+  m_Name: New Item_RangedData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.RangedWeaponData
+  category: 1
+  damage: 10
+  range: 2
+  damageType: 0
+  tier: 1
+  staminaCost: 10
+  animatorOverride: {fileID: 0}
+  useAnimationEvents: 1
+  drawTrigger: Draw
+  holsterTrigger: Holster
+  idleTrigger: Idle
+  hitEffectPrefab: {fileID: 0}
+  attackSound: {fileID: 0}
+  hitSound: {fileID: 0}
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 20
+  projectileSpawnOffset: {x: 0, y: 0, z: 0.5}
+  aimBoolParam: IsAiming
+  shootTrigger: Shoot
+  reloadTrigger: Reload
+  attackCooldown: 0.5
+  attackTrigger: Attack
+--- !u!114 &7156454157445398921
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b50a94ee36f592e41b2bf14e36b0aae4, type: 3}
+  m_Name: New Item_ConsumableData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.ConsumableData
+  healthRestore: 0
+  staminaRestore: 0
+  foodRestore: 0
+  waterRestore: 0
+  consumeSound: {fileID: 0}
+  consumeEffect: {fileID: 0}
+--- !u!114 &7264901683918994238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea50ed2eebf1ee46ace2c4165dc5bef, type: 3}
+  m_Name: New Item
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.InventoryItemData
+  itemId: 3
+  itemName: Axe
+  description: Used to cut trees and gather wood
+  itemIcon: {fileID: 117836495, guid: 6da79607e5825ce4eafc68e8f6eb32ca, type: 3}
+  objectType: 3
+  maxStack: 1
+  dropAsStack: 1
+  maxDurability: 100
+  localPrefab: {fileID: 8214808863771638668, guid: 9138f4fec22960f4f98d3803ac591daa, type: 3}
+  networkPrefab: {fileID: 8096392003393083639, guid: 9615c32327975af4bbe19cdbda1d10db, type: 3}
+  handOffsetData: {fileID: -5124193951588732508}
+  equipSettings:
+    canEquipToHand: 1
+    changeID: 0
+    actionID: -1
+    animationLayerIndex: 1
+    actionLayerIndex: 2
+    holdLayerIndex: -1
+    animatorOverride: {fileID: 0}
+  toolData: {fileID: 2269452331022200737}
+  consumableData: {fileID: 0}
+  meleeWeaponData: {fileID: 0}
+  shooterWeaponData: {fileID: 0}
+  chargedWeaponData: {fileID: 0}
+--- !u!114 &7521369258930546758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e800bd81ec3dd4984e62a846bcc286, type: 3}
+  m_Name: New Item_WeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.WeaponData
+  category: 0
+  damage: 10
+  attackCooldown: 0.5
+  range: 2
+  damageType: 0
+  tier: 1
+  staminaCost: 10
+  hitRadius: 0.5
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 20
+  projectileSpawnOffset: {x: 0, y: 0, z: 0.5}
+  animatorOverride: {fileID: 0}
+  useAnimationEvents: 1
+  drawTrigger: Draw
+  holsterTrigger: Holster
+  idleTrigger: Idle
+  attackTrigger: Attack
+  comboChain: []
+  fullBodyLayerIndex: 2
+  comboResetTime: 2
+  blockBoolParam: IsBlocking
+  aimBoolParam: IsAiming
+  shootTrigger: Shoot
+  reloadTrigger: Reload
+  hitEffectPrefab: {fileID: 0}
+  attackSound: {fileID: 0}
+  hitSound: {fileID: 0}
+--- !u!114 &7879376528598442186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea50ed2eebf1ee46ace2c4165dc5bef, type: 3}
+  m_Name: New Item
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.InventoryItemData
+  itemId: 9
+  itemName: Bow
+  description: 
+  itemIcon: {fileID: -91206579, guid: 6da79607e5825ce4eafc68e8f6eb32ca, type: 3}
+  objectType: 1
+  maxStack: 1
+  dropAsStack: 1
+  maxDurability: 100
+  localPrefab: {fileID: 173452201799918353, guid: 43ad7ae975c3ec84caa627c4ecab907e, type: 3}
+  networkPrefab: {fileID: 5929286188564598822, guid: 645dd9b17f3e50b4eac47feb68f9e4c7, type: 3}
+  handOffsetData: {fileID: -6254817877726783675}
+  equipSettings:
+    canEquipToHand: 1
+    changeID: 2
+    actionID: -1
+    animationLayerIndex: 1
+    actionLayerIndex: 1
+    holdLayerIndex: 1
+    animatorOverride: {fileID: 0}
+  toolData: {fileID: 0}
+  consumableData: {fileID: 0}
+  meleeWeaponData: {fileID: 0}
+  shooterWeaponData: {fileID: 0}
+  chargedWeaponData: {fileID: -306952465304962537}
+--- !u!114 &8129597253820076407
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd38f25f46708074c85d50f609123324, type: 3}
+  m_Name: Rifle_ShooterWeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.ShooterWeaponData
+  ammoItemId: 12
+  magazineSize: 30
+  reloadTime: 2
+  alignArmToAim: 1
+  alignHandToAim: 1
+  fireRate: 5
+  baseDamage: 15
+--- !u!114 &8158160441409951214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: New Item_HandOffsetData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &8331721460678652703
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e800bd81ec3dd4984e62a846bcc286, type: 3}
+  m_Name: New Item_WeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.WeaponData
+  category: 0
+  damage: 10
+  attackCooldown: 0.5
+  range: 2
+  damageType: 0
+  tier: 1
+  staminaCost: 10
+  hitRadius: 0.5
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 20
+  projectileSpawnOffset: {x: 0, y: 0, z: 0.5}
+  animatorOverride: {fileID: 0}
+  useAnimationEvents: 1
+  drawTrigger: Draw
+  holsterTrigger: Holster
+  idleTrigger: Idle
+  attackTrigger: Attack
+  comboChain: []
+  fullBodyLayerIndex: 2
+  comboResetTime: 2
+  blockBoolParam: IsBlocking
+  aimBoolParam: IsAiming
+  shootTrigger: Shoot
+  reloadTrigger: Reload
+  hitEffectPrefab: {fileID: 0}
+  attackSound: {fileID: 0}
+  hitSound: {fileID: 0}
+--- !u!114 &8573199686075318172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd38f25f46708074c85d50f609123324, type: 3}
+  m_Name: New Item_ShooterWeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.ShooterWeaponData
+  ammoItemId: -1
+  magazineSize: 30
+  reloadTime: 2
+  alignArmToAim: 1
+  alignHandToAim: 1
+  fireRate: 5
+  baseDamage: 15
+--- !u!114 &8753809110592682485
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e800bd81ec3dd4984e62a846bcc286, type: 3}
+  m_Name: New Item_WeaponData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.WeaponData
+  category: 0
+  damage: 10
+  attackCooldown: 0.5
+  range: 2
+  damageType: 0
+  tier: 1
+  staminaCost: 10
+  hitRadius: 0.5
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 20
+  projectileSpawnOffset: {x: 0, y: 0, z: 0.5}
+  animatorOverride: {fileID: 0}
+  useAnimationEvents: 1
+  drawTrigger: Draw
+  holsterTrigger: Holster
+  idleTrigger: Idle
+  attackTrigger: Attack
+  comboChain: []
+  fullBodyLayerIndex: 2
+  comboResetTime: 2
+  blockBoolParam: IsBlocking
+  aimBoolParam: IsAiming
+  shootTrigger: Shoot
+  reloadTrigger: Reload
+  hitEffectPrefab: {fileID: 0}
+  attackSound: {fileID: 0}
+  hitSound: {fileID: 0}
+--- !u!114 &8872650835448355916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea50ed2eebf1ee46ace2c4165dc5bef, type: 3}
+  m_Name: New Item
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.InventoryItemData
+  itemId: 5
+  itemName: Apple
+  description: Used to restore hunger
+  itemIcon: {fileID: 254625343, guid: 6da79607e5825ce4eafc68e8f6eb32ca, type: 3}
+  objectType: 2
+  maxStack: 30
+  dropAsStack: 1
+  maxDurability: 100
+  localPrefab: {fileID: 2651940694018545180, guid: 936a6fd58b71b3145b16f2ac2527376b, type: 3}
+  networkPrefab: {fileID: 2651940694018545180, guid: 04d03df7227c2a446826f612a90d8ccf, type: 3}
+  handOffsetData: {fileID: 2008286265985183306}
+  equipSettings:
+    canEquipToHand: 1
+    changeID: 0
+    actionID: 1
+    animationLayerIndex: 1
+    actionLayerIndex: 2
+    holdLayerIndex: -1
+    animatorOverride: {fileID: 0}
+  toolData: {fileID: 0}
+  consumableData: {fileID: 689518830291799982}
+  meleeWeaponData: {fileID: 0}
+  shooterWeaponData: {fileID: 0}
+  chargedWeaponData: {fileID: 0}

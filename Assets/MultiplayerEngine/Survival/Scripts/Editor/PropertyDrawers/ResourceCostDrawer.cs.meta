@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 239273a367a56714295c4eef32edda3b
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Scripts/Editor/PropertyDrawers/ResourceCostDrawer.cs
+  uploadId: 926736

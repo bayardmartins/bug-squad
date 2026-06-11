@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 4183a38affb509344a5e8ca4ab9f14f2
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Scripts/Editor/Inspectors/PerspectiveSwitcherEditor.cs
+  uploadId: 926736

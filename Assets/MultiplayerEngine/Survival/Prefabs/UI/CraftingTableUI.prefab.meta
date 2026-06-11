@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 01aa3595e42a3b948ae66166f16465c8
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/UI/CraftingTableUI.prefab
+  uploadId: 926736

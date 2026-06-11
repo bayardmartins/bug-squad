@@ -1,0 +1,3791 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer Engine Pro - Documentation</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-color: #0f172a;
+            --sidebar-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --accent-color: #4f46e5;
+            --accent-gradient: linear-gradient(135deg, #4f46e5, #3b82f6);
+            --accent-glow: rgba(79, 70, 229, 0.15);
+            --code-bg: #f1f5f9;
+            --hover-bg: #f1f5f9;
+            --table-header-bg: #f8fafc;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #090d16;
+            --text-color: #f1f5f9;
+            --sidebar-bg: #0f172a;
+            --border-color: #1e293b;
+            --accent-color: #a78bfa;
+            --accent-gradient: linear-gradient(135deg, #a78bfa, #7c3aed);
+            --accent-glow: rgba(167, 139, 250, 0.25);
+            --code-bg: #1e293b;
+            --hover-bg: #1e293b;
+            --table-header-bg: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 310px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            z-index: 10;
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
+            border-bottom: 1px solid var(--border-color);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--accent-color), #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 16px;
+            list-style: none;
+            scrollbar-width: thin;
+        }
+
+        .nav-item {
+            padding: 10px 14px;
+            margin-bottom: 4px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-color);
+            opacity: 0.75;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background-color: var(--hover-bg);
+            opacity: 1;
+            transform: translateX(4px);
+        }
+
+        .nav-item.active {
+            background: var(--accent-gradient);
+            color: white;
+            opacity: 1;
+            font-weight: 600;
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+
+        .theme-toggle {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            background-color: rgba(0, 0, 0, 0.01);
+        }
+
+        .nav-section-header {
+            padding: 10px 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-color);
+            background-color: var(--hover-bg);
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-color);
+            opacity: 0.85;
+        }
+
+        .nav-section-header:hover {
+            background-color: var(--border-color);
+            opacity: 1;
+        }
+
+        .nav-section-header:first-child {
+            margin-top: 0;
+        }
+
+        .nav-section-icon {
+            font-size: 0.65rem;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.6;
+        }
+
+        .nav-section-icon.expanded {
+            transform: rotate(90deg);
+        }
+
+        .nav-items-container {
+            display: none;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .nav-items-container.expanded {
+            display: flex;
+        }
+
+        /* Sidebar Links - Modern Dynamic Glassmorphism */
+        .sidebar-links {
+            padding: 16px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .sidebar-link svg,
+        .sidebar-link .link-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .link-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .link-title {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .link-subtitle {
+            font-weight: 400;
+            font-size: 0.65rem;
+            opacity: 0.6;
+        }
+
+        .sidebar-link.discord {
+            background: rgba(88, 101, 242, 0.12);
+            color: #5865f2;
+        }
+
+        [data-theme="dark"] .sidebar-link.discord {
+            background: rgba(88, 101, 242, 0.18);
+            color: #8c97ff;
+        }
+
+        .sidebar-link.discord:hover {
+            background: rgba(88, 101, 242, 0.24);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(88, 101, 242, 0.2);
+        }
+
+        .sidebar-link.asset-store {
+            background: rgba(0, 0, 0, 0.04);
+            color: #0f172a;
+        }
+
+        [data-theme="dark"] .sidebar-link.asset-store {
+            background: rgba(255, 255, 255, 0.06);
+            color: #e2e8f0;
+        }
+
+        .sidebar-link.asset-store:hover {
+            background: rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] .sidebar-link.asset-store:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .sidebar-link.website {
+            background: rgba(16, 185, 129, 0.1);
+            color: #059669;
+        }
+
+        [data-theme="dark"] .sidebar-link.website {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+        }
+
+        .sidebar-link.website:hover {
+            background: rgba(16, 185, 129, 0.22);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(16, 185, 129, 0.15);
+        }
+
+        /* Theme Toggle with Icons */
+        .theme-icon {
+            font-size: 1.1rem;
+        }
+
+        .theme-icon.sun {
+            color: #f59e0b;
+        }
+
+        .theme-icon.moon {
+            color: #818cf8;
+        }
+
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #cbd5e1;
+            transition: .3s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        [data-theme="dark"] .slider {
+            background-color: #334155;
+        }
+
+        input:checked+.slider {
+            background-color: var(--accent-color);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(20px);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-color) transparent;
+        }
+
+        /* Inner content wrapper */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 48px;
+        }
+
+        /* Scrollbar Styling */
+        .main-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .main-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .main-content::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 8px;
+        }
+
+        .main-content::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-color);
+        }
+
+        .markdown-body {
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .markdown-body h1,
+        .markdown-body h2,
+        .markdown-body h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin-top: 1.8em;
+            margin-bottom: 0.8em;
+            color: var(--text-color);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .markdown-body h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.4em;
+            letter-spacing: -0.02em;
+        }
+
+        .markdown-body h2 {
+            font-size: 1.6rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+            padding-bottom: 0.2em;
+        }
+
+        [data-theme="dark"] .markdown-body h2 {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .markdown-body p {
+            margin-bottom: 1.3em;
+            opacity: 0.9;
+        }
+
+        .markdown-body ul, 
+        .markdown-body ol {
+            margin-bottom: 1.3em;
+            padding-left: 20px;
+        }
+
+        .markdown-body li {
+            margin-bottom: 0.4em;
+        }
+
+        .markdown-body code {
+            background-color: var(--code-bg);
+            padding: 0.2em 0.4em;
+            border-radius: 6px;
+            font-family: 'Fira Code', 'Courier New', Courier, monospace;
+            font-size: 0.85em;
+            font-weight: 500;
+            color: var(--accent-color);
+        }
+
+        .markdown-body pre {
+            background-color: var(--code-bg);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin-bottom: 1.6em;
+            border: 1px solid var(--border-color);
+        }
+
+        .markdown-body pre code {
+            background-color: transparent;
+            padding: 0;
+            color: var(--text-color);
+            font-size: 0.85em;
+        }
+
+        .markdown-body blockquote {
+            border-left: 4px solid var(--accent-color);
+            padding: 14px 20px;
+            margin: 1.6em 0;
+            background-color: var(--hover-bg);
+            border-radius: 0 10px 10px 0;
+            color: var(--text-color);
+            opacity: 0.95;
+        }
+
+        .markdown-body blockquote p {
+            margin-bottom: 0;
+        }
+
+        .markdown-body table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-bottom: 1.8em;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .markdown-body th,
+        .markdown-body td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .markdown-body th {
+            background-color: var(--table-header-bg);
+            font-weight: 600;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .markdown-body tr:last-child td {
+            border-bottom: none;
+        }
+
+        .markdown-body img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin: 1.5em 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .mermaid {
+            background-color: var(--code-bg);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin: 1.8em 0;
+            overflow-x: auto;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+            cursor: zoom-in;
+            position: relative;
+        }
+
+        .mermaid svg {
+            max-width: 100%;
+            height: auto !important;
+        }
+
+        .mermaid::after {
+            content: '🔍 Click to Zoom';
+            position: absolute;
+            bottom: 8px;
+            right: 12px;
+            font-size: 0.65rem;
+            background: rgba(0, 0, 0, 0.04);
+            color: var(--text-color);
+            padding: 4px 8px;
+            border-radius: 6px;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+            pointer-events: none;
+            font-weight: 600;
+        }
+
+        [data-theme="dark"] .mermaid::after {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .mermaid:hover::after {
+            opacity: 0.9;
+        }
+
+        /* Mermaid Zoom Modal */
+        .mermaid-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .mermaid-modal-backdrop {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(9, 13, 22, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .mermaid-modal-content {
+            position: relative;
+            width: 85vw;
+            height: 80vh;
+            background: var(--sidebar-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1001;
+        }
+
+        .mermaid-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--text-color);
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+            z-index: 1003;
+        }
+
+        .mermaid-modal-close:hover {
+            opacity: 1;
+        }
+
+        .mermaid-modal-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 8px 16px;
+            border-radius: 30px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 1003;
+        }
+
+        .mermaid-modal-controls button {
+            background: transparent;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 4px;
+            transition: transform 0.2s;
+        }
+
+        .mermaid-modal-controls button:hover {
+            transform: scale(1.25);
+        }
+
+        .mermaid-modal-svg-container {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 40px;
+            cursor: grab;
+        }
+
+        .mermaid-modal-svg-container svg {
+            width: 100%;
+            height: 100%;
+            max-width: 95%;
+            max-height: 95%;
+            transition: transform 0.05s ease-out;
+        }
+
+        .markdown-body hr {
+            margin-top: 2.5em;
+            margin-bottom: 2em;
+            border: none;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-list {
+                display: flex;
+                overflow-x: auto;
+                padding: 10px;
+                gap: 8px;
+            }
+
+            .nav-item {
+                white-space: nowrap;
+                margin-bottom: 0;
+            }
+
+            .theme-toggle {
+                display: none;
+            }
+
+            .content-wrapper {
+                padding: 24px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-header">
+            Survival Multiplayer Pro
+        </div>
+        <ul class="nav-list" id="navList">
+            <!-- Generated by JS -->
+        </ul>
+        <div class="sidebar-links">
+            <a href="https://discord.gg/59cFVYavpd" target="_blank" class="sidebar-link discord">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+                </svg>
+                <div class="link-text">
+                    <span class="link-title">Join Discord</span>
+                    <span class="link-subtitle">Ignitive Labs Community</span>
+                </div>
+            </a>
+            <a href="https://assetstore.unity.com/packages/templates/packs/survival-multiplayer-pro-341820"
+                target="_blank" class="sidebar-link asset-store">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M10.4 17.8l-6.2-6.2 1.8-1.8 4.4 4.4 8.4-8.4 1.8 1.8-10.2 10.2zm1.6-17.8c-6.6 0-12 5.4-12 12s5.4 12 12 12 12-5.4 12-12-5.4-12-12-12zm0 22c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10z" />
+                </svg>
+                <div class="link-text">
+                    <span class="link-title">Asset Store</span>
+                    <span class="link-subtitle">Survival Multiplayer Pro</span>
+                </div>
+            </a>
+            <a href="https://Ignitivelabs.net" target="_blank" class="sidebar-link website">
+                <span class="link-icon">🔥</span>
+                <div class="link-text">
+                    <span class="link-title">Website</span>
+                    <span class="link-subtitle">Ignitive Labs</span>
+                </div>
+            </a>
+        </div>
+        <div class="theme-toggle">
+            <span class="theme-icon sun">☀️</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="themeSwitch">
+                <span class="slider"></span>
+            </label>
+            <span class="theme-icon moon">🌙</span>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div id="content" class="markdown-body">
+                <!-- Content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+    =====================================================
+    DOCS CONTENT - PASTE YOUR MARKDOWN BELOW
+    PASTE INSIDE THE <script> TAGS
+    NO NEED TO ESCAPE BACKTICKS OR QUOTES!
+    =====================================================
+    -->
+
+    <script type="text/markdown" data-category="Multiplayer Engine" id="doc-intro" data-title="Introduction">
+# 🎮 Survival Multiplayer Pro
+
+**The Ultimate Foundation for Co-op Survival Games**
+
+**Survival Multiplayer Pro** is a robust, production-ready multiplayer template built exclusively for Unity. Driven by a deep, modular architecture, it provides all the complex systems needed to build a fully-featured survival game—from structural building integrity and IK-driven combat to seamless Steam and Unity Services integration.
+
+Built from the ground up on **Unity Netcode for GameObjects (NGO)**, every script and system has been designed with multiplayer synchronization and cooperative gameplay in mind.
+
+---
+
+## ⚡ Multiplayer Engine & Lobby System
+Located in `Assets/MultiplayerEngine/Lobby/Runtime`, our core networking stack handles the heavy lifting of multiplayer connectivity. Switch between backends with zero code changes.
+
+- **Steam Integration:** Full support for Steam Lobbies, Steamworks authentication, and Steam Relay (SteamNetworkingSockets).
+- **Unity Services:** Fully integrated with Unity Authentication, Unity Relay, and Unity Lobbies.
+- **Lobby & Matchmaking:** Create, join, and browse lobbies seamlessly.
+- **Voice Chat:** Built-in Vivox voice integration for proximity and team communication.
+
+---
+
+## 🌲 Core Survival Systems
+Found under `Assets/MultiplayerEngine/Survival/Scripts`, the survival mechanics are split into isolated, event-driven modules that can be easily customized or expanded:
+
+- **Advanced Build System:** Includes a fully networked `BuildManager` with structural integrity calculations (`BuildSupportGraph`). Features precise piece snapping (`SnapPointRegistry`) and a dedicated `BuildHammer` tool for intuitive base construction.
+- **Inventory & Equipment:** A robust `InventoryManager` handles items, while the `Equipment` system manages what the player holds. Features dynamic **Inverse Kinematics (IK)** for accurate hand placement and a deep `Combat` module for weapons.
+- **Player Stats & Vitals:** The `PlayerStats` module fully replicates complex player vitals including health, stamina, hunger, and thirst.
+- **Resource & Crafting Systems:** Networked `ResourceSystem` for chopping trees and mining rocks, fully synced across all clients. The `CraftingSystem` utilizes ScriptableObjects for data-driven, easily modifiable crafting recipes.
+- **Character Controller:** A responsive, network-synced Third-Person Controller with smooth movement, jumping, and camera handling.
+- **Interaction System:** A modular interaction system allowing players to seamlessly interact with dropped items, chests, doors, and crafting stations.
+
+---
+
+## 🛠️ Developer-Centric Architecture
+- **Clean Separation:** Lobby, Core, and Survival mechanics are cleanly decoupled.
+- **Event-Driven:** Subscribe to system events rather than tightly coupling code.
+- **ScriptableObject Data:** Items, weapons, build pieces, and recipes are entirely data-driven, making it easy for game designers to iterate without touching code.
+- **Highly Documented:** Built to be understood, extended, and modified to fit your specific vision.
+
+    </script>
+
+    <script type="text/markdown" data-category="Multiplayer Engine" id="doc-getting-started"
+        data-title="Getting Started">
+# 🚀 Getting Started Guide
+
+> **💡 Overview:** This guide walks you through setting up Multiplayer Engine Lite from scratch — backend selection, cloud configuration, lobby setup, network managers, and game scene character/weapon setup.
+
+---
+
+## 1. 🔧 Backend Selection
+
+The asset supports two backend services. **Only one can be active at a time.**
+
+### How to Switch Backend
+
+**Menu:** `Tools > Multiplayer Engine > Switch Backend`
+
+This opens the **Welcome Window** on the Backend Selection page.
+
+| Backend | When to Use |
+| :--- | :--- |
+| **Unity Services** | Cross-platform, Unity's cloud infrastructure (Relay, Lobby, Friends, Vivox, Cloud Save). |
+| **Steam** | PC-only via Steamworks.NET. Uses Steam's networking, friends, and voice. |
+
+### What Happens When You Click
+
+-   **Unity Services:** Installs `com.unity.services.multiplayer`, `com.unity.services.friends`, `com.unity.services.authentication`, `com.unity.services.cloudsave`, `com.unity.services.vivox`. Adds `UNITY_SERVICES` define.
+-   **Steam:** Installs `Steamworks.NET`. Adds `STEAM_SERVICES` define.
+
+---
+
+## 2. ☁️ Cloud Configuration
+
+### Unity Services Setup
+
+1.  Go to [Unity Dashboard](https://dashboard.unity3d.com/).
+2.  Create or select your project.
+3.  Enable these services:
+    -   **Authentication**
+    -   **Lobby**
+    -   **Relay**
+    -   **Cloud Save**
+    -   **Vivox** (for voice chat)
+    -   **Friends**
+4.  In Unity Editor: `Edit > Project Settings > Services` → Link your project.
+
+### Steam Setup
+
+1.  Go to [Steamworks Partner](https://partner.steamgames.com/).
+2.  Create your app and get your **App ID**.
+3.  Create a file named `steam_appid.txt` in your project's root folder (next to Assets).
+4.  Put ONLY your App ID number inside (e.g., `480` for testing).
+5.  Ensure Steam client is running when testing.
+
+---
+
+## 3. 🏛️ Main Menu Scene Setup
+
+### Required Manager Prefabs
+
+Drag these from `Prefabs/Managers/` into your scene:
+
+| Prefab | Script | Required |
+| :--- | :--- | :--- |
+| `AuthenticationManager.prefab` | `AuthenticationManager.cs` | ✅ Yes |
+| `LobbyManager.prefab` | `LobbyManager.cs` | ✅ Yes |
+| `ProfileManager.prefab` | `PlayerProfileManager.cs` | ✅ Yes |
+| `SessionManager.prefab` | `SessionManager.cs` | ✅ Yes |
+| `FriendsManager.prefab` | `FriendsManager.cs` | ⚪ Optional |
+| `VoiceManager.prefab` | `VoiceManager.cs` | ⚪ Optional |
+
+### Required UI Prefabs
+
+Drag these from `Prefabs/UI/` into a Canvas:
+
+| Prefab | Script | Required |
+| :--- | :--- | :--- |
+| `AuthenticationUI.prefab` | `AuthenticationUI.cs`, `SignInUI.cs`, `SignUpUI.cs`, `SetPlayerProfileUI.cs` | ✅ Yes |
+| `HomeScreenUI.prefab` | `MainMenuUI.cs`, `MultiplayerMenuUI.cs` | ✅ Yes |
+| `LobbyUI.prefab` | `LobbyUI.cs`, `LobbyCharacterSelection.cs` | ✅ Yes |
+| `PlayerProfileUI.prefab` | `PlayerProfileUI.cs`, `EditPlayerProfileUI.cs` | ⚪ Optional |
+| `FriendsPanel.prefab` | `FriendsUI.cs`, `AddFriends.cs` | ⚪ Optional |
+
+### Required Utility Scripts
+
+| Script | Purpose | Required |
+| :--- | :--- | :--- |
+| `LoadingScreen.cs` | Shows loading progress during transitions. | ✅ Yes |
+| `LoadingIcon.cs` | Animated loading spinner. | ⚪ Optional |
+
+---
+
+## 4. 🌐 Network Managers
+
+### For Unity Services
+
+| Component | Required |
+| :--- | :--- |
+| `NetworkManager` (Netcode for GameObjects) | ✅ Yes |
+| `UnityTransport` | ✅ Yes |
+
+### For Steam
+
+| Prefab/Component | Script | Required |
+| :--- | :--- | :--- |
+| `SteamManager.prefab` (from `Integrations/Steam/`) | `SteamManager.cs` | ✅ Yes |
+| `SteamNetworkingSocketsTransport.cs` | Attach to NetworkManager GameObject | ✅ Yes |
+
+### NetworkManager Setup
+
+1.  Create an empty GameObject named `NetworkManager`.
+2.  Add `NetworkManager` component.
+3.  Add transport:
+    -   Unity: Add `UnityTransport` component.
+    -   Steam: Add `SteamNetworkingSocketsTransport` component.
+4.  Register all networked prefabs in `NetworkManager > NetworkPrefabs`.
+
+---
+
+## 5. 🎮 Game Scene Setup
+
+### Required Scene Components
+
+| Script | Purpose | Required |
+| :--- | :--- | :--- |
+| `SpawnManager.cs` | Spawns player characters at spawn points. | ✅ Yes |
+
+**SpawnManager Setup:**
+1.  Create an empty GameObject.
+2.  Add `SpawnManager` component.
+3.  Create empty child GameObjects at spawn positions.
+4.  Assign them to `SpawnManager > Spawn Points` array.
+
+---
+
+## 6. 🧍 Character Prefab Setup
+
+### Required Components
+
+| Component/Script | Purpose | Required |
+| :--- | :--- | :--- |
+| `NetworkObject` | Netcode identity. | ✅ Yes |
+| `PlayerController.cs` | Handles interaction, object pickup, HUD initialization. | ✅ Yes |
+| `ThirdPersonController.cs` | Movement, jumping, camera control. | ✅ Yes |
+| `InputManager` (or PlayerInput) | Handles input. | ✅ Yes |
+| `ClientNetworkTransform.cs` | Syncs position/rotation (client authority). | ✅ Yes |
+| `ClientNetworkAnimator.cs` | Syncs animations (client authority). | ✅ Yes |
+| `Animator` | Humanoid animator controller. | ✅ Yes |
+| `CharacterController` | Unity's built-in character movement. | ✅ Yes |
+| `Cinemachine` (Virtual Camera) | Third-person camera follow. | ✅ Yes |
+
+### Optional Components
+
+| Component/Script | Purpose | Required |
+| :--- | :--- | :--- |
+| `HealthManager.cs` | Health system, damage, death. | ⚪ Optional |
+| `WeaponManager.cs` | Weapon handling, aiming, IK. | ⚪ Optional |
+| `PlayerStatsUI.cs` | Floating name/health above player. | ⚪ Optional |
+
+### Character Prefab Hierarchy Example
+```
+PlayerCharacter (NetworkObject, PlayerController, ThirdPersonController, InputManager, CharacterController, ClientNetworkTransform)
+├── Model (Animator, ClientNetworkAnimator)
+│   ├── Armature
+│   │   ├── Hips
+│   │   └── ... (bones)
+│   └── Mesh
+├── CameraRoot (empty transform for camera follow)
+├── GroundCheck (empty transform at feet)
+└── PlayerStatsUI (Canvas with name/health display)
+```
+
+---
+
+## 7. 🔫 Weapon System Setup
+
+### Weapon Manager
+
+| Script | Purpose | Required |
+| :--- | :--- | :--- |
+| `WeaponManager.cs` | Main weapon controller on character. | ✅ Yes (if using weapons) |
+| `WeaponIk` (ScriptableObject) | Stores IK data for each weapon. | ✅ Yes (if using weapons) |
+
+### Shooter Weapon (Gun)
+
+| Script | Purpose | Required |
+| :--- | :--- | :--- |
+| `ShooterWeapon.cs` | Gun logic (shooting, ammo, raycast). | ✅ Yes |
+| `Pickable.cs` | Makes weapon pickable from ground. | ✅ Yes |
+
+**ShooterWeapon Setup:**
+1.  Create weapon prefab with `NetworkObject`.
+2.  Add `ShooterWeapon` component.
+3.  Add `Pickable` component.
+4.  Assign:
+    -   `GunModel` (the visual mesh/transform)
+    -   `RightHand`, `LeftHand` (IK targets)
+    -   `RightHandHint`, `LeftHandHint` (elbow hints)
+    -   `Muzzle` (spawn point for bullets/VFX)
+
+### Melee Weapon
+
+| Script | Purpose | Required |
+| :--- | :--- | :--- |
+| `MeleeWeapon.cs` | Melee attack logic. | ✅ Yes |
+| `Pickable.cs` | Makes weapon pickable. | ✅ Yes |
+
+### WeaponIk ScriptableObject
+
+**Location:** `ScriptableObjects/Weapons/CharacterWeaponIK.asset`
+
+This stores IK positions for each weapon. Each entry has:
+-   `WeaponId` — matches `ShooterWeapon.WeaponId`
+-   `holdTransform` — weapon position when not aiming
+-   `aimTransform` — weapon position when aiming
+-   `rightHandIK`, `leftHandIK` — hand positions when holding
+-   `rightHandAimIK`, `leftHandAimIK` — hand positions when aiming
+
+---
+
+## 8. 🎯 Interaction System
+
+### Interactable Objects
+
+| Script | Purpose | Required |
+| :--- | :--- | :--- |
+| `Interactable.cs` | Base class for any interactable object. | ✅ Yes |
+| `Pickable.cs` | Objects that can be picked up. | ⚪ Optional |
+| `Door.cs` | Networked door that opens/closes. | ⚪ Optional |
+| `DoorSwitch.cs` | Switch that triggers a door. | ⚪ Optional |
+
+**Interactable Setup:**
+1.  Add a Collider (trigger or non-trigger).
+2.  Add `Interactable` (or derived script like `Pickable`, `Door`).
+3.  Assign UI tooltip prefab if desired.
+
+---
+
+## 9. 📺 Gameplay UI
+
+### GameplayUIManager
+
+| Script | Purpose | Required |
+| :--- | :--- | :--- |
+| `GameplayUIManager.cs` | Manages in-game HUD (health bar, weapon display). | ⚪ Optional |
+
+**Located in:** `Runtime/Gameplay/UI/`
+
+---
+
+## 10. 📦 CharacterData ScriptableObject
+
+**Location:** `ScriptableObjects/Characters/`
+
+| Field | Purpose |
+| :--- | :--- |
+| `CharacterId` | Unique ID for this character. |
+| `CharacterName` | Display name. |
+| `CharacterIcon` | Sprite for UI/lobby. |
+| `CharacterPrefab` | Networked prefab to spawn in-game. |
+| `CharacterLobbyPrefab` | Preview prefab for lobby selection. |
+| `Stealth`, `Mobility` | Stats for character selection UI. |
+
+### Adding a New Character
+1.  Create a new `CharacterData` asset (`Create > Multiplayer Engine > Character Data`).
+2.  Fill in all fields.
+3.  Add the networked prefab to `NetworkManager > NetworkPrefabs`.
+4.  Add the `CharacterData` to `PlayerProfileManager > Character Data` list.
+
+---
+
+## 11. 📐 Setup Checklist
+
+### Main Menu Scene
+- [ ] All Manager prefabs in scene
+- [ ] All UI prefabs in Canvas
+- [ ] `LoadingScreen` in scene
+- [ ] NetworkManager with correct transport
+- [ ] (Steam only) `SteamManager` prefab in scene
+
+### Game Scene
+- [ ] `SpawnManager` with spawn points assigned
+- [ ] NetworkManager (will persist from menu via DontDestroyOnLoad)
+
+### Character Prefab
+- [ ] `NetworkObject` attached
+- [ ] `PlayerController`, `ThirdPersonController` attached
+- [ ] `ClientNetworkTransform`, `ClientNetworkAnimator` attached
+- [ ] Registered in `NetworkManager > NetworkPrefabs`
+- [ ] Added to `CharacterData` and `PlayerProfileManager`
+
+### Weapon Prefab
+- [ ] `NetworkObject` attached
+- [ ] `ShooterWeapon` or `MeleeWeapon` attached
+- [ ] `Pickable` attached
+- [ ] Entry in `WeaponIk` ScriptableObject
+- [ ] Registered in `NetworkManager > NetworkPrefabs`
+
+---
+
+## 12. 📐 Visual Flow
+
+```mermaid
+graph TD
+    Start[Open Unity Project] --> Backend[Switch Backend Tool]
+    
+    Backend --> UnityCloud[Unity: Enable Services in Dashboard]
+    Backend --> SteamID[Steam: Add steam_appid.txt]
+    
+    UnityCloud --> MainMenu[Setup Main Menu Scene]
+    SteamID --> MainMenu
+    
+    MainMenu --> Managers[Add Manager Prefabs]
+    MainMenu --> UI[Add UI Prefabs]
+    MainMenu --> Network[Setup NetworkManager + Transport]
+    
+    Network --> GameScene[Setup Game Scene]
+    GameScene --> Spawner[Add SpawnManager + Spawn Points]
+    
+    Spawner --> Character[Create Character Prefab]
+    Character --> CharScripts[Add PlayerController, ThirdPersonController, etc.]
+    Character --> NetComps[Add NetworkObject, ClientNetworkTransform]
+    Character --> Register[Register in NetworkManager]
+    
+    Register --> Weapon[Create Weapon Prefabs]
+    Weapon --> WeaponIK[Setup WeaponIK ScriptableObject]
+    
+    WeaponIK --> Test[Test in Editor]
+    Test --> Build[Build and Deploy!]
+```
+
+    </script>
+
+    <script type="text/markdown" data-category="Multiplayer Engine" id="doc-auth" data-title="Authentication">
+# 🔐 Authentication System
+
+> **💡 Overview:** The **Authentication System** handles user sign-in, sign-up, and profile setup. It supports both **Unity Services** (email/password) and **Steam** (automatic) authentication flows.
+
+---
+
+## 1. 🏗️ Overview
+
+The system relies on a few key components to manage user authentication:
+
+-   **AuthenticationUI:** The visual interface for auth screens.
+-   **AuthenticationManager:** The logic handling auth flow and service calls.
+-   **SignInUI:** Handles the sign-in form (Unity only).
+-   **SignUpUI:** Handles the sign-up form (Unity only).
+-   **SetPlayerProfileUI:** Profile setup after first login (Unity only).
+
+---
+
+## 2. 🖥️ Authentication UI (`AuthenticationUI.cs`)
+
+**Script:** `AuthenticationUI.cs`
+
+This is the main auth container. It appears automatically on game start.
+
+### 🖱️ User Interactions
+
+| UI Element | Action | Platform |
+| :--- | :--- | :--- |
+| **Retry Button** | Retries authentication after an error. | All |
+| **Switch to Sign Up** | Navigates to the sign-up form. | **Unity Only** |
+| **Switch to Sign In** | Navigates to the sign-in form. | **Unity Only** |
+
+### 📱 Visual Elements
+
+-   **Loading Panel:** Spinner with "Signing in..." message.
+-   **Error Panel:** Displays auth errors with retry option.
+-   **Sign In Panel:** Email/password login form.
+-   **Sign Up Panel:** Account creation form.
+-   **Profile Setup Panel:** First-time profile configuration.
+
+---
+
+## 3. 👤 Sign In UI (`SignInUI.cs`)
+
+**Script:** `SignInUI.cs`
+
+Handles the email/password sign-in flow. Only active in Unity Services builds.
+
+### 🖱️ Interactions
+
+| UI Element | Action | Validation |
+| :--- | :--- | :--- |
+| **Email Field** | Enter email address. | Required |
+| **Password Field** | Enter password. | Min 8 characters |
+| **Sign In Button** | Submits credentials. | Enabled when valid |
+| **Google Button** | Social sign-in (placeholder). | — |
+| **Apple Button** | Social sign-in (placeholder). | — |
+| **Steam Button** | Social sign-in (placeholder). | — |
+| **Switch to Sign Up** | Navigate to registration. | — |
+
+### 📱 Visual Elements
+-   **Error Text:** Shows validation or server errors.
+-   **Input Fields:** Email and password with validation.
+
+---
+
+## 4. 📝 Sign Up UI (`SignUpUI.cs`)
+
+**Script:** `SignUpUI.cs`
+
+Handles new account registration. Only active in Unity Services builds.
+
+### 🖱️ Interactions
+
+| UI Element | Action | Validation |
+| :--- | :--- | :--- |
+| **Email Field** | Enter email address. | Required |
+| **Password Field** | Create password. | Min 8 characters |
+| **Confirm Password** | Re-enter password. | Must match |
+| **Sign Up Button** | Creates the account. | Enabled when valid |
+| **Switch to Sign In** | Navigate to login. | — |
+
+### 📱 Visual Elements
+-   **Error Text:** Shows "Email already registered" or other errors.
+-   **Social Buttons:** Google, Apple, Steam (placeholders).
+
+---
+
+## 5. 🎭 Profile Setup UI (`SetPlayerProfileUI.cs`)
+
+**Script:** `SetPlayerProfileUI.cs`
+
+First-time profile configuration after sign-up. Only active in Unity Services builds.
+
+### 🖱️ Flow
+1.  **Select Avatar:** Click an icon in the grid.
+2.  **Enter Name:** Type a display name (3-20 characters).
+3.  **Save:** Submit to complete profile setup.
+
+### 📱 Visual Elements
+-   **Avatar Grid:** Clickable profile icons.
+-   **Preview Icon:** Shows selected avatar.
+-   **Name Input:** Display name field with validation.
+-   **Error Text:** Shows save errors.
+
+---
+
+## 6. 🧩 Authentication Manager (`AuthenticationManager.cs`)
+
+**Script:** `AuthenticationManager.cs`
+
+This is the non-visual brain. It coordinates the entire auth lifecycle.
+
+### Core Concepts
+-   **Singleton:** Access anywhere via `AuthenticationManager.Instance`.
+-   **Provider Pattern:** Uses `IAuthentication` interface for Unity/Steam.
+-   **Events:** Fires events that UI subscribes to.
+
+### Authentication Flow
+1.  **Initialize:** Set up the auth provider.
+2.  **Auto Sign-In:** Attempt cached session login.
+3.  **Manual Sign-In:** (Unity only) Show login UI if needed.
+4.  **Profile Check:** Verify player profile exists.
+5.  **Complete:** Fire `OnAuthCompleted` event.
+
+### Events API
+| Event | Description |
+| :--- | :--- |
+| `OnAuthStarted` | Auth flow has begun. |
+| `OnAuthCompleted` | Auth succeeded, player is ready. |
+| `OnAuthError` | Auth failed with an error message. |
+| `OnShowSignInUI` | (Unity) Show the sign-in form. |
+| `OnShowProfileSetupUI` | (Unity) Show profile setup. |
+| `OnSignInCompleted` | Sign-in attempt finished (bool success). |
+| `OnSignUpCompleted` | Sign-up attempt finished (bool success). |
+| `OnSignOutCompleted` | Sign-out finished (bool success). |
+| `OnProfileSetupCompleted` | Profile check finished (bool exists). |
+
+### Public Methods
+| Method | Description |
+| :--- | :--- |
+| `SignInAsync(email, password, rememberMe)` | Sign in with credentials. |
+| `SignUpAsync(email, password, rememberMe)` | Create new account. |
+| `SignOutAsync()` | Log out current user. |
+| `RetryAuthAsync()` | Retry the full auth flow. |
+| `CheckForPlayerProfile()` | Verify profile exists. |
+
+---
+
+## 7. 🔌 Interface (`IAuthentication.cs`)
+
+**Script:** `IAuthentication.cs`
+
+Defines the contract that all auth providers must implement.
+
+### Required Methods
+| Method | Description |
+| :--- | :--- |
+| `InitializeAsync()` | Initialize the auth service. |
+| `AutoSignInAsync()` | Attempt cached session login. |
+| `SignInAsync(email, password, rememberMe)` | Manual sign-in. |
+| `SignUpAsync(email, password, rememberMe)` | Create account. |
+| `SignInWithCodeAsync(authCode)` | Sign in with auth code. |
+| `SignOutAsync()` | Log out user. |
+
+---
+
+## 8. 🛠️ How to Extend
+
+### Add "Remember Me" Toggle
+1.  **UI:** Add a Toggle to `SignInUI` canvas.
+2.  **Logic:** In `OnSignInClicked()`, pass toggle value to `SignInAsync()`.
+3.  **Data:** The `rememberMe` parameter is already supported.
+
+### Add Password Reset
+1.  **UI:** Add "Forgot Password" button to `SignInUI`.
+2.  **Logic:** Create new method in `IAuthentication` interface.
+3.  **Provider:** Implement in `UnityAuthentication.cs`.
+
+### Add Social Login (Google/Apple)
+1.  **Provider:** Implement the placeholder methods in `SignInUI.cs`.
+2.  **Service:** Configure OAuth in Unity Dashboard.
+3.  **Logic:** Call the appropriate Unity Authentication SDK methods.
+
+---
+
+## 9. 📐 Visual Flow
+
+```mermaid
+graph TD
+    Start[Game Start] --> Init[Initialize Provider]
+    
+    Init --> Auto[Auto Sign-In]
+    
+    Auto -->|Success| Profile{Has Profile?}
+    Auto -->|Fail - Steam| Error[Show Error]
+    Auto -->|Fail - Unity| SignIn[Show Sign In UI]
+    
+    SignIn --> Manual[Manual Sign-In/Up]
+    Manual -->|Success| Profile
+    Manual -->|Fail| SignIn
+    
+    Profile -->|Yes| Complete[Auth Complete]
+    Profile -->|No - Unity| Setup[Profile Setup UI]
+    Profile -->|No - Steam| Complete
+    
+    Setup --> Complete
+    
+    Error -->|Retry| Init
+    
+    Complete --> Menu[Main Menu]
+```
+
+---
+
+## 10. 🎮 Platform Differences
+
+| Feature | Unity Services | Steam |
+| :--- | :--- | :--- |
+| **Auto Sign-In** | ✅ Cached session | ✅ Steam client |
+| **Manual Sign-In** | ✅ Email/password | ❌ Not supported |
+| **Sign Up** | ✅ Full flow | ❌ Steam handles |
+| **Profile Setup** | ✅ Manual | ✅ Auto from Steam |
+| **Social Login** | 🔜 Planned | ❌ N/A |
+
+    </script>
+
+    <script type="text/markdown" data-category="Multiplayer Engine" id="doc-main-menu"
+        data-title="Main Menu & Multiplayer">
+# 🎮 Main Menu & Multiplayer System
+
+> **💡 Overview:** This document covers the Main Menu and Multiplayer Menu UI, including creating and joining lobbies.
+
+---
+
+## 1. 🏗️ User Flow Overview
+
+1.  **Start:** The game launches and authenticates the user.
+2.  **Main Menu:** The user arrives at the Main Menu.
+3.  **Multiplayer:** Clicking "Multiplayer" opens the Multiplayer Menu.
+4.  **Selection:** The user chooses to **Create a Lobby** or **Join a Lobby**.
+5.  **Game:** Upon success, the user is transferred to the Game Lobby screen.
+
+---
+
+## 2. 🏠 Main Menu UI (`MainMenuUI.cs`)
+
+**Script:** `MainMenuUI.cs`
+
+This is the first screen the user sees after logging in. It serves as the central hub for navigation.
+
+### 🖱️ Interactions
+-   **Multiplayer Button:** Hides the main menu buttons and reveals the **Multiplayer Menu**.
+-   **Settings Button:** *(Placeholder)* Intended to open the Options menu.
+-   **Exit Button:** Quits the application.
+
+### 📱 Visual Elements
+-   **Profile Card:** Displays the local player's Name and Avatar (top/corner).
+-   **Main Group:** A container holding the primary navigation buttons.
+
+---
+
+## 3. 🌐 Multiplayer Menu UI (`MultiplayerMenuUI.cs`)
+
+**Script:** `MultiplayerMenuUI.cs`
+
+This menu handles the setup before entering a match. It is divided into two distinct workflows.
+
+### 🅰️ Create Lobby Interaction
+1.  **Click "Create Lobby":** Switches the view to the Creation Panel.
+2.  **Configure Settings:**
+    -   **Lobby Name:** Type a custom name for the room.
+    -   **Max Players:** Click to cycle through player limits (e.g., 2, 4, 8).
+    -   **Game Mode:** Click to cycle modes (FreeForAll, TDM, CTF).
+    -   **Visibility:**
+        -   *Public:* Anyone can find it.
+        -   *Private:* Invite only.
+        -   *Locked:* Public but requires a password.
+3.  **Confirm:** Click **"Create"** to start the session.
+
+### 🅱️ Join Lobby Interaction
+1.  **Click "Find Lobby":** Switches the view to the Browser Panel.
+2.  **Browse List:** A list of available public lobbies appears.
+    -   **Refresh:** Click to reload the list.
+    -   **Join:** Click a lobby item to enter.
+3.  **Join by Code:** Enter a unique code in the input field and click "Join" (useful for Private lobbies).
+4.  **Password Prompt:** If joining a *Locked* lobby, a popup appears asking for the password.
+
+---
+
+## 4. 📐 Visual Interaction Diagram
+
+```mermaid
+graph TD
+    Start[Start Game] --> Main[Main Menu]
+    Main -->|Click Multiplayer| Split{Multiplayer Menu}
+    
+    Split -->|Option A| Create[Create Panel]
+    Split -->|Option B| Join[Join Panel]
+    
+    Create -- Set Name, Mode, Privacy --> Submit[Click Create]
+    
+    Join -- Browse List --> Select[Select Lobby]
+    Join -- Enter Code --> Direct[Join by Code]
+    
+    Submit --> Room[Enter Lobby Room]
+    Select --> Room
+    Direct --> Room
+```
+
+
+    </script>
+
+    <script type="text/markdown" data-category="Multiplayer Engine" id="doc-profiles" data-title="Player Profiles">
+# 👤 Player Profile System
+
+> **💡 Overview:** This document covers the **Player Profile System**, including managing player data (name, avatar, stats), viewing profiles, and editing profile information.
+
+---
+
+## 1. 🏗️ Overview
+
+The Player Profile System consists of:
+-   **PlayerProfileManager:** Backend logic for getting/setting profile data.
+-   **PlayerProfileUI:** Popup to view any player's profile.
+-   **EditPlayerProfileUI:** Sub-panel to edit your own profile.
+-   **PlayerProfileCard:** Small display card (e.g., in Main Menu header).
+-   **SetPlayerProfileUI:** Initial profile setup after first sign-up.
+
+---
+
+## 2. 🧩 Player Profile Manager (`PlayerProfileManager.cs`)
+
+**Script:** `PlayerProfileManager.cs`
+
+The backend singleton for all profile operations.
+
+### Core Concepts
+-   **Singleton:** Accessed via `PlayerProfileManager.Instance`.
+-   **Platform Agnostic:** Uses `IPlayerProfile` interface (`UnityPlayerProfile` or `SteamPlayerProfile`).
+-   **Character Data:** Stores the list of available characters for selection.
+-   **Profile Icons:** Stores the list of available avatar icons.
+
+### Properties
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| `LocalPlayerStats` | `PlayerStats` | The local player's cached profile data. |
+| `PlayerIcons` | `List<Sprite>` | Available avatar icons. |
+| `CharacterData` | `List<CharacterData>` | Available playable characters. |
+
+### Events API
+
+| Event | Parameter | Description |
+| :--- | :--- | :--- |
+| `OnLocalPlayerUpdated` | `void` | Fired when the local player's profile is refreshed. |
+
+### Key Methods
+
+| Method | Returns | Description |
+| :--- | :--- | :--- |
+| `GetPlayerStatsAsync(playerId)` | `Task<PlayerStats>` | Gets stats for any player. If null, returns local. |
+| `GetLocalPlayerStatsAsync(customStats)` | `Task<PlayerStats>` | Gets local player stats with custom keys. |
+| `GetRemotePlayerStatsAsync(playerId, customStats)` | `Task<PlayerStats>` | Gets another player's stats. |
+| `UpdatePlayerDataAsync(displayName, avatarId)` | `Task<(bool, bool)>` | Updates name and/or avatar. Returns success for each. |
+| `SetCustomStatAsync(key, value)` | `Task<bool>` | Sets a custom statistic (e.g., "gamesPlayed"). |
+| `GetIconById(iconId)` | `Sprite` | Gets a specific avatar icon by its ID. |
+
+---
+
+## 3. 🖥️ Player Profile UI (`PlayerProfileUI.cs`)
+
+**Script:** `PlayerProfileUI.cs`
+
+A popup panel that displays detailed profile information.
+
+### 🖱️ User Interactions
+
+| UI Element | Action | Visibility |
+| :--- | :--- | :--- |
+| **Edit Profile Button** | Opens the edit panel. | Local player only |
+| **Close Button** | Closes the profile popup. | Always |
+
+### 📱 Visual Elements
+
+-   **Player Icon:** Large avatar display.
+-   **Display Name:** The player's name.
+-   **Description:** Bio/about text (custom stat).
+-   **Games Played:** Count of games (custom stat).
+
+### Key Methods
+
+| Method | Description |
+| :--- | :--- |
+| `ShowPlayerProfileUI()` | Opens popup showing the local player's profile. |
+| `ShowFriendProfileUI(friendId)` | Opens popup showing a friend's profile. |
+| `HideProfilePanel()` | Closes the popup. |
+| `RefreshLocalProfile()` | Reloads the local player's data. |
+
+---
+
+## 4. ✏️ Edit Player Profile UI (`EditPlayerProfileUI.cs`)
+
+**Script:** `EditPlayerProfileUI.cs`
+
+A sub-panel for editing your own profile.
+
+### 🖱️ User Interactions
+
+| UI Element | Action |
+| :--- | :--- |
+| **Display Name Input** | Type a new name. |
+| **Avatar Selection** | Click one of the available icons. |
+| **Save Button** | Saves changes to the server. |
+| **Close Button** | Closes without saving. |
+
+### Behavior
+-   On open, fields are populated with current values.
+-   On save, `PlayerProfileManager.UpdatePlayerDataAsync()` is called.
+-   If successful, the profile UI refreshes to show updated data.
+
+---
+
+## 5. 🏷️ Player Profile Card (`PlayerProfileCard.cs`)
+
+**Script:** `PlayerProfileCard.cs`
+
+A small, always-visible card (e.g., in the Main Menu header).
+
+### 📱 Visual Elements
+
+-   **Small Avatar:** Thumbnail of your profile icon.
+-   **Player Name:** Your display name.
+
+### Behavior
+-   Subscribes to `PlayerProfileManager.OnLocalPlayerUpdated`.
+-   Auto-updates when profile changes.
+-   Clicking it may open the full `PlayerProfileUI`.
+
+---
+
+## 6. 📝 Initial Profile Setup (`SetPlayerProfileUI.cs`)
+
+**Script:** `SetPlayerProfileUI.cs`
+
+Shown **once** after a new user signs up (Unity Services).
+
+### 🖱️ User Interactions
+
+1.  **Enter Display Name:** Must meet minimum length.
+2.  **Select Avatar:** Choose from available icons.
+3.  **Confirm:** Saves the profile and proceeds to Main Menu.
+
+### Behavior
+-   Triggered by `AuthenticationManager.OnShowProfileSetup` event.
+-   After confirmation, fires `AuthenticationManager.OnProfileSetupCompleted`.
+
+---
+
+## 7. 📦 Data Structures
+
+### `PlayerStats`
+```csharp
+public class PlayerStats
+{
+    public string PlayerId;
+    public string DisplayName;
+    public Sprite PlayerAvatar;
+    public Dictionary<string, string> CustomStats; // e.g., "gamesPlayed", "description"
+}
+```
+
+### `CharacterData` (ScriptableObject)
+```csharp
+public class CharacterData : ScriptableObject
+{
+    public string CharacterId;
+    public string CharacterName;
+    public Sprite CharacterIcon;
+    public GameObject CharacterPrefab;
+    public GameObject CharacterLobbyPrefab;
+    public float Stealth;
+    public float Mobility;
+}
+```
+
+---
+
+## 8. 🛠️ How to Extend
+
+### Adding a New Custom Stat (e.g., "Wins")
+1.  **Set the stat** when a game ends:
+    ```csharp
+    await PlayerProfileManager.Instance.SetCustomStatAsync("wins", "10");
+    ```
+2.  **Retrieve it** when loading profiles by adding "wins" to the `customStatRequest` list:
+    ```csharp
+    var stats = await PlayerProfileManager.Instance.GetPlayerStatsAsync(playerId, new List<string> { "wins" });
+    int wins = int.Parse(stats.CustomStats["wins"]);
+    ```
+3.  **Display it** in `PlayerProfileUI` by adding a new `TMP_Text` field.
+
+### Adding a "Bio" Field to Edit Profile
+1.  **UI:** Add a `TMP_InputField` for the bio.
+2.  **Logic:** On save, call:
+    ```csharp
+    await PlayerProfileManager.Instance.SetCustomStatAsync("description", bioInput.text);
+    ```
+
+### Adding New Avatar Icons
+1.  **Inspector:** In `PlayerProfileManager` prefab, add sprites to the `profileIcons` list.
+2.  The icons will automatically appear in `EditPlayerProfileUI` and `SetPlayerProfileUI`.
+
+---
+
+## 9. 📐 Visual Flow
+
+```mermaid
+graph TD
+    Auth[Authentication Complete] --> Check{Has Profile?}
+    
+    Check -- No --> Setup[SetPlayerProfileUI]
+    Setup --> SetName[Enter Name + Select Avatar]
+    SetName --> Confirm[Confirm]
+    Confirm --> Main[Main Menu]
+    
+    Check -- Yes --> Main
+    
+    Main --> Card[ProfileCard Shows]
+    Card -->|Click| Profile[PlayerProfileUI Opens]
+    
+    Profile --> Edit[Edit Profile Button]
+    Edit --> EditPanel[EditPlayerProfileUI]
+    EditPanel --> Save[Save Changes]
+    Save --> Refresh[Profile Refreshes]
+    
+    Profile --> ViewFriend[Show Friend Profile]
+    ViewFriend --> RemoteData[Load Remote Stats]
+```
+
+    </script>
+
+    <script type="text/markdown" data-category="Multiplayer Engine" id="doc-lobby" data-title="Lobby System">
+# 🏛️ Lobby System
+
+> **💡 Overview:** The **Lobby System** is where players gather before a match starts. It handles player listing, game settings configuration (Host only), character selection, and game initiation.
+
+---
+
+## 1. 🏗️ Overview
+
+The system relies on a few key components to manage the pre-game state:
+
+-   **LobbyUI:** The visual interface you see.
+-   **LobbyManager:** The logic handling network/service calls.
+-   **LobbyPlayerItem:** Represents a single player in the list.
+-   **CharacterSelection:** Handles the visual character picking.
+
+---
+
+## 2. 🖥️ Lobby UI (`LobbyUI.cs`)
+
+**Script:** `LobbyUI.cs`
+
+This is the main screen. It appears automatically when you create or join a room.
+
+### 🖱️ User Interactions
+
+| UI Element | Action | Who Can Use |
+| :--- | :--- | :--- |
+| **Leave Button** | Exits the lobby and returns to Main Menu. | Everyone |
+| **Start Game Button** | Begins the match (loads game scene). | **Host Only** |
+| **Ready Button** | Marks the player as "Ready". | **Non-Hosts** |
+| **Privacy Button** | Toggles between Public/Private. | **Host Only** |
+| **Game Mode Button** | Cycles through game modes. | **Host Only** |
+| **Copy Code Button** | Copies the Join Code to clipboard. | Everyone |
+
+### 📱 Visual Elements
+
+-   **Lobby Name:** Displays the room name.
+-   **Join Code:** Share this code join Private lobbies.
+-   **Player Count:** Shows current vs max players (e.g., 2/8).
+-   **Player List:** Scrollable list of connected users.
+
+---
+
+## 3. 👤 Player Item (`LobbyPlayerItem.cs`)
+
+**Script:** `LobbyPlayerItem.cs`
+
+Each entry in the player list is one of these.
+
+### 🖱️ Interactions
+-   **Kick Button:** (Host Only) Removes a specific player from the lobby.
+
+### 📱 Visual Elements
+-   **Player Name:** Drawn from the user's profile.
+-   **Character Icon:** Shows which character they picked.
+-   **Ready Status:** Green = Ready, Yellow = Waiting.
+-   **Host Icon:** A crown appears next to the lobby owner.
+
+### 🎙️ Voice Controls (Remote Players Only)
+If voice chat is active, you see these controls for *other* players:
+-   **Volume Slider:** Adjust volume for this specific person.
+-   **Mute Button:** Silence this person locally.
+-   **Speaking Indicator:** Glows when they talk.
+
+---
+
+## 4. 🎭 Character Selection (`LobbyCharacterSelection.cs`)
+
+**Script:** `LobbyCharacterSelection.cs`
+
+### 🖱️ Flow
+1.  **Select:** Click a character button in the grid.
+2.  **Preview:** The 3D model appears in the preview spot.
+3.  **Sync:** Note that your selection updates for everyone else in the lobby too.
+
+### 📱 Visuals
+-   **Stats:** Sliders update to show Stealth/Mobility for the selected hero.
+-   **Name:** Updates to the character's name.
+
+---
+
+## 5. 🧩 Lobby Manager (`LobbyManager.cs`)
+
+**Script:** `LobbyManager.cs`
+
+This is the non-visual brain. It coordinates everything with Unity Services or Steam.
+
+### Core Concepts
+-   **Singleton:** You can access it anywhere via `LobbyManager.Instance`.
+-   **Events:** It fires specific events that the UI listens to.
+
+### Events API
+| Event | Description |
+| :--- | :--- |
+| `OnLobbyCreated` | You created a room. |
+| `OnLobbyJoined` | You joined a room. |
+| `OnLobbyLeft` | You left/disconnected. |
+| `OnLobbyUpdated` | Room settings (Mode, Privacy) changed. |
+| `OnLobbyPlayerDataUpdated` | A player changed ready state or character. |
+| `OnGameStarted` | Host started the match. |
+
+### Data Structures
+-   **`LobbyData`**: Holds Room Name, Join Code, Host ID, Max Players, etc.
+-   **`PlayerData`**: Holds Name, Character ID, Ready State, IsHost.
+
+---
+
+## 6. 🛠️ How to Extend
+
+### Add a "Map Selection" Setting
+1.  **UI:** Add a button to `LobbyUI` canvas.
+2.  **Logic:** In `LobbyUI.cs`, add a listener to that button. Use `LobbyManager.Instance.UpdateLobbyData` to send the new Map ID.
+3.  **Data:** Update the `LobbyDataKeys` enum to include `MapId`.
+
+### Add "Player Level" Display
+1.  **UI:** Add a Text field to `LobbyPlayerItem` prefab.
+2.  **Logic:** In `LobbyPlayerItem.UpdatePlayer`, read the level from `playerData.Data`.
+3.  **Data:** Ensure `PlayerProfileManager` sends the level during join.
+
+---
+
+## 7. 📐 Visual Flow
+
+```mermaid
+graph TD
+    Entry[Multiplayer Menu] -->|Success| Lobby[Lobby UI]
+    
+    subgraph Lobby Screen
+        List[Player List]
+        Char[Character Select]
+        Settings[Host Settings]
+    end
+    
+    Lobby --> List
+    Lobby --> Char
+    
+    Settings -->|Start Game| Game[Game Scene]
+    Settings -->|Update Mode| Net[Sync to Network]
+    
+    Char -->|Select| Net
+    
+    Lobby -->|Leave| Main[Return to Main Menu]
+```
+
+    </script>
+
+    <script type="text/markdown" data-category="Multiplayer Engine" id="doc-friends" data-title="Friends System">
+# 👥 Friend System
+
+> **💡 Overview:** The **Friend System** enables players to manage social relationships: adding friends, accepting/declining requests, viewing online statuses, and inviting friends to lobbies.
+
+---
+
+## 1. 🏗️ Overview
+
+The Friend System consists of:
+-   **FriendsManager:** Backend logic and service calls.
+-   **FriendsUI:** The main side-panel displaying the friends list.
+-   **FriendListItem:** A single friend entry in the list.
+-   **FriendContextMenu:** Right-click popup with actions (Invite, Join, Unfriend).
+-   **AddFriends:** Panel for sending/receiving friend requests.
+
+---
+
+## 2. 🖥️ Friends Panel (`FriendsUI.cs`)
+
+**Script:** `FriendsUI.cs`
+
+This is the main friends list panel. It appears as a slide-out UI element.
+
+### 🖱️ User Interactions
+
+| UI Element | Action |
+| :--- | :--- |
+| **Search Bar** | Filters friends list by name. |
+| **Clear Button** | Clears the search and shows all friends. |
+| **Add Friend Button** | Opens the "Add Friend" popup (Unity Services only). |
+
+### 📱 Visual Elements
+
+-   **Friends Count:** Shows total number of friends.
+-   **Invites Count:** Shows pending friend requests (incoming).
+-   **Friends List:** Scrollable list of `FriendListItem` entries.
+-   **Lobby Invites:** Section showing received lobby invites.
+
+---
+
+## 3. 👤 Friend List Item (`FriendListItem.cs`)
+
+**Script:** `FriendListItem.cs`
+
+Each friend in the list is represented by this UI element.
+
+### 🖱️ User Interactions
+
+| Action | Result |
+| :--- | :--- |
+| **Click Profile Image** | Opens the friend's profile popup. |
+| **Click "More" Button** | Opens the Context Menu. |
+| **Right-Click Anywhere** | Opens the Context Menu. |
+
+### 📱 Visual Elements
+
+-   **Friend Name:** Display name.
+-   **Profile Image:** Avatar.
+-   **Presence Icon:** Color-coded status indicator.
+-   **Presence Text:** Shows `Online`, `Offline`, `InLobby`, `InGame`, or `Away`.
+
+### Presence Colors
+| Status | Color |
+| :--- | :--- |
+| Online | 🟢 Green |
+| Offline | ⚫ Grey |
+| Away | 🔴 Red |
+| InLobby | 🟣 Purple |
+| InGame | 🔵 Cyan |
+
+---
+
+## 4. 📋 Context Menu (`FriendContextMenu.cs`)
+
+**Script:** `FriendContextMenu.cs`
+
+A popup that appears when right-clicking a friend or clicking "More".
+
+### 🖱️ User Interactions
+
+| Button | Action | Condition |
+| :--- | :--- | :--- |
+| **Show Profile** | Opens friend's detailed profile popup. | Always available. |
+| **Invite to Game** | Sends a lobby invite to the friend. | Only if you are in a lobby AND friend is not Offline. |
+| **Ask to Join** | Sends a join request to the friend. | Only if friend is `InLobby`. |
+| **Remove Friend** | Unfriends the player. | Always available. |
+
+**Note:** The menu closes when clicking outside or pressing Escape.
+
+---
+
+## 5. ➕ Add Friends Panel (`AddFriends.cs`)
+
+**Script:** `AddFriends.cs`
+
+A popup for managing friend requests. Only available for **Unity Services** (Steam uses its own overlay).
+
+### 🖱️ User Interactions
+
+1.  **Send Request Tab:**
+    -   Type a player's name.
+    -   Click "Add Friend" to send a request.
+    -   View your outgoing requests below.
+2.  **Receive Request Tab:**
+    -   View incoming friend requests.
+    -   Each request has "Accept" and "Decline" buttons.
+
+### 📱 Visual Elements
+
+-   **Input Field:** Enter the player name to send a request.
+-   **Status Text:** Shows success/error messages.
+-   **Request List:** List of `FriendRequestItem` entries.
+
+---
+
+## 6. 🧩 Friends Manager (`FriendsManager.cs`)
+
+**Script:** `FriendsManager.cs`
+
+The backend singleton that handles all friend-related network calls.
+
+### Core Concepts
+-   **Singleton:** Accessed via `FriendsManager.Instance`.
+-   **Platform Agnostic:** Uses `IFriends` interface (`UnityFriends` or `SteamFriends`).
+-   **Events:** UI subscribes to events to update in real-time.
+
+### Events API
+
+| Event | Parameter | Description |
+| :--- | :--- | :--- |
+| `OnFriendsListUpdated` | `List<Friend>` | Full friends list refreshed. |
+| `OnFriendDataUpdated` | `Friend` | A specific friend's data changed. |
+| `OnFriendPresenceUpdated` | `(string, FriendPresence)` | A friend's online status changed. |
+| `OnFriendRequestReceived` | `FriendRequest` | Someone sent you a friend request. |
+| `OnFriendRequestsUpdated` | `void` | Request list changed (accept/decline). |
+| `OnLobbyInviteReceived` | `LobbyInvite` | Someone invited you to their lobby. |
+| `OnJoinRequestAccepted` | `LobbyInvite` | Your join request was accepted. |
+| `OnFriendAdded` | `Friend` | A new friend was added. |
+| `OnFriendsAuthenticated` | `void` | Friends system initialized. |
+
+### Key Methods
+
+| Method | Returns | Description |
+| :--- | :--- | :--- |
+| `GetFriendsList()` | `Task<List<Friend>>` | Fetches the full friends list. |
+| `GetFriendRequests()` | `Task<List<FriendRequest>>` | Fetches pending requests. |
+| `SendFriendRequest(playerId)` | `Task<bool>` | Sends a request to another player. |
+| `AcceptFriendRequest(playerId)` | `Task<bool>` | Accepts an incoming request. |
+| `DeclineFriendRequest(playerId)` | `Task<bool>` | Declines an incoming request. |
+| `CancelOutgoingRequest(playerId)` | `Task<bool>` | Cancels your sent request. |
+| `Unfriend(playerId)` | `Task<bool>` | Removes a friend. |
+| `InviteToGame(playerId)` | `Task<bool>` | Sends a lobby invite. |
+| `AskToJoin(playerId)` | `Task<bool>` | Requests to join their lobby. |
+| `SetPresence(presence)` | `Task` | Updates your online status. |
+
+---
+
+## 7. 📦 Data Structures
+
+### `Friend`
+```csharp
+public class Friend
+{
+    public string DisplayName;
+    public string PlayerId;
+    public FriendPresence Presence; // Online, Offline, InLobby, etc.
+    public Sprite Avatar;
+}
+```
+
+### `FriendRequest`
+```csharp
+public class FriendRequest
+{
+    public string DisplayName;
+    public string PlayerId;
+    public Sprite Avatar;
+    public FriendRequestType RequestType; // Incoming or Outgoing
+}
+```
+
+### `LobbyInvite`
+```csharp
+public class LobbyInvite
+{
+    public string FromPlayerId;
+    public string FromPlayerName;
+    public string LobbyId;
+    public Sprite FromAvatar;
+    public InviteType InviteType; // Invite, RequestToJoin, AcceptedRequest
+}
+```
+
+### `FriendPresence` (Enum)
+```csharp
+public enum FriendPresence
+{
+    Away,
+    Online,
+    Offline,
+    InGame,
+    InLobby
+}
+```
+
+---
+
+## 8. 🛠️ How to Extend
+
+### Adding a "Block Player" Feature
+1.  **Data:** Add a `List<string> blockedPlayers` to `FriendsManager`.
+2.  **Manager:** Add `BlockPlayer(string playerId)` and `UnblockPlayer(string playerId)` methods.
+3.  **UI:** Add a "Block" button to `FriendContextMenu`.
+4.  **Filter:** In `FriendsUI.OnFriendsListUpdated`, filter out blocked players.
+
+### Adding Custom Presence Statuses
+1.  **Enum:** Add new values to `FriendPresence` (e.g., `DoNotDisturb`).
+2.  **UI:** Update `FriendListItem.UpdatePresence` to handle the new status color.
+3.  **Manager:** Call `FriendsManager.Instance.SetPresence(FriendPresence.DoNotDisturb)` when appropriate.
+
+---
+
+## 9. 📐 Visual Flow
+
+```mermaid
+graph TD
+    Auth[Authenticated] --> Panel[Friends Panel Shows]
+    
+    Panel --> Search[Search Friends]
+    Panel --> List[Friends List]
+    Panel --> Add[Add Friend Button]
+    
+    List --> Click[Click Friend]
+    Click --> Context[Context Menu]
+    
+    Context --> Invite[Invite to Game]
+    Context --> Join[Ask to Join]
+    Context --> Remove[Remove Friend]
+    
+    Add --> Popup[Add Friends Popup]
+    Popup --> Send[Send Request]
+    Popup --> Receive[Accept/Decline Requests]
+```
+
+    </script>
+
+    <script type="text/markdown" data-category="Multiplayer Engine" id="doc-session"
+        data-title="Session & Scene Management">
+# 🎮 Session & Scene Management
+
+> **💡 Overview:** This document covers the **game start flow**, including the **SessionManager** (handling networked sessions), **LoadingScreen** (visual transitions), and **SpawnManager** (player character spawning).
+
+---
+
+## 1. 🏗️ Overview
+
+When the Host clicks "Start Game", the following flow occurs:
+
+1.  **LobbyManager** sets the `GameId` in lobby data.
+2.  **SessionManager** detects the update and starts connecting.
+3.  **LoadingScreen** shows progress to the user.
+4.  **Host starts Relay/Server**, clients connect.
+5.  **Scene loads** via NetworkManager.
+6.  **SpawnManager** spawns player characters.
+7.  **LoadingScreen** hides when all players are loaded.
+
+---
+
+## 2. 📋 Session Manager (`SessionManager.cs`)
+
+**Script:** `SessionManager.cs`
+
+The SessionManager is a `NetworkBehaviour` that orchestrates the game start flow.
+
+### How It Works
+
+1.  **Listens for `LobbyManager.OnLobbyUpdated`**.
+2.  When `LobbyDataKeys.GameId` is set (by the Host), it triggers the connection.
+3.  **Host:** Creates the Relay allocation (Unity) or starts Steam server, then calls `NetworkManager.StartHost()`.
+4.  **Clients:** Join the Relay/Steam server, then call `NetworkManager.StartClient()`.
+5.  **Waits for all players** to connect (with timeout).
+6.  **Loads the game scene** via `NetworkManager.SceneManager.LoadScene()`.
+7.  When scene load completes, fires `OnAllPlayersLoaded` event.
+
+### Inspector Settings
+
+| Field | Description |
+| :--- | :--- |
+| `loadAsync` | Load scenes asynchronously (default: false). |
+| `waitTime` | Max seconds to wait for players (default: 45). |
+
+### Events API
+
+| Event | Parameter | Description |
+| :--- | :--- | :--- |
+| `OnAllPlayersLoaded` | `void` | Fired when all players have loaded the scene. |
+
+### Key Properties
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| `SelectedCharacter` | `CharacterData` | The character the local player selected in the lobby. |
+
+### Key Methods
+
+| Method | Description |
+| :--- | :--- |
+| `LoadNewScene(sceneName)` | Loads a new scene via NetworkManager (Server only). |
+
+---
+
+## 3. ⏳ Loading Screen (`LoadingScreen.cs`)
+
+**Script:** `LoadingScreen.cs`
+
+A simple overlay that shows during transitions.
+
+### 🖱️ No User Interaction
+The loading screen is purely visual. Users wait for it to complete.
+
+### 📱 Visual Elements
+
+-   **Status Text:** Shows current status (e.g., "Connecting...", "Waiting for players...").
+-   **Progress Bar:** Shows connection/loading progress (0-100%).
+
+### Key Methods
+
+| Method | Parameter | Description |
+| :--- | :--- | :--- |
+| `ShowLoading(status)` | `string` | Shows the loading screen with initial status. |
+| `HideLoading()` | `void` | Fades out and hides the loading screen. |
+| `UpdateStatus(status)` | `string` | Updates the status text. |
+| `SetProgress(progress)` | `float 0-1` | Sets the progress bar value. |
+
+### How It's Used
+
+1.  **LobbyUI** calls `LoadingScreen.Instance.ShowLoading("Starting game...")` when Start is clicked.
+2.  **SessionManager** updates status as connection progresses:
+    -   "Connecting to server..."
+    -   "Starting host..." / "Joining game..."
+    -   "Waiting for players... 2/4"
+    -   "Loading game..."
+3.  **SessionManager** calls `HideLoading()` when the scene is fully loaded for everyone.
+
+---
+
+## 4. 🧍 Spawn Manager (`SpawnManager.cs`)
+
+**Script:** `SpawnManager.cs`
+
+Handles spawning networked player characters when the game scene loads.
+
+### How It Works
+
+1.  **Placed in the Game Scene** (not in menus).
+2.  Has an array of `Transform[] spawnPoints`.
+3.  Subscribes to `SessionManager.OnAllPlayersLoaded`.
+4.  When triggered, each client sends an RPC to the server with their `CharacterId`.
+5.  **Server** instantiates the character prefab at a spawn point and calls `SpawnAsPlayerObject(clientId)`.
+6.  When a client disconnects, their character is despawned.
+
+### Inspector Settings
+
+| Field | Description |
+| :--- | :--- |
+| `spawnPoints` | Array of Transform positions where players spawn. |
+
+### Key Methods
+
+| Method | Description |
+| :--- | :--- |
+| `SpawnCharacterForClientRpc(clientId, characterId)` | Server RPC to spawn a character for a client. |
+
+### Spawn Point Cycling
+Spawn points are used in order. When the last one is used, it cycles back to the first.
+
+---
+
+## 5. 📦 Data Structures
+
+### `CharacterData` (ScriptableObject)
+```csharp
+public class CharacterData : ScriptableObject
+{
+    public string CharacterId;
+    public string CharacterName;
+    public Sprite CharacterIcon;
+    public GameObject CharacterPrefab;      // Networked prefab
+    public GameObject CharacterLobbyPrefab; // Preview in lobby
+    public float Stealth;
+    public float Mobility;
+}
+```
+
+---
+
+## 6. 🛠️ How to Extend
+
+### Adding a Map Selection System
+1.  **Lobby:** Add a `MapId` to `LobbyDataKeys` and let the host select a map.
+2.  **SessionManager:** In `WaitForPlayersToLoad()`, read the map from lobby data:
+    ```csharp
+    string mapName = lobbyData.Data[LobbyDataKeys.MapId];
+    LoadNewScene(mapName);
+    ```
+3.  **UI:** Add map selection buttons to `LobbyUI`.
+
+### Adding a Custom Loading Tip
+1.  **LoadingScreen:** Add a `TMP_Text tipsText` field.
+2.  **Data:** Create a `List<string> loadingTips`.
+3.  **Logic:** In `ShowLoading()`, set a random tip:
+    ```csharp
+    tipsText.text = loadingTips[Random.Range(0, loadingTips.Count)];
+    ```
+
+### Adding Respawn Logic
+1.  **SpawnManager:** Add a public method `RespawnPlayer(ulong clientId)`.
+2.  **Logic:** Destroy the old character, then call `SpawnCharacterForClientRpc` again.
+3.  **Trigger:** Call this from your health/damage system when a player dies.
+
+---
+
+## 7. 📐 Visual Flow
+
+```mermaid
+graph TD
+    Start[Host Clicks Start Game] --> LobbyUpdate[LobbyManager Sets GameId]
+    LobbyUpdate --> Session[SessionManager Detects Update]
+    
+    Session --> LoadShow[LoadingScreen Shows]
+    
+    Session --> HostCheck{Is Host?}
+    HostCheck -- Yes --> Relay[Create Relay/Start Server]
+    HostCheck -- No --> Join[Join Relay/Server]
+    
+    Relay --> StartHost[NetworkManager.StartHost]
+    Join --> StartClient[NetworkManager.StartClient]
+    
+    StartHost --> Wait[Wait for Players]
+    Wait --> LoadScene[Load Game Scene]
+    
+    LoadScene --> SceneComplete[Scene Load Complete]
+    SceneComplete --> Spawn[SpawnManager.OnAllPlayersLoaded]
+    
+    Spawn --> SpawnChars[Spawn Player Characters]
+    SpawnChars --> HideLoad[LoadingScreen Hides]
+    
+    HideLoad --> Gameplay[Gameplay Begins]
+```
+
+    </script>
+
+    <script type="text/markdown" data-category="Multiplayer Engine" id="doc-voice" data-title="Voice & Chat System">
+# 🎙️ Voice Chat & General Chat
+
+> **💡 Overview:** This document covers the **Voice Chat** system (mic control, speaker, positional audio) and the **Text Chat** system (sending and receiving messages in a lobby).
+
+---
+
+## 1. 🏗️ Overview
+
+The communication system is split into two parts:
+
+### Voice Chat
+-   **VoiceManager:** Backend logic for audio.
+-   **VoiceControlUI:** Buttons for mic, speaker, connect/disconnect.
+-   **VoiceMemberItem:** Per-player volume and mute controls.
+
+### Text Chat
+-   **GeneralChatUI:** The chat window with input field.
+-   **ChatMessageItem:** A single message bubble.
+
+---
+
+## 2. 🎙️ Voice Control UI (`VoiceControlUI.cs`)
+
+**Script:** `VoiceControlUI.cs`
+
+This panel provides quick access to voice settings.
+
+### 🖱️ User Interactions
+
+| UI Element | Action |
+| :--- | :--- |
+| **Mic Button** | Toggles microphone mute/unmute. |
+| **Speaker Button** | Toggles speaker (incoming audio) mute/unmute. |
+| **Connect/Disconnect Button** | Joins or leaves the voice channel. |
+| **Expand Button** | Shows the expanded panel with member controls. |
+| **Mic Volume Slider** | Adjusts your microphone input volume. |
+
+### 📱 Visual Elements
+
+-   **Mic Icon:** Cyan = Active, Yellow = Muted.
+-   **Speaker Icon:** Cyan = Active, Yellow = Muted.
+-   **Connect Icon:** Cyan = Connected, Red = Disconnected.
+-   **Members List:** Shows all connected voice participants.
+
+---
+
+## 3. 👤 Voice Member Item (`VoiceMemberItem.cs`)
+
+**Script:** `VoiceMemberItem.cs`
+
+Each participant in the voice channel is displayed with individual controls.
+
+### 🖱️ User Interactions
+
+| Control | Action |
+| :--- | :--- |
+| **Volume Slider** | Adjusts the volume for this specific player. |
+| **Mute Button** | Mutes/Unmutes this player locally. |
+
+### 📱 Visual Elements
+
+-   **Player Name:** Display name.
+-   **Avatar:** Profile picture.
+-   **Speaking Indicator:** Lights up when they are talking.
+
+---
+
+## 4. 💬 General Chat UI (`GeneralChatUI.cs`)
+
+**Script:** `GeneralChatUI.cs`
+
+The text chat window for in-lobby communication.
+
+### 🖱️ User Interactions
+
+| UI Element | Action |
+| :--- | :--- |
+| **Input Field** | Type your message here. |
+| **Send Button** | Sends the typed message. |
+| **Show/Hide Button** | Manually opens full chat with scrollable history. |
+
+### Behavior
+
+-   **Auto-Show:** Chat window fades in for 2 seconds when a new message arrives.
+-   **Auto-Hide:** Fades out after the delay if not manually opened.
+-   **Manual Open:** Clicking "Show" keeps the chat open with scrollbar until closed.
+-   **Send via Enter:** Pressing Enter in the input field also sends the message.
+
+### 📱 Visual Elements
+
+-   **Message Holder:** Scrollable list of chat messages.
+-   **Scrollbar:** Only visible when chat is manually opened.
+
+---
+
+## 5. 📝 Chat Message Item (`ChatMessageItem.cs`)
+
+**Script:** `ChatMessageItem.cs`
+
+A single chat message in the list.
+
+### 📱 Visual Elements
+
+-   **Sender Name:** Colored based on who sent the message.
+-   **Message Text:** The actual content.
+-   **Background:** Different color for local vs. remote vs. system messages.
+
+### Color Scheme
+| Message Type | Name Color | Background |
+| :--- | :--- | :--- |
+| Local Player | Cyan | Blue-ish |
+| Other Player | Gold | Gray |
+| System | Orange | Yellow-ish |
+
+---
+
+## 6. 🧩 Voice Manager (`VoiceManager.cs`)
+
+**Script:** `VoiceManager.cs`
+
+The backend singleton for all voice and text chat operations.
+
+### Core Concepts
+-   **Singleton:** Accessed via `VoiceManager.Instance`.
+-   **Platform Agnostic:** Uses `IVoiceChat` interface (`VivoxServices` or `SteamVoiceServices`).
+-   **Auto-Join:** Automatically connects to voice when joining a lobby.
+-   **Setting Persistence:** Mic/speaker mute states and volume are saved to `PlayerPrefs`.
+
+### Events API
+
+| Event | Parameter | Description |
+| :--- | :--- | :--- |
+| `ChannelJoined` | `string channelId` | Voice channel connected. |
+| `PositionalChannelJoined` | `string channelId` | Positional voice connected. |
+| `ChannelLeft` | `void` | Disconnected from voice. |
+| `MembersUpdated` | `List<VoiceMemberSettings>` | Full members list updated. |
+| `MemberDataUpdated` | `VoiceMemberSettings` | A specific member's data changed. |
+| `MemberSpeaking` | `(string memberId, bool isSpeaking)` | Someone started/stopped talking. |
+| `MicStatusUpdated` | `bool isMuted` | Your mic mute state changed. |
+| `SpeakerStatusUpdated` | `bool isMuted` | Your speaker mute state changed. |
+| `MicVolumeUpdated` | `int volume` | Your mic volume changed. |
+| `OnMessageReceived` | `(string senderId, string message)` | A text message arrived. |
+
+### Key Methods
+
+| Method | Description |
+| :--- | :--- |
+| `JoinVoiceChat(lobbyId)` | Joins the voice channel for a lobby. |
+| `JoinPositionalChannel(lobbyId)` | Joins positional (3D) voice for that lobby. |
+| `LeaveVoiceChat()` | Disconnects from the current voice channel. |
+| `MuteMic()` / `UnmuteMic()` | Mutes/Unmutes your microphone. |
+| `MuteSpeaker()` / `UnmuteSpeaker()` | Mutes/Unmutes incoming audio. |
+| `SetMicVolume(volume)` | Sets your mic input volume (0-100). |
+| `SetMemberVolume(volume, playerId)` | Sets volume for a specific player. |
+| `MuteMember(playerId)` / `UnmuteMember(playerId)` | Mutes/Unmutes a specific remote player. |
+| `SendTextMessage(message)` | Sends a text message to the channel. |
+| `SetVoiceQuality(quality)` | Sets audio quality (Low, Medium, High). |
+
+---
+
+## 7. 📦 Data Structures
+
+### `VoiceMemberSettings`
+```csharp
+public class VoiceMemberSettings
+{
+    public string MemberId;
+    public int Volume;       // 0-100
+    public bool IsMuted;
+    public Sprite Sprite;    // Avatar
+    public string DisplayName;
+}
+```
+
+### `VoiceQuality` (Enum)
+```csharp
+public enum VoiceQuality
+{
+    Low,    // 8kHz - minimal bandwidth
+    Medium, // 16kHz - balanced (default)
+    High    // 48kHz - highest quality
+}
+```
+
+---
+
+## 8. 🛠️ How to Extend
+
+### Adding Push-to-Talk
+1.  **Manager:** Add a `bool isPushToTalk` setting to `VoiceManager`.
+2.  **Logic:** In `Update()`, check for a key press (e.g., `V`).
+    -   On key down: `UnmuteMic()`.
+    -   On key up: `MuteMic()`.
+3.  **UI:** Add a toggle in settings to enable/disable push-to-talk mode.
+
+### Adding Private Messages
+1.  **IVoiceChat:** Add `SendPrivateMessage(playerId, message)` to the interface.
+2.  **Manager:** Expose this as `VoiceManager.Instance.SendPrivateMessage(...)`.
+3.  **UI:** Add a "Whisper" button on `FriendContextMenu` that opens a DM input.
+
+### Adding Positional Audio in Gameplay
+1.  **Join Positional:** When the game scene loads, call:
+    ```csharp
+    await VoiceManager.Instance.JoinPositionalChannel(lobbyId);
+    ```
+2.  **Update Position:** Each frame for networked players, call:
+    ```csharp
+    voiceChatService.Set3DPosition(playerGameObject);
+    ```
+
+---
+
+## 9. 📐 Visual Flow
+
+```mermaid
+graph TD
+    Lobby[Join Lobby] -->|Auto| VoiceJoin[Join Voice Channel]
+    
+    VoiceJoin --> Connected[Connected State]
+    
+    Connected --> Mic[Mic Controls]
+    Connected --> Speaker[Speaker Controls]
+    Connected --> Members[Member Volume/Mute]
+    Connected --> Chat[Text Chat]
+    
+    Mic -->|Toggle| MuteMic[Mute/Unmute Mic]
+    Speaker -->|Toggle| MuteSpeaker[Mute/Unmute Speaker]
+    Members -->|Slider| AdjustVolume[Adjust Per-Player Volume]
+    
+    Chat -->|Type + Send| Message[Send Text Message]
+    Message --> Broadcast[Broadcast to Channel]
+    Broadcast --> AllPlayers[All Players Receive]
+    
+    AllPlayers --> Display[Display in Chat Window]
+```
+
+    </script>
+
+    <!-- 
+    =====================================================
+    SURVIVAL SYSTEM PLACEHOLDERS
+    =====================================================
+    -->
+    <script type="text/markdown" data-category="Survival System" id="doc-survival-inventory"
+        data-title="Inventory System">
+# 🎒 Multiplayer Engine - Inventory System
+
+**Data-Driven, Server-Authoritative, & Network-Optimized**
+
+The Inventory System is a highly optimized, server-authoritative inventory architecture designed for competitive and cooperative multiplayer sandbox/survival games. It provides real-time client UI replication, seamless drag-and-drop actions, stack splitting, durability degradation, shooter weapon ammo persistence, and disk/cloud save integration.
+
+Built entirely on top of Unity Netcode for GameObjects using a synchronized `NetworkList`, the inventory system ensures absolute state authority on the server to prevent hacking (such as item duplication or stack size modifications) while maintaining responsive, lag-free visual feedback for clients.
+
+---
+
+## ✨ Features Overview
+
+| Feature | Description |
+| :--- | :--- |
+| **Server-Authoritative** | All inventory state changes are processed and validated on the server. Clients request actions via Server RPCs. |
+| **Network Optimizations** | Utilizes conditional sparse serialization and 16-bit short compression to minimize bandwidth usage. |
+| **Unified Quick Slots** | The first 8 slots are designated as Quick Slots (Quickbar) and integrate directly with the character equipment controller. |
+| **Split-Drag & Drag-and-Drop** | Seamless left-click dragging to swap/merge stacks and right-click dragging to split stacks in half. |
+| **Durability Tracking** | Automatically monitors item wear and tear for tools/weapons, reflecting health bars in the UI and breaking items at 0%. |
+| **Ammo State Persistence** | Preserves loaded magazine counts for shooter weapons inside the inventory slot upon unequip or drop. |
+| **Sub-Asset Database** | Uses a clean Unity Sub-Asset pattern inside a single `ItemDatabase` ScriptableObject to prevent project clutter. |
+| **Persistent Saves** | Saves player inventory status asynchronously to local or cloud storage with automatic 1.5s debounce. |
+
+---
+
+## 📊 Architectural Flow
+
+The diagram below shows the data flow and communication paths between the client UI, server validation, network replication, and storage.
+
+```mermaid
+graph TD
+    A[Client UI: InventoryUI & QuickSlots] -->|Interact: Drag / Hotkeys / Splitting| B(InventorySlotBase / DropZone)
+    B -->|Sends Client Action| C{Client-Server RPCs}
+    
+    C -->|SwapSlotsRpc| D[InventoryManager Server]
+    C -->|SplitStackRpc| D
+    C -->|DropItemRpc| D
+    C -->|ConsumeItemRpc| D
+    
+    D -->|Validate & Mutate| E((NetworkList: InventoryItem))
+    E -->|OnListChanged| F{Client Sync}
+    F -->|LateUpdate UI Refresh| A
+    
+    D <-->|Get Item Specs| G[(ItemDatabase Sub-Assets)]
+    D -->|Equipped Slot Changed| H[EquipmentController]
+    D <-->|Debounced Auto-Save & Load| I[SaveGameManager]
+    I <-->|Write/Read JSON| J[(Disk / Cloud Storage)]
+    
+    K[World Pickable] -->|Interacted by Client| L[InteractionController]
+    L -->|Request Server Pickup| D
+    D -->|TryAddToInventory / TryAddItem| E
+```
+
+---
+
+## ⚡ Network Optimizations & Serializations
+
+The inventory system implements advanced networking strategies to keep bandwidth consumption minimal, especially in lobbies with many active players:
+
+### 1. Conditional Serialization (Sparse Slots)
+In many survival games, players carry a large number of empty inventory slots. Serializing empty slots is a waste of bandwidth. The `InventoryItem` custom struct handles this with a sparse serialization algorithm:
+- When a slot is empty (`itemId == -1`), `NetworkSerialize` **only writes a single 16-bit short** (`itemId`).
+- It completely skips writing count, durability, or loaded ammo fields.
+- For a standard 20-slot inventory that is half-empty, this cuts serialization overhead in half!
+
+```csharp
+public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+{
+    short shortItemId = (short)itemId;
+    serializer.SerializeValue(ref shortItemId);
+    if (serializer.IsReader)
+        itemId = shortItemId;
+
+    if (itemId != -1) // Serialize remaining details ONLY if the slot holds an item
+    {
+        short shortCount = (short)count;
+        serializer.SerializeValue(ref shortCount);
+        // ... (Serialize durability and loadedAmmo as shorts)
+    }
+}
+```
+
+### 2. 16-Bit Short Value Compression
+Rather than serializing variables as full 32-bit integers (`int`), variables (`itemId`, `count`, `durability`, `loadedAmmo`) are temporarily cast and serialized as 16-bit signed shorts (`short`) over the wire. This shrinks the footprint of each active slot from **16 bytes down to just 8 bytes** under the hood.
+
+### 3. Asynchronous Save Debouncing
+To prevent disk/cloud write thrashing when a player performs rapid slot changes (e.g. fast-sorting, rapid splitting, or clicking), the inventory manager implements a **1.5-second save debounce timer**:
+- When inventory slots change, `OnSlotsChanged` marks the save state as "dirty" (`saveDirty = true`).
+- The manager waits for a quiet window of **1.5 seconds** (`SAVE_DEBOUNCE = 1.5f`) before calling the `SaveGameManager` to write updates to disk.
+
+---
+
+## ⚙️ Core Architecture & Scripts
+
+| Script Component | Role & Key Responsibilities |
+| :--- | :--- |
+| **`InventoryItemData.cs`** | **The Sub-Asset Data:** Defines basic properties, local/network prefabs, offsets, and stats (melee, shooter, tool, consumables). |
+| **`ItemDatabase.cs`** | **The Registry:** ScriptableObject listing all items. Editor methods support adding/removing hidden sub-assets inside one file. |
+| **`IInventoryManager.cs`** | **The Contract:** Interface decoupling systems like `EquipmentController` and `Interaction` from the specific manager logic. |
+| **`InventoryManager.cs`** | **The Controller:** The server-authoritative inventory engine. Syncs slots using `NetworkList<InventoryItem>` and processes RPCs. |
+| **`InventorySlotBase.cs`** | **The UI foundation:** Abstract base managing slot selection colors, durability bars, tooltips, and standard drag/drop states. |
+| **`InventorySlot.cs`** | **The Bag UI Slot:** Extends base class to fire swap, split, and drag RPC commands. |
+| **`InventoryUI.cs`** | **The Main Panel:** Controls visibility of the complete inventory overlay, toggles mouse cursor state, and refreshes slots. |
+| **`QuickInventoryUI.cs`** | **The Quickbar Panel:** Renders the active hotbar slots and handles direct hotkey inputs (1-8) to equip/inspect items. |
+| **`Pickable.cs`** | **The World Pickup:** Represent dropped items in 3D physical world space. Stores actual quantity, durability, and ammo. |
+
+---
+
+## 🛠️ Developer Setup & Integration
+
+Follow these steps to fully configure the inventory system in your project.
+
+### 1. Database Configuration
+1. Select or create an `ItemDatabase.asset` in your project folder (see the Editor Window section below to set this up).
+2. Attach it to the **Item Database** field on your player prefab's `InventoryManager` component.
+
+### 2. Player Prefab Components
+Your player character prefab must have the following components:
+1. `InventoryManager.cs`: Handles all back-end logic, database queries, network replication, and player saves. Set **Max Inventory Size** (default `20`) and **Quick Slot Count** (default `8`).
+2. `EquipmentController.cs`: Handles equipping the local and network prefabs of items held in hands.
+3. `InteractionController.cs`: Detects surrounding physical world `Pickable` items and initiates server-side pick-up.
+
+### 3. Registering World Pickables
+To make an item collectable in 3D space:
+1. Create your item model prefab.
+2. Attach a collider (marked as a Trigger or standard with rigidbody) and set its layer to `Interactable`.
+3. Attach `Pickable.cs`.
+4. Link the `InventoryItemData` sub-asset to the **Inventory Item Data** slot.
+5. Setup the default amount, durability (-1 for max), and loaded ammo counts.
+6. Verify that it has a `NetworkObject` component attached to it, as pickups must be spawned over the network by the server.
+
+---
+
+## 💾 Customizing & Using the Inventory API
+
+If you want to read, edit, or customize the inventory programmatically, you should access it via `IInventoryManager` to remain decoupled. Below are the primary public functions you can call.
+
+### Adding Items
+
+#### `TryAddItem(int itemId, int amount)`
+Use this on the **Server Only** to add an item directly by its unique ID (e.g. from loot drops, quest rewards, or cheats). Returns `true` if added.
+```csharp
+// Example: Add 5 Stone (ID: 3) to the player's inventory
+IInventoryManager inv = player.GetComponent<IInventoryManager>();
+if (inv.TryAddItem(3, 5)) 
+{
+    Debug.Log("Stone added successfully.");
+}
+```
+
+#### `TryAddToInventory(Pickable pickable)`
+Use this on the **Server Only** during a physical pick-up interaction. It inspects the `Pickable` components, loads actual current durability or loaded ammo, and distributes the items into empty/stackable slots.
+```csharp
+// Example: Triggered when interacting with a world pickable
+Pickable worldItem = hit.collider.GetComponent<Pickable>();
+if (inv.TryAddToInventory(worldItem))
+{
+    worldItem.Interact(); // Despawns the pickable from the world
+}
+```
+
+### Inspecting Inventory State
+
+#### `GetTotalCount(int itemId)`
+Returns the accumulated count of a specific item ID across all inventory slots (backpack + quickbar).
+```csharp
+int woodCount = inv.GetTotalCount(1); // Wood ID: 1
+if (woodCount >= 10) 
+{
+    Debug.Log("Ready to craft wood planks!");
+}
+```
+
+#### `GetItemAt(int index)`
+Retrieves the lightweight networked `InventoryItem` struct located in a specific slot.
+```csharp
+InventoryManager.InventoryItem slotItem = inv.GetItemAt(8); // Slot 8
+if (!slotItem.IsEmpty) 
+{
+    Debug.Log($"Item in slot 8: ID {slotItem.itemId}, Count: {slotItem.count}");
+}
+```
+
+### Triggering Operations (Server-Side)
+
+These commands can be requested from the client. They call RPCs directly to execute changes securely on the server:
+
+- **Consume/Eat Consumables**:
+  `ConsumeItemRpc(int slotIndex, int amount = 1)`
+- **Reduce Durability**:
+  `ReduceDurabilityRpc(int slotIndex, int damageAmount)`
+- **Save ammo magazine state**:
+  `SetLoadedAmmoRpc(int slotIndex, int ammo)`
+- **Discard/Throw to ground**:
+  `DropItemRpc(int slotIndex, int amount = -1)` *(Passing -1 drops the entire slot stack)*
+- **Swap / Move Slots**:
+  `SwapSlotsRpc(int fromIndex, int toIndex)`
+- **Split Stack**:
+  `SplitStackRpc(int fromIndex, int toIndex, int amount)`
+
+---
+
+## 🗄️ Using the Item Database Window
+
+Managing all item ScriptableObjects individually can be tedious. The Multiplayer Engine uses a central **Item Database Editor Window** to manage all items as hidden sub-assets inside a single file, eliminating clutter in your folders.
+
+### Accessing the Window
+Go to **Tools > Multiplayer Engine > Item Database** in the Unity menu bar.
+
+### Managing Items
+1. **Assign DB File**: Click the picker or drag your main `ItemDatabase.asset` into the **DB File** slot at the top left.
+2. **Create New Items**: Click the green **Create** button. Select the type of item to create:
+   - `Weapon`
+   - `Tool`
+   - `Consumable`
+   - `Resource`
+3. **Automatic Sub-Asset Generation**: When you create an item, the editor automatically generates the required nested sub-assets depending on its type:
+   - Creating a **Tool** automatically nests a `ToolData` sub-asset.
+   - Creating a **Consumable** automatically nests a `ConsumableData` sub-asset.
+   - Creating a **Weapon** or **Tool** also automatically links a `HandOffsetData` sub-asset.
+4. **Duplicate Items**: Need to make a variant (e.g. Iron Pickaxe ➡️ Steel Pickaxe)? Select the item, click **Duplicate** in the top right, edit its stats, and change its Name & ID.
+5. **Import Existing Items**: Have a standalone `InventoryItemData` asset in your project? Click **Import**, select the asset, and the window will copy it directly into your centralized database asset as a clean sub-asset.
+6. **Delete Items**: Select an item and click **Delete**. The window handles full cleanup, removing all nested sub-assets (like embedded tool/consumable data) from your disk.
+
+    </script>
+    <script type="text/markdown" data-category="Survival System" id="doc-survival-house"
+        data-title="House Build System">
+
+
+# 🏗️ House Build System
+
+**Robust, Synchronized, & Data-Driven**
+
+The Building System is a high-performance, multiplayer-synchronized architecture designed for sandbox and survival games. It provides real-time ghost previews, smart ray-priority snapping, structural integrity calculations, and automatic state persistence. 
+
+Built entirely on a data-driven networking approach (`NetworkList`), it avoids instantiating individual `NetworkObject`s for every wall or floor, significantly reducing network overhead and keeping massive player bases running smoothly.
+
+---
+
+## ✨ Features Overview
+
+| Feature | Description |
+| :--- | :--- |
+| **Network Optimization** | Uses a single `NetworkList<BuildPieceData>` to sync states. Late joiners instantly reconstruct the base. |
+| **Direct Placement** | Consumes inventory resources immediately upon placement for fast building. |
+| **Blueprint Mode** | Places transparent, non-colliding placeholders to be filled with materials later. |
+| **Structural Integrity** | Server-side algorithms calculate foundation distance. Destroy a pillar, and watch the cinematic cascading collapse. |
+| **Smart Snapping** | Ray-Center Priority snaps to what the player is actually looking at, not just the closest 3D point. |
+| **Sub-Asset Database** | Clean project folders! All pieces managed in a single `BuildDatabase` ScriptableObject. |
+| **Persistent Saves** | Direct integration with `SaveGameManager` for auto-saving (local/cloud) with AES-256 encryption. |
+
+---
+
+## 🛠️ Full Setup Guide
+
+Follow these steps to integrate the building system into your scene.
+
+### Step 1: Layer Configuration
+Ensure your project has the following layers defined:
+1. `Ground` (or Terrain)
+2. `BuildPiece`
+
+### Step 2: BuildManager Component
+1. Create a core system GameObject (or use your existing Network Manager object).
+2. Attach the `BuildManager` script.
+3. **Assign Layers**: Set `groundLayer` and `buildPieceLayer`.
+4. **Assign Materials**: Assign your materials for `validMaterial` (🟩), `invalidMaterial` (🟥), `blueprintMaterial` (🟦), and `outlineMaterial` (hover outlines).
+5. **Assign Dependencies**: Link your `BuildDatabase` and `BuildMenuUI`.
+
+### Step 3: Player Equipment (The Hammer)
+To build, players need the right tool!
+1. Select your Hammer's local prefab (held in the player's hand).
+2. Attach the `BuildHammer.cs` script. *This marker component allows the Build Menu to open.*
+
+### Step 4: Creating a Build Piece
+1. Create a 3D model in the scene (e.g., a Wall).
+2. Attach the `BuildPiece.cs` component.
+3. Create child empty GameObjects at the edges and attach `SnapPoint.cs`. Set compatibility (e.g., Face2Face).
+4. Assign a `BoxCollider` for overlap detection and standard colliders for physics.
+5. Prefab the object. *(Optional: Create a "Ghost" variant without colliders).*
+6. Open **Tools > Multiplayer Engine > Build Database**, click **Create**, and assign your prefabs/costs.
+
+---
+
+## ⚙️ Core Architecture & Functions
+
+| Component | Role & Key Functions |
+| :--- | :--- |
+| **`BuildManager.cs`** | **The Controller:** Handles inputs, ghosts, and netcode.<br>• `UpdateGhostPosition()`: Casts rays, finds snaps, checks overlaps.<br>• `PlacePieceServerRpc()`: Validates, generates IDs, and syncs via NetworkList.<br>• `CascadeDestroyCoroutine()`: Visually destroys collapsed structures. |
+| **`BuildPiece.cs`** | **The Block:** Attached to every physical building piece.<br>• `UpdateGhostPrefab()`: Aligns ghost seamlessly using `AlignWithRule()`.<br>• `BuildTile()`: Restores materials and enables physics upon placement. |
+| **`BuildSupportGraph.cs`** | **The Physics Brain:** Server-side adjacency graph.<br>• `RegisterPiece()`: Builds the connected node graph.<br>• `OnPieceRemoved()`: Runs BFS to find floating pieces and destroy them. |
+| **`SnapPoint.cs`** | **The Connection:** Registers to `SnapPointRegistry` for fast, overlap-free proximity queries. |
+
+---
+
+## 💾 Save & Load Mechanism
+
+The Building System relies seamlessly on `SaveGameManager.cs`.
+
+1. **Auto-Save**: Any placement/destruction flags the `BuildManager` as "dirty". After `autoSaveDelay` (default 5s), it triggers a save.
+2. **Serialization**: Data from the `NetworkList` is extracted into lightweight `BuildPieceSaveEntry` structs (ID, Prefab Index, Pos/Rot, Blueprint status, Support Level).
+3. **Storage**: Handled via `SaveGameDataAsync("builds")`. Encrypted via AES-256 and saved locally (or synced to Steam/Unity Cloud).
+4. **Loading**: `LoadBuildings()` reads the JSON, repopulates the list, and reconstructs the `BuildSupportGraph`.
+
+---
+
+## 🗑️ Cleaning & Destroying
+
+### In-Game Destruction
+Players holding a `BuildHammer` can aim at any piece and press the **Delete Build** key. This calls `BuildPiece.DestroyPiece()`, asking the server to remove it.
+
+### Developer Wipe (Cache Clear)
+Need a clean slate for testing?
+1. Open **Tools > Multiplayer Engine > Build Database**.
+2. Click the orange **Clear Build Save Data** button.
+3. *Note: If done in Play Mode, it instantly wipes buildings from the live scene too!*
+
+---
+
+## 🗄️ Using the Build Database Window
+
+Manage all your items easily:
+1. Open **Tools > Multiplayer Engine > Build Database**.
+2. Click **Create** and choose a category (e.g., Foundation, Wall, Roof).
+3. Configure the new Sub-Asset in the right panel:
+   - **Visuals**: Piece Name & Icon.
+   - **Prefabs**: Build Prefab & Ghost Prefab.
+   - **Costs**: Add `ResourceCost` elements (e.g., 10x Wood, 5x Stone).
+4. Press **Duplicate** to rapidly create variations (e.g., Wooden Wall ➡️ Stone Wall).
+
+---
+
+## 📊 Architectural Flow
+
+```mermaid
+graph TD
+    A[InputManager] -->|Clicks / Rotates| B(BuildManager)
+    B -->|Instantiates| C[BuildPiece Ghost]
+    C -->|Queries Nearby| D[SnapPointRegistry]
+    C -->|Aligns using| E[SnapPoints]
+    
+    B -->|Client Request: PlacePieceServerRpc| F((NetworkList: BuildPieceData))
+    F -->|OnListChanged| G{Server & Clients}
+    G -->|SpawnLocalPiece| H[BuildPiece Solid/Blueprint]
+    
+    B -->|Server Only: Register| I[BuildSupportGraph]
+    I -.->|Cascade Collapse on Remove| B
+    
+    B <-->|Serialize JSON| J[SaveGameManager]
+    J <-->|Local Disk / Cloud| K[(Storage)]
+    
+    B -->|Prefab Lookup| L[(BuildDatabase Sub-Assets)]
+```
+
+---
+
+## 🧩 Implementing Custom Features
+
+Extend the system easily using these approaches:
+
+### Custom Structural Logic (e.g., Material Strength)
+Currently, `BuildSupportGraph` adds `+1` cost per connection. To make Stone stronger:
+1. Add an `int maxSupportDistance` to `BuildPieceEntry`.
+2. Pass material strength into `BuildSupportGraph.RegisterPiece()`.
+3. Modify `RecalculateSupportLevel()` to use dynamic weights.
+
+### Custom Alignment / Diagonal Snapping
+Want 45-degree angle snaps?
+1. Open `BuildPiece.cs`.
+2. Find the `AlignWithRule()` method.
+3. Add a new `MatchingRule` enum (e.g., `DiagonalFace`).
+4. Implement `AlignDiagonal()` using a 45-degree rotational offset applied to the target's forward vector.
+
+### Custom Piece Data (e.g., Ownership / Health)
+1. Add a new field (e.g., `ulong ownerClientId`) to `BuildPieceData`. **Must implement `INetworkSerializable`.**
+2. Update `PlacePieceServerRpc` to accept and pass this parameter.
+3. Update `BuildPieceSaveEntry` for serialization.
+4. Apply the new data in `BuildManager.SpawnLocalPiece()`.
+
+    </script>
+
+    <script type="text/markdown" data-category="Survival System" id="doc-survival-crafting" data-title="Crafting">
+# ⚒️ Crafting System
+
+**Data-Driven, Server-Authoritative, & Multiplayer-Synchronized**
+
+The Crafting System is a highly robust, server-authoritative multiplayer crafting architecture designed for cooperative and competitive sandbox/survival games. It provides real-time client UI synchronizations, a single-user interaction lock, dual crafting modes (direct-inventory consumption vs. manual container filling), a floating world-space progress indicator, and spawned item pickup tracking.
+
+Built on top of Unity Netcode for GameObjects using synchronized `NetworkList`s and `NetworkVariable`s, the crafting system ensures absolute state validation on the server to prevent cheating (such as crafting items without sufficient resources) while offering a fluid, immersive 3D world experience.
+
+---
+
+## ✨ Features Overview
+
+| Feature | Description |
+| :--- | :--- |
+| **Server-Authoritative Validation** | All crafting operations, ingredient checks, and timers are processed exclusively on the server to prevent exploits. |
+| **Interaction Locking** | Automatically locks the table UI to one client at a time, displaying an "In Use" status to other players. |
+| **Dual Crafting Modes** | Supports **Manual Contribution** (dropping items physically into the table) and **Direct Inventory Crafting** (auto-consuming from inventory). |
+| **World-Space Progress Canvas** | Once crafting starts, the player can walk away. A floating 3D progress bar tracks remaining time in the physical game world. |
+| **Physical Output Spawning** | Spawns crafted results as physical, network-synchronized items at designated spawn points. |
+| **Despawn Tracker Callback** | Uses a tracking component to detect when a spawned item is picked up, hiding the world-space UI cleanly. |
+| **Centralized Recipes DB** | Recipes are stored as embedded entries within a single `CraftingRecipeDatabase` ScriptableObject to prevent folder clutter. |
+| **Custom Editor Window** | A premium IMGUI editor window for creating, duplicating, and configuring recipes with direct ingredient lookups. |
+
+---
+
+## 📊 Architectural Flow
+
+The diagram below shows the interaction loop between the Player UI, Server RPCs, network state synchronization, physical spawn events, and the recipe database.
+
+```mermaid
+graph TD
+    A[Player UI: CraftingTableUI] -->|Select Recipe / Drop Ingredients| B(CraftingTable)
+    A -->|StartCraftingDirectRpc / StartCraftingRpc| B
+    
+    B -->|Lock Interacting Client| C((NetworkVariable: interactingPlayerId))
+    B -->|Replicate Ingredients State| D((NetworkList: CraftingSlotItem))
+    B -->|Replicate Crafting Progress| E((NetworkVariable: craftingProgress))
+    B -->|Replicate Active State| F((NetworkVariable: isCrafting))
+    
+    B -->|Complete: Instantiate & Spawn| G[World Crafted Item NetworkPrefab]
+    G -->|Attach Tracker| H[CraftedItemTracker]
+    H -->|On Pickup Despawn Callback| B
+    
+    D & E & F -->|OnValueChanged / OnListChanged| I[Client Sync: CraftingTableUI & WorldProgressUI]
+    
+    B <-->|Recipes Registry Lookup| J[(CraftingRecipeDatabase Sub-Assets)]
+    B <-->|Consume Personal Inventory| K[InventoryManager]
+```
+
+---
+
+## ⚡ Multi-User Sync & Optimization Strategies
+
+To maintain structural integrity and a clean gameplay loop in cooperative lobbies, the crafting system integrates several critical multiplayer designs:
+
+### 1. Single-User Interaction Lock
+To avoid synchronization race conditions (such as multiple players trying to add ingredients to the same physical table simultaneously), the `CraftingTable` locks itself using a server-authoritative Client ID variable:
+- When a client interacts, the server registers the sender's client ID in `interactingPlayerId`.
+- The server opens the UI only for that specific client.
+- For other players, the table becomes "In Use" and refuses interaction requests until the lock is released (either by the player closing the UI or by the start of a crafting cycle).
+
+### 2. World-Space Crafting Hand-off
+Once a player clicks the **Craft** button:
+- The server consumes the required ingredients and immediately **releases the interaction lock** (`interactingPlayerId = NO_PLAYER`).
+- The player's screen closes the full-screen overlay, freeing them to move, fight, or build.
+- The table proceeds to update the floating `CraftingProgressWorldUI` canvas in the 3D scene, which replicates the active state (`isCrafting`) and progress percentage (`craftingProgress` from 0 to 1) to all surrounding players.
+
+### 3. Spawn Tracking & Visual Cleanup
+When a craft completes, the item spawns physically in the world as a network pickup. To prevent floating progress labels from lingering, the system attaches a temporary `CraftedItemTracker` component to the spawned prefab. When any player collects the item, the tracker fires a despawn callback back to the crafting table, which cleanly hides the 3D world progress UI.
+
+---
+
+## ⚙️ Core Architecture & Scripts
+
+| Script Component | Role & Key Responsibilities |
+| :--- | :--- |
+| **`CraftingRecipe.cs`** | **The Blueprint:** Serialized class defining unique ID, name, description, ingredient arrays, output item, and craft time. Also declares the `CraftingSlotItem` Netcode struct. |
+| **`CraftingRecipeDatabase.cs`** | **The Registry:** Database asset listing all available recipes. Provides custom methods to filter recipes by object types (weapons, tools, etc.). |
+| **`CraftingTable.cs`** | **The Controller:** The server-authoritative crafting engine. Manages stored items inside a `NetworkList`, processes ingredient modifications, runs timers, and handles locks. |
+| **`CraftingTableUI.cs`** | **The Screen UI:** Displays search inputs, auto-generates category buttons, lists available recipes, and displays ingredient slot lists. |
+| **`CraftingIngredientSlot.cs`** | **The UI Ingredient:** Displays how many resources are required, how many are in the table, and how many are in the player's personal bag. |
+| **`CraftingProgressWorldUI.cs`** | **The 3D Floating UI:** A world-space Canvas that displays the progress bar, item icons, and crafting state in physical space. |
+| **`RecipeDatabaseWindow.cs`** | **The Custom Editor:** Standardized editor window for rapid recipe creations, duplicated profiles, and custom ingredient configuration. |
+
+---
+
+## 🛠️ Developer Setup & Integration
+
+Follow these steps to integrate a new crafting table into your Unity scene.
+
+### Step 1: Crafting Recipe Database Setup
+1. Open the custom editor by navigating to **Tools > Multiplayer Engine > Recipe Database**.
+2. Click **Create New Database** (or select your existing `CraftingRecipeDatabase.asset`).
+3. Drag your main `ItemDatabase.asset` into the **Item Database Link** slot. This populates dropdown menus with your existing items.
+4. Click the green **Create** button to start creating new recipes, configuring their name, required items, output items, and crafting duration.
+
+### Step 2: Creating a Physical Crafting Table
+1. Place a 3D model of a workbench in your scene.
+2. Attach a Collider and set its layer to `Interactable`.
+3. Attach the `CraftingTable.cs` component.
+4. **Assign Database**: Link your `CraftingRecipeDatabase` scriptable object.
+5. **Assign Spawn Point**: Create an empty child GameObject at the position where you want crafted items to spawn and assign it to the `itemSpawnPoint` slot.
+6. Attach a `NetworkObject` component so it replicates.
+
+### Step 3: Setting Up World-Space UI
+1. Create a child Canvas on your table prefab, and set its render mode to **World Space**.
+2. Scale it down and position it floating roughly 0.5 meters above the table.
+3. Attach `CraftingProgressWorldUI.cs`.
+4. Configure a background image, progress slider bar, custom text, and result item icon.
+5. Drag this component into the `worldProgressUI` field on the main `CraftingTable` component.
+
+---
+
+## 💾 Customizing & Using the Crafting API
+
+Developers can query crafting tables, modify recipes, and interface with the system using these public API hooks:
+
+### Querying Crafting Progress
+To check the active state of a workbench or render custom UI indicators:
+```csharp
+CraftingTable table = hit.collider.GetComponent<CraftingTable>();
+if (table.IsCrafting)
+{
+    float percentage = table.CraftingProgress * 100f;
+    Debug.Log($"Crafting in progress: {percentage:F0}%");
+}
+```
+
+### Stored Container Verification
+Query items physically placed in the crafting table's 4 slots:
+```csharp
+CraftingSlotItem firstSlot = table.GetSlotItem(0);
+if (!firstSlot.IsEmpty)
+{
+    Debug.Log($"Slot 0 contains: Item ID {firstSlot.itemId}, Count: {firstSlot.amount}");
+}
+```
+
+### Direct Server Commands (Called from Client UI)
+If you want to trigger custom crafting panel operations programmatically, use the Server RPCs:
+
+- **Select a active Recipe**:
+  `SelectRecipeRpc(int recipeId)`
+- **Add Ingredient from player inventory to table container**:
+  `AddIngredientRpc(int itemId, int amount)`
+- **Remove Ingredient from table container back to player inventory**:
+  `RemoveIngredientRpc(int slotIndex, int amount)`
+- **Start crafting with direct inventory consumption**:
+  `StartCraftingDirectRpc()` *(Consumes from table container first, then pulls remaining items from the player's personal backpack)*
+
+---
+
+## 🗄️ Using the Recipe Database Window
+
+Accessible at **Tools > Multiplayer Engine > Recipe Database**, this custom window makes recipe creation incredibly quick and visual.
+
+### Managing Recipes
+1. **Search and Filter**: Search for recipes by name, ID, or output item. Filter recipe lists by ObjectTypes (Weapons, Tools, Consumables).
+2. **Create Recipes**: Click the green **Create** button. Assign basic info, descriptions, and optional custom menu icons.
+3. **Link with Item Database**: Ensure the **Item Database Link** field points to your active `ItemDatabase.asset`. This automatically generates clean, searchable popup selections for ingredients and results.
+4. **Configure Ingredients**:
+   - Click the green **+ Add Ingredient** button.
+   - Select the required item from the popup dropdown.
+   - Enter the required quantity (Qty).
+5. **Set Result & Timing**: Select the crafted result item, choose the amount produced, and set the **Crafting Duration** in seconds.
+6. **Duplicate Recipes**: Select a recipe and click **Duplicate** to immediately replicate complex profiles (e.g. Iron Axe Recipe ➡️ Steel Axe Recipe) for rapid editing.
+
+    </script>
+
+
+    <script type="text/markdown" data-category="Survival System" id="doc-survival-resources" data-title="Resources">
+# 🌲 Resource Gathering System
+
+**Multiplayer-Synchronized, Server-Authoritative, & Physics-Interactive**
+
+The Resource Gathering System is a high-performance, network-synchronized harvesting architecture designed for cooperative sandbox and survival games. It allows players to cut down trees, mine mineral boulders, and collect raw materials (wood, stone, etc.).
+
+Built on a server-authoritative hybrid model using Unity Netcode for GameObjects, the system leverages a centralized single `ResourceManager` for network traffic, while allowing individual trees and rocks to exist as local, lightweight `MonoBehaviour` instances. This completely eliminates network overhead for thousands of resource nodes across a large map, keeping bandwidth consumption low.
+
+---
+
+## ✨ Features Overview
+
+| Feature | Description |
+| :--- | :--- |
+| **Server-Authoritative Harvesting** | The server validates node existence, tool tier compatibility, resource types, and stamina before applying harvest damage. |
+| **Hybrid Networking Pattern** | A single `ResourceManager` coordinates all network traffic. Node components are purely local, saving memory and RPC traffic. |
+| **Auto-Assigned Resource IDs** | Hierarchy selections automatically assign stable, unique IDs to nodes in the editor to ensure seamless client-server matching. |
+| **Active Fall Physics** | Trees split into multiple model slots (Trunk, Stump, Fallen Body) and fall physically using custom rigidbody impulses. |
+| **Deceleration Settling** | Measures falling tree velocities to detect ground bounces. Spawns drops only after the tree has fully settled. |
+| **Trunk-Distributed Drops** | Distributes physical item pickups round-robin across designated spawn points along the fallen tree trunk. |
+| **Tier-Locked Resource Levels** | Configurable tier levels (e.g. Iron Pickaxe required for Gold Ore) prevent low-tier tools from breaking premium nodes. |
+| **Local Hit Shakes & Particles** | Plays real-time local hit visual effects, shaking animations, and parented decals with zero network lag. |
+
+---
+
+## 📊 Systems Architecture
+
+The diagram below shows the round-trip lifecycle of resource harvesting: from the tool swing animation event, through server validation, to physical fall simulation and drop distribution.
+
+```mermaid
+graph TD
+    A[Player: Attacks Resource Node] -->|ToolHandler: Swing| B(IHarvestable Detection)
+    B -->|Check Tool Specs| C{Meets Requirements?}
+    C -->|Yes: Local Raycast Route| D[ResourceManager: RequestDamage]
+    
+    D -->|RPC: RequestDamageRpc| E[Server authoritative check]
+    E -->|1. Validate Node ID exists| E
+    E -->|2. Validate expected node type| E
+    E -->|3. Validate toolTier >= requiredTier| E
+    
+    E -->|Subtract Health| F((Server ResourceState))
+    F -->|RPC: OnResourceHitRpc| G[Sync Hit Effects on Clients]
+    G -->|Play Shake & VFX| H[World Debris Spawn]
+    
+    F -->|Health <= 0| I[Broadcast OnResourceDestroyedRpc]
+    I -->|All Clients| J[Start Fall Physics]
+    
+    J -->|Wait for Upper Part to stop moving| K[Local TreeResource]
+    K -->|RequestDropsAtPositionRpc| D
+    D -->|Instantiate Prefabs| L[Physical Wood Drops in World]
+```
+
+---
+
+## 🌲 Resource Node Archetypes
+
+The gathering system is divided into two primary node archetypes, illustrating different levels of physics interaction:
+
+### 1. The Rock Mineral Node (`RockResource`)
+- **Physics Behavior**: Stationary.
+- **Harvest Mechanics**: When hit, it plays a local hit shake and spawns a small stone debris drizzle (`Stone_Hit.prefab`).
+- **Destruction**: Upon reaching 0 health, it instantly spawns its configured material drops in a circular spread around the base, plays a loud fracturing sound, and disables its meshes cleanly.
+
+### 2. The Interactive Falling Tree (`TreeResource`)
+- **Slot-Based Mesh Architecture**:
+  - **Full Tree Slot**: The main visual model displayed while the resource is alive.
+  - **Stump Slot**: A small cut stump model that appears at the base once the tree is chopped down.
+  - **Upper Part Slot**: The physical fallen body containing a `Rigidbody` (initially kinematic).
+- **Physical Fall Impulse**: When chopped, the server calculates the attacker's hit direction (or uses a configured local offset) and applies a physical push force (`fallPushForce`) using `Rigidbody.AddForceAtPosition`. This produces highly realistic tipping and rotational torque.
+- **Deceleration Ground Detection**: Rather than relying on heavy physical colliders along the branches (which cause performance lag), the tree measures the upper trunk's deceleration velocity (`impactDecelerationThreshold`). The first contact plays a massive dust puff impact effect, and the second contact signals that the trunk has settled.
+- **Delayed Trunk Drops**: Once settled, the tree spawns wood pickups distributed evenly across spawn points located along the fallen trunk, before cleaning up the physics assets.
+
+---
+
+## ⚙️ How to Add a New Resource Node
+
+Follow these steps to integrate a new harvestable resource node (e.g. a "Copper Ore Node"):
+
+### Step 1: Prepare the Node Prefab
+1. Import your 3D model.
+2. Attach a Collider and set its layer to `Interactable`.
+3. Attach `RockResource.cs` or `TreeResource.cs` (or implement `LocalResource.cs` for custom behaviors).
+4. Configure parameters:
+   - **Required Tier**: Set the minimum tool level needed (e.g. Tier 2 for Copper).
+   - **Max Health**: Total health points (e.g. 150 HP).
+   - **Resource Drop Config**: Link the item database asset (e.g. `Copper_Ore`) and set the min/max drop amounts.
+   - **VFX / Audio**: Link the hit particles, sounds, and destruction effects.
+
+### Step 2: Auto-Assign Resource ID
+1. Place your new prefab instances into your Unity Scene.
+2. Select the resource node in the hierarchy.
+3. The custom editor inspector script will **automatically generate and assign a unique, stable `resourceId`** to the node. 
+4. *Important: This ID is used by both the server and client to route damage. Do not modify this value manually.*
+
+### Step 3: Register in the Scene
+Verify that the `ResourceManager.cs` component exists on a core system GameObject in your scene. When the game loads, every resource node automatically registers itself with the manager via `Start()`.
+
+---
+
+## 💾 Customizing & Using the Gathering API
+
+Developers can query node stats, customize yields, and interface with the system using these public API hooks:
+
+### Querying Node States
+To check resource statuses or display custom UI progress bars:
+```csharp
+LocalResource node = hit.collider.GetComponent<LocalResource>();
+if (node != null && node.IsAlive)
+{
+    float hpPercent = node.HealthPercentage * 100f;
+    Debug.Log($"Resource Node Health: {hpPercent:F0}%");
+}
+```
+
+### Direct Damage Harvest Requests (Server-Side)
+When a harvesting tool collides with a node, it requests damage validation via the `ResourceManager`:
+```csharp
+// Example: Axe harvests tree node
+ResourceManager.Instance.RequestDamage(
+    node.ResourceId,
+    toolData.harvestDamage,
+    hitPoint,
+    player.NetworkObjectId,
+    HarvestableType.Tree,
+    toolData.toolTier
+);
+```
+
+### Respawn Logic Customization
+If you want to create custom respawn cycles for harvested ore blocks or tree stumps:
+1. Fetch the destroyed node's stable `resourceId`.
+2. Start a Coroutine on the **Server Only**.
+3. After a cool-down delay, call the authoritative reset method:
+```csharp
+// Authoritatively restores health and triggers local model resets
+ResourceManager.Instance.ResetResource(resourceId);
+```
+
+    </script>
+
+    <script type="text/markdown" data-category="Survival System" id="doc-survival-weapons" data-title="Weapons & Tools">
+# ⚔️ Weapons & Tools System
+
+**Physics-Driven, Network-Synchronized, & Surface-Aware**
+
+The Weapons & Tools System is a high-performance, modular combat and harvesting framework designed for multiplayer survival and sandbox games. It supports standard melee weapons with combo-locks, hitscan and physical shooter weapons, charged bows with visual string-drawing, and harvesting tools. 
+
+Built entirely on top of Unity Netcode for GameObjects, the system leverages server-authoritative damage validation, inverse kinematics (IK) bone alignments, continuous capsule blade hitboxes, and an advanced surface-to-out particle/decal impact system.
+
+---
+
+## ✨ Features Overview
+
+| Feature | Description |
+| :--- | :--- |
+| **Server-Authoritative Combat** | All damage calculations, hits, and stamina consumption are validated on the server. Secure RPCs prevent spoofing. |
+| **Continuous Blade Hitbox** | Uses Physics Overlap/CapsuleCasting between handle and tip to track exact edge impacts during animation swings. |
+| **Combo Movement Lock** | Melee combo attacks lock player movement. Moving breaks active combinations dynamically. |
+| **Charged Bow & String Physics** | Visual string pull offsets and drawing nock states. Releases physical arrows using networked rigidbodies. |
+| **IK Support Hand Grips** | Dynamically aligns the player's support hand to the weapon's `secondaryHandGrip` transform using Two-Bone IK. |
+| **Resource Tier Validation** | Tools check target `ResourceType` and harvest tier level before dealing resource harvest damage. |
+| **Surface-Aware Impact Effects** | Automatically spawns organic blood splats on players, splinters on wood, sparks on metal, and dust on stone. |
+| **Decal Parent Tracking** | Attaches impact decals directly to the moving target transform so visual damage follows physics simulations. |
+
+---
+
+## 📊 Systems Architecture
+
+The flow diagram below displays how inputs generate combat animations, trigger hitbox detections, validate server damage, and spawn client-side surface effects.
+
+```mermaid
+graph TD
+    A[Player Input: Click/Hold] -->|Primary Action| B(Active Handler)
+    
+    B -->|Melee swing / Tool use| C[MeleeWeaponHandler / ToolHandler]
+    B -->|Shoot gun / Draw bow| D[ShooterWeaponHandler / BowWeaponHandler]
+    
+    C -->|Animation Trigger: OnBladeEnable| E[BladeHitbox Capsule Overlap]
+    E -->|Continuous Hit Detect| F{Attacker is Owner?}
+    F -->|Yes: Send RPC| G[ApplyMeleeDamageServerRpc]
+    
+    D -->|Instantiate & Rigidbody Push| H[Network Projectile / Arrow]
+    H -->|Collision / Trigger| I[Server Validate Hit]
+    
+    G & I -->|Server-Authoritative TakeDamage| J[Target: IDamageable]
+    J -->|Replicate Health / State| K[All Clients]
+    
+    G & I -->|Real-Time Spawn| L[Client-Side Impact Particles & Decals]
+    L -->|Parent decal to hit transform| M[Target Mesh Moving]
+```
+
+---
+
+## ⚔️ The Current Arsenal
+
+The framework ships with three foundational weapons, representing the three core weapon archetypes:
+
+### 1. The Melee Combo Sword (`MeleeWeaponHandler`)
+- **Archetype**: Melee Weapon.
+- **Hit Detection**: Capsule overlap between two marker transforms: `bladeBase` (hilt) and `bladeTip`. Continuous edge tracing is activated and deactivated via `OnBladeEnable()` and `OnBladeDisable()` animation events on the swing clips.
+- **Combo System**: Evaluates combo indexes (0, 1, 2). Attacks apply increasing damage multipliers based on the combo phase. If the player presses the attack button during the "Combo Window", the combo increments. If the player inputs movement directions, the combo is broken, and player movement is unlocked.
+
+### 2. The Firearm Rifle (`ShooterWeaponHandler`)
+- **Archetype**: Firearm Weapon.
+- **Hit Detection**: Hitscan or physical projectile prefabs spawned at the barrel's `aimReference` transform.
+- **State Preservation**: The gun's magazine count (`loadedAmmo`) is preserved directly inside the network-synchronized inventory slot. When unequipped or dropped into the world, the ammo counts persist.
+- **Inverse Kinematics**: Aligns the support hand to `secondaryHandGrip` so that the player's hands remain perfectly glued to the weapon model.
+
+### 3. The Recoil Bow (`BowWeaponHandler`)
+- **Archetype**: Charged Weapon.
+- **Visual String Draw**: The bow string's `stringNockPoint` is pulled backward dynamically in local space according to the current draw timer percentage (0 to 1).
+- **Local Hand Arrow**: Spawns a non-networked visual arrow prefab in the drawing hand during the draw phase for visual fidelity.
+- **Projectiles**: On release, despawns the local visual arrow and sends a server RPC to instantiate the networked `Projectile.prefab` (the Arrow) using physical rigidbody forces.
+
+---
+
+## ⚙️ How to Add a New Weapon or Tool
+
+Follow this complete step-by-step developer guide to create a new weapon (e.g., a "Fire Axe" tool/melee weapon) from scratch:
+
+### Step 1: Create the Prefabs
+Every item requires two separate prefabs:
+1. **Local Prefab**: The high-fidelity visual model held in the first-person/third-person player's hands.
+   - Attach the visual scripts (`MeleeWeapon.cs` or `ShooterWeapon.cs`).
+   - Create empty child transforms:
+     - `secondaryHandGrip` for support hand IK target alignment.
+     - `aimReference` (barrel tip for guns, nock position for bows).
+     - **For melee/tools**: Create `bladeBase` (hilt) and `bladeTip` (blade end) transforms and attach a `BladeHitbox.cs` component, linking these transforms.
+2. **Network Prefab**: The physical pickup model dropped on the ground.
+   - Must have a `Rigidbody`, a collider, and a `NetworkObject` component.
+   - Attach `Pickable.cs` and set its **ObjectType** (Weapon/Tools).
+   - Register this prefab in the Unity Netcode **NetworkPrefabs List** on your NetworkManager.
+
+### Step 2: Create the Weapon Data Asset
+1. Right-click in your project assets and navigate to **Create > Multiplayer Engine > Inventory > Item Data** (or use the **Item Database Editor Window** at **Tools > Multiplayer Engine > Item Database**).
+2. Set basic parameters (ID, Item Name, Sprite Icon, Object Type).
+3. Assign your **Local Prefab** and **Network Prefab** slots.
+4. Fill out specialized hand positions under **Hand Placement Offset Data**.
+5. Configure specific parameters:
+   - For **Melee/Tools**: Fill out `MeleeWeaponData` or `ToolData` (swing speeds, stamina cost, damage values per combo, tool tier).
+   - For **Guns**: Fill out `ShooterWeaponData` (ammo capacity, reload time, automatic flag, fire rate).
+
+### Step 3: Animation Setup
+1. Open your player character animator.
+2. Add your weapon's specific attack animation clips to your upper-body combat layer.
+3. Open the animation timeline for your attack swings:
+   - Add an Animation Event at the swing start frame: Method name: `OnBladeEnable`.
+   - Add an Animation Event at the swing end frame: Method name: `OnBladeDisable`.
+   - Add an Animation Event at the end of the swing recovery to unlock combos: Method name: `OnAttackExitEnd`.
+
+---
+
+## 🩸 The Authoritative Damage System
+
+The combat loop prioritizes server validation to prevent client-side cheating while using instant local visuals to feel responsive.
+
+### Damage Life Cycle
+1. **Detection**:
+   - **Melee/Tools**: The local client's animation fires `OnBladeEnable`. `BladeHitbox` performs capsule overlapping. If it collides with a collider on layer `Interactable` or `Player`, it queries `IDamageable`.
+   - **Projectiles**: A physical rigidbody projectile collides with a target collider on the server.
+2. **RPC Request**:
+   - For melee hits, if the attacker is the local client owner, the client fires a secure RPC request to the server: `ApplyMeleeDamageServerRpc(targetNetworkObjectId, damage, hitPoint, hitDirection)`.
+3. **Server Validation**:
+   - The server validates the attacker's hand range (distance to target) and stamina availability.
+   - The server fetches the target's `NetworkObject` via its ID and resolves its `IDamageable` component (like `PlayerStatsManager`).
+   - The server calls `.TakeDamage(damageInfo)`, executing health subtraction, death states, and hit reaction animations.
+   - Since health is networked, the updated state automatically synchronizes to all other client screens.
+
+---
+
+## 💥 Surface-Aware Particle & Decal Impact System
+
+When a weapon or projectile collides with an object, the system reads the surface material type to emit physical shards outward and place decals.
+
+### 1. Surface Impact Detection
+Impacts evaluate target tags, physics materials, or resource components:
+- **Player Character Hits**: Triggers a biological impact, querying `PlayerStatsManager.BloodHitEffectPrefab` to spawn arterial blood splats.
+- **Resource Node Hits**:
+  - `TreeResource` hits read the impact normals and instantiate a wood splinter particle system (`WoodSplintersParticle.mat`).
+  - `RockResource` hits emit concrete stone shards (`TinyStonesParticle.mat` / `Stone_Hit.prefab`).
+- **Default Hits**: Fall back to generic dust puffs (`DustPuffParticle.mat`) or weapon-specific sparks (`MuzzleFlash.mat`).
+
+### 2. Decal Parent Tracking (Moving Targets)
+A common visual bug in survival games is impact decals (like bullet holes or axe slash marks) floating in mid-air when a hit object moves or falls. The Multiplayer Engine solves this with parent tracking:
+- When a hit is registered, the client instantiates the particle effect at the exact hit point, aligned with the hit normal (`Quaternion.LookRotation(normal)`).
+- The visual effect searches for a child transform marked as a **Decal**.
+- The script detaches this decal child from the particle system and **re-parents it directly to the target collider's specific transform** (`child.SetParent(hitTransform, true)`).
+- If a cut tree falls or a player runs, the blood splat or wood slash follows the physical mesh correctly!
+
+```csharp
+// Example: Spawning hit VFX and parenting decals to moving assets
+if (hitVFX != null)
+{
+    // Instantiate a visual effect copy in world space
+    var effect = Instantiate(hitVFX, hitPoint, Quaternion.LookRotation(hitNormal));
+    
+    // Reparent child decals to the target collider so they follow movements
+    foreach (Transform child in effect.transform)
+    {
+        if (child.name.Contains("Decal"))
+        {
+            child.SetParent(hitTransform, true);
+        }
+    }
+    
+    effect.gameObject.SetActive(true);
+    effect.Play();
+    Destroy(effect.gameObject, effect.main.duration + 0.5f);
+}
+```
+    </script>
+
+    <script type="text/markdown" data-category="Survival System" id="doc-survival-vitals" data-title="Player Vitals">
+# ❤️ Player Vitals System
+
+**Authoritative Vitals, Responsive Client Prediction, & Smart Health Regen**
+
+The Player Vitals System is a highly optimized, server-authoritative vital statistics manager designed for competitive and cooperative survival games. It manages four core attributes: **Health, Stamina, Food, and Water**, ensuring perfect server replication while utilizing responsive client-side prediction to maintain instant controls.
+
+Built on Unity Netcode for GameObjects using a network-optimized unified struct, the vitals system handles starvation/dehydration damage, automatic state persistence, invincibility stunlock buffers, directional blend tree hit animations, and resource-driven health regeneration.
+
+---
+
+## ✨ Features Overview
+
+| Feature | Description |
+| :--- | :--- |
+| **Unified Network Struct** | Packs all 8 vital fields into a single `PlayerStats` struct for efficient, low-overhead Netcode replication. |
+| **Responsive Client Prediction** | Drains and regenerates stamina locally on the client for instant feel, reconciling with the server authoritative list if values drift. |
+| **Decoupled Stamina Manager** | Implements the `IStaminaManager` interface, enabling combat and tool actions to deduct energy instantly. |
+| **Metabolic Consumption** | Automatically drains hunger and hydration over time, applying starvation/dehydration damage when empty. |
+| **Dynamic Health Regeneration** | regenerates health when food & water are above 75%. Regenerates twice as fast if both are above 90%! |
+| **Invincibility Buffers** | Implements a 0.5s invincibility window after a hit to prevent players from getting stuck in animation loops (stunlock). |
+| **Directional Hit Reactions** | Converts world impact directions into local 2D coordinates, feeding animator blend trees for realistic impact reactions. |
+| **Persistent DB Saves** | Directly syncs player health, food, and water values with the `SaveGameManager` database asynchronously. |
+
+---
+
+## 📊 Vitals Architectural Flow
+
+The diagram below highlights the replication loop, showing how local inputs (like sprinting) execute instant HUD prediction before reconciling with the server authoritative stats.
+
+```mermaid
+graph TD
+    A[Player Controller Sprint/Combat] -->|Toggles running / Acts| B(Local Stamina Manager)
+    B -->|Predictive: Drain locally| C[Client Vitals HUD Refresh]
+    B -->|Sync RPC: SyncStaminaToServerRpc| D[PlayerStatsManager Server]
+    
+    E[Time Update Loop] -->|Drain Food & Water| D
+    D -->|Evaluate Food/Water Stats| F{Regen Health?}
+    F -->|>90% Both| G[Fast Health Regen: +4 HP/s]
+    F -->|>75% Both| H[Normal Health Regen: +2 HP/s]
+    F -->|Food/Water at 0| I[Starvation Damage: -1 HP/s]
+    
+    D <-->|AutoSave & AutoLoad| J[SaveGameManager]
+    D -->|Serialize & Replicate| K((NetworkVariable: PlayerStats))
+    K -->|OnValueChanged Sync| L{Client Screen}
+    L -->|If owner and drift > 10| M[Reconcile Local HUD Vitals]
+    L -->|If non-owner| N[Direct HUD Sync]
+```
+
+---
+
+## ⚙️ Core Architecture & Scripts
+
+| Script Component | Role & Key Responsibilities |
+| :--- | :--- |
+| **`PlayerStatsManager.cs`** | **The Vitals Engine:** The server-authoritative manager controlling health, food, and water drains, starvation damage, and saving/loading. |
+| **`IPlayerStatsManager.cs`** | **The Vitals Contract:** Interface decoupling player controls, equipment, and consumables from specific stat manager classes. |
+| **`StaminaManager.cs`** | **The Energy Controller:** Sub-component managing predictive client-side energy depletion for sprint actions and combat swings. |
+| **`PlayerStatsUI.cs`** | **The HUD Panel:** Subscribes to vital changes and interpolates health, stamina, hunger, and hydration progress sliders. |
+
+---
+
+## ⚡ Metabolic Engine & Regeneration Logic
+
+The server handles all metabolic loops. Below is the exact behavior of the vital drains and health regeneration:
+
+### 1. Hunger & Hydration Depletion
+- **Hunger (Food)** drains continuously at a rate of **`0.5` points per second** (`foodDrainRate`).
+- **Hydration (Water)** drains continuously at a rate of **`0.7` points per second** (`waterDrainRate`).
+
+### 2. Starvation & Dehydration Damage
+- If either Food **OR** Water levels drop to **`0`**, the player is starving/dehydrated.
+- The server applies damage directly to the health pool at a rate of **`1.0` damage per second** (`starvationDamage`).
+
+### 3. Dynamic Health Regeneration
+The player regenerates health naturally from food and water energy. The speed depends on hydration and nutrition levels:
+- **Inactive**: If either Food or Water is below **`75%`** (`healthRegenThreshold`), health regeneration is completely disabled.
+- **Normal Regeneration**: If both are between **`75%` and `90%`**, health regenerates at **`2.0` health per second** (`healthRegenRate`).
+- **Fast Regeneration**: If both Food and Water are above **`90%`** (`healthRegenFastThreshold`), health regenerates at **`4.0` health per second** (`healthRegenRateFast`) to reward well-fed players.
+
+---
+
+## 🛡️ Authoritative Damage & Hit Reacts
+
+The damage pipeline utilizes the `IDamageable` interface and is fully server-controlled, handling reactions with directional calculations:
+
+### 1. Invincibility Frames (Stunlock Guard)
+When a hit is registered on the server:
+- The server checks if the player took damage within the last **`0.5` seconds** (`invincibilityDuration`).
+- If yes, the hit is ignored. This prevents players from being locked in place by consecutive attacks.
+
+### 2. Directional Blend Tree Hit Animations
+On hit validation:
+- The server calls `PlayHitReactionRpc(Vector3 hitDirection)` on all clients.
+- The receiving client translates the world-space `hitDirection` into the player's **Local Space** using `transform.InverseTransformDirection(hitDirection)`.
+- This local normal represents a 2D coordinate, which is fed directly into the animator variables `HitDirectionX` and `HitDirectionY`.
+- A directional 2D Blend Tree in the animator plays the corresponding animation (e.g. staggering backward if hit from the front, or stumbling forward if hit from behind) for maximum visual realism.
+
+### 3. Authoritative Death & Respawn
+- **Death**: If health reaches **`0`**, the server calls `OnDeathRpc()` on all clients. This sets `IsDead` to true, triggers a death ragdoll/animation, and completely disables the `PlayerController` and `CharacterController` scripts to lock movement.
+- **Respawn**: When respawning, the server resets stats to default values (`health=100`, `stamina=100`, etc.) and calls `OnRespawnRpc()` to clear death animations and re-enable character controllers.
+
+---
+
+## 💾 Customizing & Using the Vitals API
+
+Developers can query player stats, modify vitals through consumables, and interact with the system using these public API hooks:
+
+### Querying Vitals
+Access the unified `PlayerStats` struct locally or on the server:
+```csharp
+PlayerStatsManager vitals = player.GetComponent<PlayerStatsManager>();
+if (vitals.Stats.health < 30f)
+{
+    Debug.Log("Warning: Player is in critical condition!");
+}
+```
+
+### Consuming Food & Water (Called by Consumables)
+Consumables (like water bottles or cooked meat) restore vital pools by calling a secure Server RPC:
+```csharp
+// Example: Cooked meat restores 10 HP, 0 Stamina, 40 Hunger, 5 Hydration
+vitals.RestoreStatsRpc(10f, 0f, 40f, 5f);
+```
+
+### Sprinting Stamina Depletion (Called by Player Controller)
+Sprinting triggers stamina depletion on the client:
+```csharp
+// Check if player has enough stamina to run
+if (vitals.CanRun)
+{
+    // Toggle running state (drains 10 stamina per second)
+    vitals.SetRunning(true);
+}
+else
+{
+    vitals.SetRunning(false);
+}
+```
+
+    </script>
+
+    <!-- LOGIC -->
+    <script>
+        const navList = document.getElementById('navList');
+        const contentDiv = document.getElementById('content');
+        const themeSwitch = document.getElementById('themeSwitch');
+
+        // Theme Logic
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeSwitch.checked = savedTheme === 'dark';
+
+        themeSwitch.addEventListener('change', (e) => {
+            const theme = e.target.checked ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            loadDoc(activeIndex);
+        });
+
+        // Collect Docs from Script Tags
+        const docScripts = document.querySelectorAll('script[type="text/markdown"]');
+        const docFiles = Array.from(docScripts).map(script => ({
+            title: script.getAttribute('data-title'),
+            category: script.getAttribute('data-category') || 'Uncategorized',
+            content: script.innerHTML.trim() // innerHTML preserves formatting including backticks
+        }));
+
+        // Render Nav
+        let activeIndex = 0;
+        const categoryExpanded = {};
+
+        function renderNav() {
+            navList.innerHTML = '';
+
+            // Group by category
+            const categories = {};
+            docFiles.forEach((doc, index) => {
+                if (!categories[doc.category]) {
+                    categories[doc.category] = [];
+                    // Initialize as collapsed at start
+                    if (categoryExpanded[doc.category] === undefined) {
+                        categoryExpanded[doc.category] = false;
+                    }
+                }
+                categories[doc.category].push({ doc, index });
+            });
+
+            for (const [category, items] of Object.entries(categories)) {
+                if (category !== 'Uncategorized') {
+                    const header = document.createElement('div');
+                    header.className = 'nav-section-header';
+                    header.innerHTML = `<span>${category}</span> <span class="nav-section-icon ${categoryExpanded[category] ? 'expanded' : ''}">▶</span>`;
+
+                    header.onclick = () => {
+                        categoryExpanded[category] = !categoryExpanded[category];
+                        renderNav();
+                    };
+                    navList.appendChild(header);
+                }
+
+                const container = document.createElement('div');
+                container.className = `nav-items-container ${categoryExpanded[category] || category === 'Uncategorized' ? 'expanded' : ''}`;
+
+                items.forEach(({ doc, index }) => {
+                    const li = document.createElement('li');
+                    li.className = `nav-item ${index === activeIndex ? 'active' : ''}`;
+                    li.textContent = doc.title;
+                    li.onclick = () => loadDoc(index);
+                    container.appendChild(li);
+                });
+                navList.appendChild(container);
+            }
+        }
+
+        // Load Doc
+        function loadDoc(index) {
+            activeIndex = index;
+            renderNav();
+            const docInfo = docFiles[index];
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+
+            // Configure Mermaid dynamically
+            mermaid.initialize({
+                startOnLoad: false,
+                theme: currentTheme === 'dark' ? 'dark' : 'default',
+                securityLevel: 'loose',
+                themeVariables: {
+                    fontFamily: "'Inter', sans-serif"
+                },
+                themeCSS: `
+                    /* Node Styles */
+                    .node rect, .node circle, .node polygon, .node path {
+                        stroke: var(--accent-color) !important;
+                        stroke-width: 2.5px !important;
+                        fill: var(--code-bg) !important;
+                    }
+                    /* Edge/Arrow line Styles */
+                    .edgePath .path {
+                        stroke: var(--accent-color) !important;
+                        stroke-width: 3px !important;
+                        opacity: 0.9;
+                    }
+                    /* Arrowhead Styles */
+                    .edgePath .markerPath {
+                        fill: var(--accent-color) !important;
+                        stroke: var(--accent-color) !important;
+                        stroke-width: 1px !important;
+                    }
+                    /* Label Styling */
+                    .node .label {
+                        font-family: 'Plus Jakarta Sans', sans-serif !important;
+                        font-weight: 600 !important;
+                        color: var(--text-color) !important;
+                    }
+                    .edgeLabel rect {
+                        fill: var(--bg-color) !important;
+                        opacity: 0.95;
+                    }
+                    .edgeLabel span {
+                        font-family: 'Inter', sans-serif !important;
+                        font-weight: 600 !important;
+                        color: var(--text-color) !important;
+                        font-size: 0.8rem !important;
+                    }
+                    /* Class/Sub-diagram boxes (Clusters) */
+                    .cluster rect {
+                        fill: var(--sidebar-bg) !important;
+                        stroke: var(--border-color) !important;
+                        stroke-width: 2.5px !important;
+                    }
+                    .cluster .label span {
+                        font-family: 'Plus Jakarta Sans', sans-serif !important;
+                        font-weight: 700 !important;
+                        color: var(--text-color) !important;
+                        font-size: 0.85rem !important;
+                    }
+                `
+            });
+
+            // We need to decode HTML entities if we used innerHTML (like &lt; for <)
+            // But since we are pasting into a script tag, browsers generally treat it as raw text
+            // However, just to be safe, we use a textarea hack to decode if needed, 
+            // OR simpler: just pass the raw string. Markdown parsers handle it well.
+
+            contentDiv.innerHTML = marked.parse(docInfo.content);
+
+            // Render Mermaid diagrams
+            contentDiv.querySelectorAll('pre code.language-mermaid').forEach((block) => {
+                const mermaidDiv = document.createElement('div');
+                mermaidDiv.className = 'mermaid';
+                mermaidDiv.textContent = block.textContent;
+                block.parentElement.replaceWith(mermaidDiv);
+            });
+            mermaid.run();
+
+            window.scrollTo(0, 0);
+        }
+
+        // Zoom Modal Logic for Mermaid Diagrams
+        document.addEventListener('click', (e) => {
+            const mermaidCard = e.target.closest('.mermaid');
+            if (mermaidCard && !e.target.closest('.mermaid-modal')) {
+                openZoomModal(mermaidCard);
+            }
+        });
+
+        function openZoomModal(card) {
+            const svg = card.querySelector('svg');
+            if (!svg) return;
+
+            const modal = document.createElement('div');
+            modal.className = 'mermaid-modal';
+            modal.innerHTML = `
+                <div class="mermaid-modal-backdrop"></div>
+                <div class="mermaid-modal-content">
+                    <div class="mermaid-modal-close">×</div>
+                    <div class="mermaid-modal-controls">
+                        <button id="btnZoomIn" title="Zoom In">➕</button>
+                        <button id="btnZoomOut" title="Zoom Out">➖</button>
+                        <button id="btnZoomReset" title="Reset Zoom">🔄</button>
+                    </div>
+                    <div class="mermaid-modal-svg-container">
+                        ${svg.outerHTML}
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            const svgEl = modal.querySelector('svg');
+            svgEl.removeAttribute('width');
+            svgEl.removeAttribute('height');
+            svgEl.style.transformOrigin = 'center center';
+            svgEl.style.cursor = 'grab';
+
+            let scale = 1;
+            let pointX = 0, pointY = 0, startX = 0, startY = 0, isPanning = false;
+
+            function setTransform() {
+                svgEl.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+            }
+
+            const svgContainer = modal.querySelector('.mermaid-modal-svg-container');
+
+            svgContainer.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                startX = e.clientX - pointX;
+                startY = e.clientY - pointY;
+                isPanning = true;
+                svgContainer.style.cursor = 'grabbing';
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isPanning) return;
+                pointX = e.clientX - startX;
+                pointY = e.clientY - startY;
+                setTransform();
+            });
+
+            window.addEventListener('mouseup', () => {
+                isPanning = false;
+                svgContainer.style.cursor = 'grab';
+            });
+
+            svgContainer.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const delta = e.deltaY;
+                const zoomFactor = 0.1;
+                
+                // Get mouse position relative to container
+                const rect = svgContainer.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left - rect.width / 2;
+                const mouseY = e.clientY - rect.top - rect.height / 2;
+
+                const previousScale = scale;
+                if (delta < 0) {
+                    scale += zoomFactor;
+                } else {
+                    scale = Math.max(0.2, scale - zoomFactor);
+                }
+
+                // Adjust focus point
+                pointX -= mouseX * (scale / previousScale - 1);
+                pointY -= mouseY * (scale / previousScale - 1);
+
+                setTransform();
+            });
+
+            modal.querySelector('#btnZoomIn').onclick = () => { scale += 0.15; setTransform(); };
+            modal.querySelector('#btnZoomOut').onclick = () => { scale = Math.max(0.2, scale - 0.15); setTransform(); };
+            modal.querySelector('#btnZoomReset').onclick = () => { scale = 1; pointX = 0; pointY = 0; setTransform(); };
+
+            const closeModal = () => {
+                modal.style.opacity = '0';
+                setTimeout(() => modal.remove(), 200);
+            };
+
+            modal.querySelector('.mermaid-modal-close').onclick = closeModal;
+            modal.querySelector('.mermaid-modal-backdrop').onclick = closeModal;
+
+            // Trigger reflow & transition
+            setTimeout(() => {
+                modal.style.opacity = '1';
+            }, 10);
+        }
+
+        // Init
+        if (docFiles.length > 0) {
+            renderNav();
+            loadDoc(0);
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 69af1aa327b7d064f9f324a08b35d292
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Lobby/Scenes/Lobby.unity
+  uploadId: 926736

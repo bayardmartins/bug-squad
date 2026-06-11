@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f2cb71bbb1965b44e8fdb816b362e17d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/Equipments/Network/Hammer.prefab
+  uploadId: 926736

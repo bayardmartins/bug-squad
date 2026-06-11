@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 280e737195dcfe64d83a57284246a738
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Scripts/CraftingSystem/UI/CraftingRecipeSlot.cs
+  uploadId: 926736

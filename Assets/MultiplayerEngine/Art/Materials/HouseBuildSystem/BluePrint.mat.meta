@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 64b2e2e8b258aea4ab638e6c2707f9d5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Art/Materials/HouseBuildSystem/BluePrint.mat
+  uploadId: 926736

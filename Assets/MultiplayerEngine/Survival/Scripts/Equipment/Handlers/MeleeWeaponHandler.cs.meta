@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: b626a06e864d303419815ddf23232f97
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Scripts/Equipment/Handlers/MeleeWeaponHandler.cs
+  uploadId: 926736

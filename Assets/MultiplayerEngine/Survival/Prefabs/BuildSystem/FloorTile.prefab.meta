@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7274a7171401df04a861590ef8b91dab
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/BuildSystem/FloorTile.prefab
+  uploadId: 926736

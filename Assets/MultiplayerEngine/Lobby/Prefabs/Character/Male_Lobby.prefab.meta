@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 10b54146f2291f040be1fc767836a073
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Lobby/Prefabs/Character/Male_Lobby.prefab
+  uploadId: 926736

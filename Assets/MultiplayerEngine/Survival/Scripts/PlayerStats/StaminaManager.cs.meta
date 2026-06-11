@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 984c3558f8cb2f749b6ee07dc4278214
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Scripts/PlayerStats/StaminaManager.cs
+  uploadId: 926736

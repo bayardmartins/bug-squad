@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bdd698f7bd97c924e9eef60c1c1767f3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Scriptable Objects/ItemDatabase.asset
+  uploadId: 926736

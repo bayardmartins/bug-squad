@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ff188f58422043f489060e28a5e4e0c0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Art/Environment/Materials/GridBlue_01_Mat.mat
+  uploadId: 926736

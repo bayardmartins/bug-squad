@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a4ae59a52f7aed44a995be38be63323f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Art/Models/Characters/Animations/Mining.anim
+  uploadId: 926736

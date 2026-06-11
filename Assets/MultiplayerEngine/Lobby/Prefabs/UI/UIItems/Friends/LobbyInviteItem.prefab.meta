@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 314059190b71e494d836d12bf817e6fd
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Lobby/Prefabs/UI/UIItems/Friends/LobbyInviteItem.prefab
+  uploadId: 926736

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 39ea636d3d1e7b843bfa1fe1d1e9a5f8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Scenes/Game/LightingData.asset
+  uploadId: 926736

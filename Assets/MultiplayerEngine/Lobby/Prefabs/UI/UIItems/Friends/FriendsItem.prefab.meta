@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4f370de81737ab541ae3c9fd8568dd10
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Lobby/Prefabs/UI/UIItems/Friends/FriendsItem.prefab
+  uploadId: 926736

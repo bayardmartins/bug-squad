@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 61de86a4c9566dc418d3c1bd4ccfd984
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Scripts/Editor/Inspectors/PickableEditor.cs
+  uploadId: 926736

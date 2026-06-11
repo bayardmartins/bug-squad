@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2420aef482ae2df4cbca08ec06e2fd66
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Art/Vfx/Prefabs/Smoke.prefab
+  uploadId: 926736

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 69480fc1192f04488be5781c2ec080a9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Settings/Rendering/Very Low_PipelineAsset.asset
+  uploadId: 926736

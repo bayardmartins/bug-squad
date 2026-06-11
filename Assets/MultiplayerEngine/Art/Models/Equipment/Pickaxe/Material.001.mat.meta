@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f3ed9e5b016cfae4b863cf20f0a9bd76
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Art/Models/Equipment/Pickaxe/Material.001.mat
+  uploadId: 926736

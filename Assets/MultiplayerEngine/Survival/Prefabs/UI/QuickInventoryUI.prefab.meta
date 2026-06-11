@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a57c70eee69eaef4f9ca237ac0e7395f
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/UI/QuickInventoryUI.prefab
+  uploadId: 926736

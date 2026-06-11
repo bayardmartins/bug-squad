@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: c485ba866b275144caf4e86b4fd55069
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Lobby/Runtime/Steam/Authentication/SteamAuthentication.cs
+  uploadId: 926736

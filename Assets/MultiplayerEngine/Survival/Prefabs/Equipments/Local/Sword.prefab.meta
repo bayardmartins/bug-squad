@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 80d1e9f9182222546a48f7c8e247ade6
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/Equipments/Local/Sword.prefab
+  uploadId: 926736

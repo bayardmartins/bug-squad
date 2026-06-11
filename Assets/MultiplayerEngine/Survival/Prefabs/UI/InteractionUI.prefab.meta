@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 42f0421f6f717ae4d8abdf9892f8bf68
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/UI/InteractionUI.prefab
+  uploadId: 926736

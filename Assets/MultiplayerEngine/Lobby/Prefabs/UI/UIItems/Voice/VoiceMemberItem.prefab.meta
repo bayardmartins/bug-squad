@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 52d243276b86ac5408a916a5db37e953
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Lobby/Prefabs/UI/UIItems/Voice/VoiceMemberItem.prefab
+  uploadId: 926736

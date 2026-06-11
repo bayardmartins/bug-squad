@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4dcb407445cd981468326ae2c6135de0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Scriptable Objects/CraftingRecipeDatabase.asset
+  uploadId: 926736

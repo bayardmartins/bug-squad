@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e62760a18bbdc4c8c6989326f1889f, type: 3}
+  m_Name: Male
+  m_EditorClassIdentifier: 
+  characterName: Ethan
+  characterId: 1
+  characterIcon: {fileID: 21300000, guid: 48c14ccc0adf44f489ccc628f2630b32, type: 3}
+  characterPrefab: {fileID: 3727746428256915430, guid: 06bbd2a80567cd2468dcbec3e83d18af, type: 3}
+  characterLobbyPrefab: {fileID: 8030734156647549257, guid: 10b54146f2291f040be1fc767836a073, type: 3}
+  stealth: 0.4
+  mobility: 0.15

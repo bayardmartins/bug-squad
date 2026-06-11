@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c0fd59813208d67448936d64e0e2cdde
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/UI/Items/Inventory/QuickSlot.prefab
+  uploadId: 926736

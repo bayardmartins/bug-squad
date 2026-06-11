@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d73bdf90fd6317c4e8c29809ec1935a7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Scriptable Objects/Characters/Male.asset
+  uploadId: 926736

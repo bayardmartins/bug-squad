@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 53fdd9f1645676d4b92237cdf8930c1a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/Equipments/Network/Pickaxe.prefab
+  uploadId: 926736

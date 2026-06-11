@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ad2ab49d0a2a17148bd51c93d977bdbc
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Art/Vfx/Prefabs/MuzzleFlash.prefab
+  uploadId: 926736

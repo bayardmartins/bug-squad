@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9d6bab570014ba34fa5154d2e5d3304b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/UI/EquipmentInfo.prefab
+  uploadId: 926736

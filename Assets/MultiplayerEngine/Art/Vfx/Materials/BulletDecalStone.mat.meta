@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 61e3c4be163e4aa47b2afead73643f69
+timeCreated: 1473678406
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Art/Vfx/Materials/BulletDecalStone.mat
+  uploadId: 926736

@@ -1,0 +1,176 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6238920327332735489
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2214d894e87d8441b1dff03e9651a38, type: 3}
+  m_Name: New Wall
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.BuildPieceEntry
+  pieceId: 2
+  pieceName: Wall
+  description: 
+  icon: {fileID: -1695800559, guid: 12e6c16c6a9b3d4458830870686020db, type: 3}
+  category: 1
+  ghostPrefab: {fileID: 4474081420479606926, guid: cdc0cbccf979b7949a11c7d5728ef344, type: 3}
+  buildPrefab: {fileID: 4474081420479606926, guid: cdc0cbccf979b7949a11c7d5728ef344, type: 3}
+  costs: []
+  requiredLevel: 1
+  isFoundation: 0
+--- !u!114 &-4372547184958672313
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2214d894e87d8441b1dff03e9651a38, type: 3}
+  m_Name: New Wall
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.BuildPieceEntry
+  pieceId: 4
+  pieceName: Window
+  description: 
+  icon: {fileID: -1307604914, guid: 12e6c16c6a9b3d4458830870686020db, type: 3}
+  category: 1
+  ghostPrefab: {fileID: 4474081420479606926, guid: fb80cc9506b64ff4781e610caba3076c, type: 3}
+  buildPrefab: {fileID: 4474081420479606926, guid: fb80cc9506b64ff4781e610caba3076c, type: 3}
+  costs: []
+  requiredLevel: 1
+  isFoundation: 0
+--- !u!114 &-3979234932894934665
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2214d894e87d8441b1dff03e9651a38, type: 3}
+  m_Name: New Wall
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.BuildPieceEntry
+  pieceId: 3
+  pieceName: Door
+  description: 
+  icon: {fileID: 84441928, guid: 12e6c16c6a9b3d4458830870686020db, type: 3}
+  category: 1
+  ghostPrefab: {fileID: 4474081420479606926, guid: 8b6f6bb1aba50d3478ea5e9c7f77b3ea, type: 3}
+  buildPrefab: {fileID: 4474081420479606926, guid: 7eb1d6fa2e6c3484bad773cfdf0af32b, type: 3}
+  costs: []
+  requiredLevel: 1
+  isFoundation: 0
+--- !u!114 &-3346455975925889654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2214d894e87d8441b1dff03e9651a38, type: 3}
+  m_Name: New Stair
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.BuildPieceEntry
+  pieceId: 6
+  pieceName: Stair
+  description: 
+  icon: {fileID: 653143991, guid: 12e6c16c6a9b3d4458830870686020db, type: 3}
+  category: 3
+  ghostPrefab: {fileID: 3196699485932665727, guid: 3bc82d9b8683d8740b727b6274a5215a, type: 3}
+  buildPrefab: {fileID: 3196699485932665727, guid: 3bc82d9b8683d8740b727b6274a5215a, type: 3}
+  costs: []
+  requiredLevel: 1
+  isFoundation: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d2b62d0f8dd4d646b00db2b697a1026, type: 3}
+  m_Name: BuildDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.BuildDatabase
+  pieces:
+  - {fileID: 5388426774880115451}
+  - {fileID: -6238920327332735489}
+  - {fileID: -3979234932894934665}
+  - {fileID: -4372547184958672313}
+  - {fileID: 3757100235099678633}
+  - {fileID: -3346455975925889654}
+  - {fileID: 7813629671405266094}
+--- !u!114 &3757100235099678633
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2214d894e87d8441b1dff03e9651a38, type: 3}
+  m_Name: New Roof
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.BuildPieceEntry
+  pieceId: 5
+  pieceName: Roof
+  description: 
+  icon: {fileID: -1542876771, guid: 12e6c16c6a9b3d4458830870686020db, type: 3}
+  category: 2
+  ghostPrefab: {fileID: 3196699485932665727, guid: 135add64d54bf82428be00f6ca734574, type: 3}
+  buildPrefab: {fileID: 3196699485932665727, guid: 135add64d54bf82428be00f6ca734574, type: 3}
+  costs: []
+  requiredLevel: 1
+  isFoundation: 0
+--- !u!114 &5388426774880115451
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2214d894e87d8441b1dff03e9651a38, type: 3}
+  m_Name: New Floor
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.BuildPieceEntry
+  pieceId: 1
+  pieceName: Floor
+  description: 
+  icon: {fileID: 533394481, guid: 12e6c16c6a9b3d4458830870686020db, type: 3}
+  category: 0
+  ghostPrefab: {fileID: 3196699485932665727, guid: 7274a7171401df04a861590ef8b91dab, type: 3}
+  buildPrefab: {fileID: 3196699485932665727, guid: 7274a7171401df04a861590ef8b91dab, type: 3}
+  costs: []
+  requiredLevel: 1
+  isFoundation: 0
+--- !u!114 &7813629671405266094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2214d894e87d8441b1dff03e9651a38, type: 3}
+  m_Name: New Wall
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.BuildPieceEntry
+  pieceId: 7
+  pieceName: New Wall
+  description: 
+  icon: {fileID: 0}
+  category: 1
+  ghostPrefab: {fileID: 0}
+  buildPrefab: {fileID: 0}
+  costs: []
+  requiredLevel: 1
+  isFoundation: 0

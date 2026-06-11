@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: fd37c50190cbea24b8a1a6d478b3ea48
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Scripts/Core/Spawning/SpawnManager.cs
+  uploadId: 926736

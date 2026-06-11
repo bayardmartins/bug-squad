@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 8bbb0705d9029974a970abb76409df4a
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Scripts/CraftingSystem/UI/CraftingProgressWorldUI.cs
+  uploadId: 926736

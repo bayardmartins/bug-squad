@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: fad863c17672da349942836e58b33ee4
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Scripts/Core/Interfaces/IDamageable.cs
+  uploadId: 926736

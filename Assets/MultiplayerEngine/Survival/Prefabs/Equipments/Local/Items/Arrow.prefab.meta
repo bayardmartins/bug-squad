@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 73d2ea8f9022eda4ab7e37a6d07fbb7d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/Equipments/Local/Items/Arrow.prefab
+  uploadId: 926736

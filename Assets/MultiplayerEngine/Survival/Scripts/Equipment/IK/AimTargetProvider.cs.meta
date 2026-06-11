@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 19adef2158f44ee4db7b383096ff7e67
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Scripts/Equipment/IK/AimTargetProvider.cs
+  uploadId: 926736

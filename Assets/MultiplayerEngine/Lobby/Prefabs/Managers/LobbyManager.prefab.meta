@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 1f7f1ee31dcb1b6479f303a7396279a1
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Lobby/Prefabs/Managers/LobbyManager.prefab
+  uploadId: 926736

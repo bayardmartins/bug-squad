@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7e494694cf62131448c5e3de8ed48b50
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/UI/Items/Inventory/InventorySlot.prefab
+  uploadId: 926736

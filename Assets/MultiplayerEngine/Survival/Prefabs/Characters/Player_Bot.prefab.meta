@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 86f304171e599b14f8a37d09a22eb98e
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/Characters/Player_Bot.prefab
+  uploadId: 926736

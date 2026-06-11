@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2a74fe99b5bd9504698b3260b314681d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/Equipments/Network/Items/Arrow_Ammo.prefab
+  uploadId: 926736

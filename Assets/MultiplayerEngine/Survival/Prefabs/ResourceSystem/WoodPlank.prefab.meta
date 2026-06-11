@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 19200bcc29cfe914eab1a1bc86a7c055
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/ResourceSystem/WoodPlank.prefab
+  uploadId: 926736

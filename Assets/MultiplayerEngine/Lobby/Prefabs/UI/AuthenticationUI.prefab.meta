@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 596a5bb275e5abb4eacdf0e3fd883903
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Lobby/Prefabs/UI/AuthenticationUI.prefab
+  uploadId: 926736

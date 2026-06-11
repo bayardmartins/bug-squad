@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b6ac9c8bff0c9b34c81d87203943917d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/Equipments/Network/Items/Arrow_Projectile.prefab
+  uploadId: 926736

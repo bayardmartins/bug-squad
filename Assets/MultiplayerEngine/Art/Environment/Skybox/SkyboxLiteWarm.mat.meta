@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: aeab33f69c199e54794f516d31450ec4
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Art/Environment/Skybox/SkyboxLiteWarm.mat
+  uploadId: 926736

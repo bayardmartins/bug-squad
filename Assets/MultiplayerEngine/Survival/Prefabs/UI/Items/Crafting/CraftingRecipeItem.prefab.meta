@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3344b71956cdfea48a90ac8f83fcccd3
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/UI/Items/Crafting/CraftingRecipeItem.prefab
+  uploadId: 926736

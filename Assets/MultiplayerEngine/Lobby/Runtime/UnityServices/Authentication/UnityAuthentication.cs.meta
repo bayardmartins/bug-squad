@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: d60fed739a4ea894289c9620bd43c600
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Lobby/Runtime/UnityServices/Authentication/UnityAuthentication.cs
+  uploadId: 926736

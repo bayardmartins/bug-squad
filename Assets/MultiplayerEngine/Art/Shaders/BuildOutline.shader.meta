@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3425aa5dc138f984aaf5d6c8f48378ff
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Art/Shaders/BuildOutline.shader
+  uploadId: 926736

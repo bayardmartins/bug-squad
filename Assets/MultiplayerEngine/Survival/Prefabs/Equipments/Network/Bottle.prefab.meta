@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 8a36faa408e3dd14ca502da60210a885
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/Equipments/Network/Bottle.prefab
+  uploadId: 926736

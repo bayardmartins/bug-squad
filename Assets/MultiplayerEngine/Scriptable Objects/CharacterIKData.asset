@@ -1,0 +1,165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8130812754349771955
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: CharIK_Sword_HandOffset
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0.028, y: -0.117, z: -0.332}
+  rotationOffset: {x: 301.7706, y: 280.97476, z: 172.17303}
+--- !u!114 &-6546404824328957723
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: CharIK_Rifle_HandOffset
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0.016444778, y: -0.092783965, z: -0.042491585}
+  rotationOffset: {x: 69.57176, y: 169.2358, z: 358.40326}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b54ced0ef01cf42bec041d0ae9c601, type: 3}
+  m_Name: CharacterIKData
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.CharacterIKData
+  presets:
+  - itemData: {fileID: 5287367927060126413, guid: bdd698f7bd97c924e9eef60c1c1767f3, type: 2}
+    isRightHandPrimary: 1
+    useSecondaryHand: 1
+    idle:
+      primaryHandOffset:
+        position: {x: 0.099524684, y: 0.081962526, z: 0.023423202}
+        eulerAngles: {x: 17.282675, y: 2.1114078, z: 6.1521945}
+      primaryHintOffset:
+        position: {x: -0.022565246, y: 0.003937818, z: -0.035387844}
+        eulerAngles: {x: 359.2891, y: 20.256289, z: 359.09146}
+      secondaryHandOffset:
+        position: {x: -0.044318046, y: 0.015634686, z: 0.22127849}
+        eulerAngles: {x: 4.3839097, y: 354.66223, z: 287.00122}
+      secondaryHintOffset:
+        position: {x: 0.10649241, y: -0.043075845, z: 0.08683666}
+        eulerAngles: {x: 0, y: 0, z: 0}
+      spineOffset: {x: -0.65, y: 0, z: 0}
+      headOffset: {x: 12.98, y: -3, z: 0.54}
+    aiming:
+      primaryHandOffset:
+        position: {x: -0.022874916, y: 0.10175925, z: -0.003174082}
+        eulerAngles: {x: 335.18835, y: 37.91165, z: 302.77255}
+      primaryHintOffset:
+        position: {x: 0, y: 0, z: 0}
+        eulerAngles: {x: 0, y: 0, z: 0}
+      secondaryHandOffset:
+        position: {x: -0.06263223, y: 0.03343019, z: 0.1636026}
+        eulerAngles: {x: 0.9959208, y: 325.28525, z: 270.85547}
+      secondaryHintOffset:
+        position: {x: 0, y: 0, z: 0}
+        eulerAngles: {x: 0, y: 0, z: 0}
+      spineOffset: {x: 5, y: 0, z: 0}
+      headOffset: {x: 0, y: 0, z: 0}
+  - itemData: {fileID: 7879376528598442186, guid: bdd698f7bd97c924e9eef60c1c1767f3, type: 2}
+    isRightHandPrimary: 0
+    useSecondaryHand: 1
+    idle:
+      primaryHandOffset:
+        position: {x: 0, y: 0, z: 0}
+        eulerAngles: {x: 0, y: 0, z: 0}
+      primaryHintOffset:
+        position: {x: 0, y: 0, z: 0}
+        eulerAngles: {x: 0, y: 0, z: 0}
+      secondaryHandOffset:
+        position: {x: -0.4921051, y: 0.07922347, z: -0.0041175038}
+        eulerAngles: {x: 0, y: 0, z: 0}
+      secondaryHintOffset:
+        position: {x: 0.06015625, y: -0.014794173, z: -0.05725289}
+        eulerAngles: {x: 0, y: 0, z: 0}
+      spineOffset: {x: 0, y: 0, z: 0}
+      headOffset: {x: 0, y: 0, z: 0}
+    aiming:
+      primaryHandOffset:
+        position: {x: -0.38808164, y: -0.20941755, z: 0.20600513}
+        eulerAngles: {x: 27.60025, y: 32.795784, z: 41.95081}
+      primaryHintOffset:
+        position: {x: 0, y: 0, z: 0}
+        eulerAngles: {x: 0, y: 0, z: 0}
+      secondaryHandOffset:
+        position: {x: -0.0016012255, y: 0.011780307, z: 0.0022885203}
+        eulerAngles: {x: 0, y: 0, z: 0}
+      secondaryHintOffset:
+        position: {x: 0.074385576, y: -0.35676455, z: -0.0066294223}
+        eulerAngles: {x: 0, y: 0, z: 0}
+      spineOffset: {x: -3.4, y: 40, z: -2.07}
+      headOffset: {x: 2.81, y: -29.3, z: 0}
+--- !u!114 &4016354919285253710
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: CharIK_Bow_HandOffset
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0.15506688, y: 0.03556476, z: -0.47033504}
+  rotationOffset: {x: 346.71152, y: 256.71887, z: 267.32233}
+--- !u!114 &5085399147674314608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: CharIK_Sword_HandOffset
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0.0216, y: -0.1124, z: -0.3975}
+  rotationOffset: {x: 301.7706, y: 280.97476, z: 172.17303}
+--- !u!114 &7150477778817047212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: CharIK_Sword_HandOffset
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0.0216, y: -0.1124, z: -0.3975}
+  rotationOffset: {x: 301.7706, y: 280.97476, z: 172.17303}
+--- !u!114 &8703286418208147299
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
+  m_Name: CharIK_Rifle_HandOffset
+  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
+  positionOffset: {x: 0.026, y: -0.09, z: -0.029}
+  rotationOffset: {x: 69.57173, y: 169.2358, z: 358.4033}

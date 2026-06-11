@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 85f61ec9fa7114d5f88c736532abeeef
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Settings/Rendering/High_PipelineAsset.asset
+  uploadId: 926736

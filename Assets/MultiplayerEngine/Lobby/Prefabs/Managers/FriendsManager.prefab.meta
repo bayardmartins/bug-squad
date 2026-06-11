@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2d525016d5173e647b69c3515238d560
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Lobby/Prefabs/Managers/FriendsManager.prefab
+  uploadId: 926736

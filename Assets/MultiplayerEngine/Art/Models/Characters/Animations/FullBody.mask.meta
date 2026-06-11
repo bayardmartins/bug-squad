@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b1b4f59cfc484e040828759f1d99b42e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 31900000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Art/Models/Characters/Animations/FullBody.mask
+  uploadId: 926736

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f74c0fdaf1908a143afffb9c58b1721b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Lobby/Integrations/Steam/SteamManager.prefab
+  uploadId: 926736

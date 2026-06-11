@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c30b829749804f148a592054fd5b7483
+timeCreated: 1473672216
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Art/Vfx/Materials/DustPuffParticle.mat
+  uploadId: 926736

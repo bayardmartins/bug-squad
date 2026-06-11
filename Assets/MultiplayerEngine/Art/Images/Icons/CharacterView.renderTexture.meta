@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5659b6f128dffd847bd0fc9b9447ad45
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Art/Images/Icons/CharacterView.renderTexture
+  uploadId: 926736

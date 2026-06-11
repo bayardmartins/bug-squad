@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9e7be553448fa2546aea5752021cbcf7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Settings/Input/ME_Inputs.inputsettings.asset
+  uploadId: 926736

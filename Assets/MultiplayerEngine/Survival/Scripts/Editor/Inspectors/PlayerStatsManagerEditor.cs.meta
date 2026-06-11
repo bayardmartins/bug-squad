@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: c8e83460575d5404f8bc23c9abe28e25
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Scripts/Editor/Inspectors/PlayerStatsManagerEditor.cs
+  uploadId: 926736

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ea5bbf80b1049ab448d85dbc2b083c8d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Art/Vfx/Prefabs/Stone_Hit.prefab
+  uploadId: 926736

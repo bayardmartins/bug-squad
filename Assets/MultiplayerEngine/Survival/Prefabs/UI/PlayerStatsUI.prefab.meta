@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7bef49b6fbef7a54ba017c17316d1161
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/UI/PlayerStatsUI.prefab
+  uploadId: 926736

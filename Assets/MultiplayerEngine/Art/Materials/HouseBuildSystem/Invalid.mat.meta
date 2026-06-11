@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 97c5faf6fc57ce643aa7fccf40f7949f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Art/Materials/HouseBuildSystem/Invalid.mat
+  uploadId: 926736

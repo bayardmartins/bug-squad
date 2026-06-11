@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ec55ee5676c8b4d4badd952abad66205
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Prefabs/Characters/Player_Female.prefab
+  uploadId: 926736

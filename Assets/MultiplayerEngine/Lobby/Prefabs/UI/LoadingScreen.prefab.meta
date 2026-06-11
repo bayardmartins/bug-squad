@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 8b9cbc5bcb04e6b49bc9fff90d0eef89
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Lobby/Prefabs/UI/LoadingScreen.prefab
+  uploadId: 926736

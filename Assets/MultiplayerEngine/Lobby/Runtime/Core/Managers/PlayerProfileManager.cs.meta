@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: f5c264da73af2e34caf7546316ddfd3f
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Lobby/Runtime/Core/Managers/PlayerProfileManager.cs
+  uploadId: 926736

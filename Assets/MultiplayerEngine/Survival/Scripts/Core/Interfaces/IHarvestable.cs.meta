@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 2ce4ede3a35aee343bc62022ff4dea7c
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Scripts/Core/Interfaces/IHarvestable.cs
+  uploadId: 926736

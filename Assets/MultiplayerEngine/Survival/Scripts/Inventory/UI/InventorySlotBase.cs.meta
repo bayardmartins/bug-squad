@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 18b59dad6e9511744bf4184b7b460379
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Scripts/Inventory/UI/InventorySlotBase.cs
+  uploadId: 926736

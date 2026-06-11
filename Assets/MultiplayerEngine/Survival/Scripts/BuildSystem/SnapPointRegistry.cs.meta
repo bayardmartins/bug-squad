@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 8fd398e2cf8faf64886a11b5a96f8ee9
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Scripts/BuildSystem/SnapPointRegistry.cs
+  uploadId: 926736

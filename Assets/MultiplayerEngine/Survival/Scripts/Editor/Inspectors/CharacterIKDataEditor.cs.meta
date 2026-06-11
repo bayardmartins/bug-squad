@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: a9993f8e61c43bc41bfaf9e7d6e440de
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.0
+  assetPath: Assets/MultiplayerEngine/Survival/Scripts/Editor/Inspectors/CharacterIKDataEditor.cs
+  uploadId: 926736
