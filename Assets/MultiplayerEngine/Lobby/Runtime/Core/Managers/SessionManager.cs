@@ -151,6 +151,18 @@ namespace Ignitives.MultiplayerEngine
             {
                 LoadingScreen.Instance?.UpdateStatus("Starting host...");
                 NetworkManager.Singleton.StartHost();
+
+                // test
+
+                // Pre-populate host session data since host doesn't go through standard approval flow
+                ServerSessionCache[NetworkManager.ServerClientId] = new PlayerSessionData
+                {
+                    ClientId = NetworkManager.ServerClientId,
+                    PlayerId = RuntimeSessionData.Instance.PlayerId,
+                    DisplayName = RuntimeSessionData.Instance.DisplayName,
+                    SelectedCharacterId = RuntimeSessionData.Instance.SelectedCharacterId
+                };
+
                 await WaitForPlayersToLoad();
             }
             else
@@ -231,6 +243,45 @@ namespace Ignitives.MultiplayerEngine
         {
             ulong clientId = request.ClientNetworkId;
 
+            // Host is always approved, even if payload is missing or empty
+            if (clientId == NetworkManager.ServerClientId)
+            {
+                response.Approved = true;
+                response.CreatePlayerObject = false; // We spawn manually via SpawnManager
+
+                string playerId = RuntimeSessionData.Instance.PlayerId;
+                string displayName = RuntimeSessionData.Instance.DisplayName;
+                string selectedCharId = RuntimeSessionData.Instance.SelectedCharacterId;
+
+                if (request.Payload != null && request.Payload.Length > 0)
+                {
+                    try
+                    {
+                        string json = System.Text.Encoding.UTF8.GetString(request.Payload);
+                        var payload = JsonUtility.FromJson<ConnectionPayload>(json);
+                        if (payload != null)
+                        {
+                            playerId = payload.PlayerId;
+                            displayName = payload.DisplayName;
+                            selectedCharId = payload.SelectedCharacterId;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.LogWarning($"[SessionManager] Could not parse host payload: {ex.Message}");
+                    }
+                }
+
+                ServerSessionCache[clientId] = new PlayerSessionData
+                {
+                    ClientId = clientId,
+                    PlayerId = playerId,
+                    DisplayName = displayName,
+                    SelectedCharacterId = selectedCharId
+                };
+                return;
+            }
+
             if (request.Payload == null || request.Payload.Length == 0)
             {
                 response.Approved = false;
@@ -245,29 +296,22 @@ namespace Ignitives.MultiplayerEngine
 
                 bool isValid = false;
 
-                if (clientId == NetworkManager.ServerClientId)
+                // Cross-reference with LobbyData from LobbyManager
+                var lobbyPlayer = LobbyManager.Instance?.CurrentLobbyData?.Players
+                    .FirstOrDefault(p => p.PlayerId == payload.PlayerId);
+
+                if (lobbyPlayer != null)
                 {
-                    isValid = true; // Host is always valid
+                    // Retrieve their chosen character directly from the secure LobbyData, NOT the payload!
+                    lobbyPlayer.Data.TryGetValue(PlayerDataKeys.PlayerCharacter, out var lobbyCharId);
+                    
+                    // Set the selected character to the official one from the LobbyData
+                    payload.SelectedCharacterId = lobbyCharId;
+                    isValid = true;
                 }
                 else
                 {
-                    // Cross-reference with LobbyData from LobbyManager
-                    var lobbyPlayer = LobbyManager.Instance?.CurrentLobbyData?.Players
-                        .FirstOrDefault(p => p.PlayerId == payload.PlayerId);
-
-                    if (lobbyPlayer != null)
-                    {
-                        // Retrieve their chosen character directly from the secure LobbyData, NOT the payload!
-                        lobbyPlayer.Data.TryGetValue(PlayerDataKeys.PlayerCharacter, out var lobbyCharId);
-                        
-                        // Set the selected character to the official one from the LobbyData
-                        payload.SelectedCharacterId = lobbyCharId;
-                        isValid = true;
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"[Security] Client {clientId} with PlayerId {payload.PlayerId} is not in the Lobby list.");
-                    }
+                    Debug.LogWarning($"[Security] Client {clientId} with PlayerId {payload.PlayerId} is not in the Lobby list.");
                 }
 
                 if (isValid)
@@ -282,7 +326,6 @@ namespace Ignitives.MultiplayerEngine
                         DisplayName = payload.DisplayName,
                         SelectedCharacterId = payload.SelectedCharacterId
                     };
-                    Debug.Log($"[SessionManager] Approved client {clientId} with verified character {payload.SelectedCharacterId}.");
                 }
                 else
                 {

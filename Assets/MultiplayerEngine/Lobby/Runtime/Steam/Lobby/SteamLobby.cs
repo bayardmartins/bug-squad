@@ -238,7 +238,6 @@ namespace Ignitives.MultiplayerEngine
                 return Task.FromResult(false);
 
             SteamMatchmaking.SetLobbyJoinable(lobbyId, false);
-            NetworkManager.Singleton.StartHost();
             SteamMatchmaking.SetLobbyData(lobbyId, LobbyDataKeys.GameId.ToString(), SteamUser.GetSteamID().ToString());
             GameStarted?.Invoke(currentLobbyData);
             return Task.FromResult(true);
@@ -433,8 +432,12 @@ namespace Ignitives.MultiplayerEngine
 
         private void OnLobbyChatUpdate(LobbyChatUpdate_t callback)
         {
+            if (currentLobbyData == null) return;
             CSteamID lobbyID = new CSteamID(callback.m_ulSteamIDLobby);
-            CSteamID changedUser = new CSteamID(callback.m_ulSteamIDUserChanged);
+            
+            // Rebuild lobby data to keep the players list accurate
+            currentLobbyData = BuildLobbyData(lobbyID);
+            LobbyUpdated?.Invoke(currentLobbyData);
         }
     }
 }
