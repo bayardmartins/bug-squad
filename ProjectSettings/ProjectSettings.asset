@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 00000000000000000000000000000000
+  productGUID: 1fd2075145bab684d896cdacb1406fdc
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -857,7 +857,7 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
-    Standalone: 
+    Standalone: STEAM_SERVICES
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
@@ -974,7 +974,7 @@ PlayerSettings:
   cloudProjectId: aa9e8a99-485a-4804-b4df-1e20700cb9d3
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Multiplayer Engine
+  projectName: bug-squad
   organizationId: bayardmartins
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
