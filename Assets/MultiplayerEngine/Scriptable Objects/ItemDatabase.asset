@@ -313,42 +313,6 @@ MonoBehaviour:
   baseDamage: 10
   comboDamageMultipliers: []
   staminaCostPerAttack: 10
---- !u!114 &-5210695390965014112
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea50ed2eebf1ee46ace2c4165dc5bef, type: 3}
-  m_Name: New Item
-  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.InventoryItemData
-  itemId: 13
-  itemName: New Item
-  description: 
-  itemIcon: {fileID: 0}
-  objectType: 1
-  maxStack: 1
-  dropAsStack: 1
-  maxDurability: 100
-  localPrefab: {fileID: 0}
-  networkPrefab: {fileID: 0}
-  handOffsetData: {fileID: 5068538569958835566}
-  equipSettings:
-    canEquipToHand: 0
-    changeID: 0
-    actionID: 0
-    animationLayerIndex: 1
-    actionLayerIndex: -1
-    holdLayerIndex: -1
-    animatorOverride: {fileID: 0}
-  toolData: {fileID: 0}
-  consumableData: {fileID: 0}
-  meleeWeaponData: {fileID: 0}
-  shooterWeaponData: {fileID: 0}
-  chargedWeaponData: {fileID: 0}
 --- !u!114 &-5124193951588732508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -812,7 +776,6 @@ MonoBehaviour:
   - {fileID: -5799801562876127336}
   - {fileID: -2470346058607824998}
   - {fileID: 4029888435128670339}
-  - {fileID: -5210695390965014112}
 --- !u!114 &140120905839154357
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1270,20 +1233,6 @@ MonoBehaviour:
   canHarvest: 01000000
   useCooldown: 0.5
   staminaCost: 8
---- !u!114 &5068538569958835566
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19c4751d2030e4643b7df615a5f85b54, type: 3}
-  m_Name: New Item_HandOffsetData
-  m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.HandOffsetData
-  positionOffset: {x: 0, y: 0, z: 0}
-  rotationOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &5207450399513013068
 MonoBehaviour:
   m_ObjectHideFlags: 1

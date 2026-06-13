@@ -157,12 +157,6 @@ namespace Ignitives.MultiplayerEngine
             return profile;
         }
 
-        /// <summary>
-        /// Updates the local player's profile data.
-        /// </summary>
-        /// <param name="displayName">The new display name for the player.</param>
-        /// <param name="avatarId">The identifier for the new avatar image.</param>
-        /// <returns>True if the profile was updated successfully; otherwise, false.</returns>
         public async Task<(bool userName, bool avatar)> UpdatePlayerDataAsync(string displayName, string avatarId)
         {
             if (playerProfileService == null)
@@ -170,7 +164,13 @@ namespace Ignitives.MultiplayerEngine
                 Debug.LogError("Player profile service not initialized.");
                 return (false, false);
             }
-            return await playerProfileService.UpdatePlayerProfileAsync(displayName, avatarId);
+            var result = await playerProfileService.UpdatePlayerProfileAsync(displayName, avatarId);
+            if (result.userName && result.avatar)
+            {
+                // Refresh local stats to sync with RuntimeSessionData
+                await GetLocalPlayerStatsAsync(null);
+            }
+            return result;
         }
 
         /// <summary>

@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &68481917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,14 +287,13 @@ GameObject:
   - component: {fileID: 324463423}
   - component: {fileID: 324463422}
   - component: {fileID: 324463424}
-  - component: {fileID: 324463425}
   m_Layer: 0
   m_Name: NetworkManager(Steam)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &324463422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,10 +313,10 @@ MonoBehaviour:
     PlayerPrefab: {fileID: 0}
     Prefabs:
       NetworkPrefabsLists:
-      - {fileID: 11400000, guid: 30387ba4ba1a3d648bd0d1f230639cca, type: 2}
+      - {fileID: 11400000, guid: 2572667702272214fac82070204d0352, type: 2}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
-    ConnectionApproval: 0
+    ConnectionApproval: 1
     ConnectionData: 
     EnableTimeResync: 0
     TimeResyncInterval: 30
@@ -364,39 +363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9793a7f4108fa048a724b4f5db145da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ignitives.MultiplayerEngine.SteamNetworkingSocketsTransport
-  ConnectToSteamID: 480
+  ConnectToSteamID: 0
   options: []
---- !u!114 &324463425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 324463420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6960e84d07fb87f47956e7a81d71c4e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Transports.UTP.UnityTransport
-  m_ProtocolType: 0
-  m_UseWebSockets: 0
-  m_UseEncryption: 0
-  m_MaxPacketQueueSize: 128
-  m_MaxPayloadSize: 6144
-  m_HeartbeatTimeoutMS: 500
-  m_ConnectTimeoutMS: 1000
-  m_MaxConnectAttempts: 60
-  m_DisconnectTimeoutMS: 30000
-  ConnectionData:
-    Address: 127.0.0.1
-    Port: 7777
-    WebSocketPath: /
-    ServerListenAddress: 127.0.0.1
-    ClientBindPort: 0
-  DebugSimulator:
-    PacketDelayMS: 0
-    PacketJitterMS: 0
-    PacketDropRate: 0
 --- !u!1 &381855952
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,7 +1741,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 2572667702272214fac82070204d0352, type: 2}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
-    ConnectionApproval: 0
+    ConnectionApproval: 1
     ConnectionData: 
     EnableTimeResync: 0
     TimeResyncInterval: 30
@@ -2007,7 +1975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6128842705730892893, guid: 297bb7d96ff840a47a0c57ba72330761, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 55.82
       objectReference: {fileID: 0}
     - target: {fileID: 6128842705730892893, guid: 297bb7d96ff840a47a0c57ba72330761, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2271,7 +2239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5420848359138128159, guid: cdca9d5465d44c146ae0685697e4c361, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 55.82
       objectReference: {fileID: 0}
     - target: {fileID: 5420848359138128159, guid: cdca9d5465d44c146ae0685697e4c361, type: 3}
       propertyPath: m_AnchoredPosition.x

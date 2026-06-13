@@ -115,6 +115,7 @@ namespace Ignitives.MultiplayerEngine
 
         private bool _hasAnimator;
         private bool _movementLocked;
+        private EquipmentController _equipmentController;
 
         private bool IsCurrentDeviceMouse
         {
@@ -201,6 +202,7 @@ namespace Ignitives.MultiplayerEngine
             _playerInput = GetComponent<PlayerInput>();
             _statsManager = GetComponent<IPlayerStatsManager>();
             _perspectiveSwitcher = GetComponent<PerspectiveSwitcher>();
+            _equipmentController = GetComponent<EquipmentController>();
         }
 
         private void Start()
@@ -447,15 +449,23 @@ namespace Ignitives.MultiplayerEngine
                 }
 
                 // Jump
-                if (_input.Jump && _jumpTimeoutDelta <= 0.0f)
+                bool canJump = !(_equipmentController != null && _equipmentController.IsInComboAttack);
+                if (_input.Jump)
                 {
-                    // the square root of H * -2 * G = how much velocity needed to reach desired height
-                    _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-
-                    // update animator if using character
-                    if (_hasAnimator)
+                    if (_jumpTimeoutDelta <= 0.0f && canJump)
                     {
-                        _animator.SetBool(_animIDJump, true);
+                        // the square root of H * -2 * G = how much velocity needed to reach desired height
+                        _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+
+                        // update animator if using character
+                        if (_hasAnimator)
+                        {
+                            _animator.SetBool(_animIDJump, true);
+                        }
+                    }
+                    else if (!canJump)
+                    {
+                        _input.Jump = false;
                     }
                 }
 

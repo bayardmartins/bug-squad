@@ -201,6 +201,7 @@ namespace Ignitives.MultiplayerEngine
         {
             if (isReloading) return;
             if (!pressed) return;
+            if (!isAiming) return;
             TryFire();
         }
 
@@ -249,6 +250,7 @@ namespace Ignitives.MultiplayerEngine
         private void TryFire()
         {
             if (shooterData == null) return;
+            if (!isAiming) return;
 
             // Check fire rate
             if (Time.time < lastFireTime + shooterData.FireInterval)

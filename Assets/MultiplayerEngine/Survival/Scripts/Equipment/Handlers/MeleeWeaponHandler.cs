@@ -117,6 +117,10 @@ namespace Ignitives.MultiplayerEngine
 
         private bool CanAttack()
         {
+            // Block attacks if not grounded
+            if (playerController != null && !playerController.Grounded)
+                return false;
+
             // Check stamina
             float staminaCost = meleeData?.staminaCostPerAttack ?? 10f;
             if (staminaManager != null && !staminaManager.HasStamina(staminaCost))

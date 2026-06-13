@@ -199,6 +199,10 @@ namespace Ignitives.MultiplayerEngine
             if (authenticationProvider == null) return false;
 
             bool result = await authenticationProvider.SignOutAsync();
+            if (result && RuntimeSessionData.Exists)
+            {
+                RuntimeSessionData.Instance.ClearAll();
+            }
             OnSignOutCompleted?.Invoke(result);
             return result;
         }
@@ -213,8 +217,11 @@ namespace Ignitives.MultiplayerEngine
             if (RuntimeSessionData.Exists && RuntimeSessionData.Instance.IsAuthenticated)
             {
                 bool isComplete = !string.IsNullOrEmpty(RuntimeSessionData.Instance.DisplayName);
-                OnProfileSetupCompleted?.Invoke(isComplete);
-                return isComplete;
+                if (isComplete)
+                {
+                    OnProfileSetupCompleted?.Invoke(true);
+                    return true;
+                }
             }
 
             // Fallback: use profile service if available (decoupled via ServiceLocator)

@@ -152,8 +152,6 @@ namespace Ignitives.MultiplayerEngine
                 LoadingScreen.Instance?.UpdateStatus("Starting host...");
                 NetworkManager.Singleton.StartHost();
 
-                // test
-
                 // Pre-populate host session data since host doesn't go through standard approval flow
                 ServerSessionCache[NetworkManager.ServerClientId] = new PlayerSessionData
                 {

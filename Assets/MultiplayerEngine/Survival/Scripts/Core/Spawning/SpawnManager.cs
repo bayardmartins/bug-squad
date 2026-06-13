@@ -85,6 +85,12 @@ namespace Ignitives.MultiplayerEngine
                 GameObject newCharacter = Instantiate(characterData.CharacterPrefab, spawnPosition, spawnRotation);
                 NetworkObject networkObject = newCharacter.GetComponent<NetworkObject>();
 
+                if (networkObject == null)
+                {
+                    Debug.LogError($"[SpawnManager] NetworkObject component missing on spawned character prefab '{characterData.CharacterPrefab.name}'!");
+                    continue;
+                }
+
                 networkObject.SpawnAsPlayerObject(clientId);
                 spawnedCharacters[clientId] = networkObject;
 

@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 032926c42222d434bb3edd9384d79cdf
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 8404be70184654265930450def6a9037, type: 3}
+  generateWrapperCode: 0
+  wrapperCodePath: 
+  wrapperClassName: 
+  wrapperCodeNamespace: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 341820
+  packageName: Survival Multiplayer Framework - Pro Edition
+  packageVersion: 1.01
+  assetPath: Assets/MultiplayerEngine/Settings/Input/SurvivalInputs.inputactions
+  uploadId: 933072
